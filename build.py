@@ -4,7 +4,7 @@
   docs/triada-offline.html   one self-contained file (open it directly, no install needed)
   artifact/index.html        body-only build for publishing as a claude.ai artifact
 """
-import pathlib, json, hashlib, shutil
+import pathlib, json, hashlib, shutil, base64
 
 ROOT = pathlib.Path(__file__).parent
 SRC, DIST, ART = ROOT / "src", ROOT / "docs", ROOT / "artifact"
@@ -14,7 +14,7 @@ css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)
 app = (SRC / "app.js").read_text().replace("/*__SYNC__*/", (SRC / "sync.js").read_text())
 fbcfg = (SRC / "firebase-config.js").read_text()
-ver = hashlib.sha1((css + data + app + (SRC / "i18n.js").read_text() + (SRC / "firebase-config.js").read_text()).encode()).hexdigest()[:10]
+ver = hashlib.sha1((css + data + app + "fonts-v1" + (SRC / "i18n.js").read_text() + (SRC / "firebase-config.js").read_text()).encode()).hexdigest()[:10]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700"
          "&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&display=swap")
@@ -29,10 +29,25 @@ body = f"""<div id="app"></div>
 <script>{fbcfg}</script>
 <script>{app}</script>"""
 
-head_common = f"""<title>Tríada Reader</title>
+# Self-hosted fonts (Fontsource builds of Literata, IBM Plex Sans Thai, Bricolage Grotesque) so text renders the same offline.
+LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+LATIN_EXT = "U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF"
+THAI = "U+0E01-0E5B,U+200C-200D,U+25CC"
+FACES = [("IBM Plex Sans Thai", f"ibm-plex-sans-thai-{sub}-{w}-normal.woff2", str(w), "normal", rng) for w in (400, 500, 600, 700) for sub, rng in (("thai", THAI), ("latin", LATIN))] \
+      + [("Literata", f"literata-{sub}-wght-{st}.woff2", "200 900", st, rng) for st in ("normal", "italic") for sub, rng in (("latin", LATIN), ("latin-ext", LATIN_EXT))] \
+      + [("Bricolage Grotesque", f"bricolage-grotesque-latin-{w}-normal.woff2", str(w), "normal", LATIN) for w in (600, 700)]
+def font_css(inline: bool) -> str:
+    out = []
+    for fam, f, w, st, rng in FACES:
+        src = ("data:font/woff2;base64," + base64.b64encode((SRC / "fonts" / f).read_bytes()).decode()) if inline else "fonts/" + f
+        out.append(f"@font-face{{font-family:'{fam}';font-style:{st};font-weight:{w};font-display:swap;src:url({src}) format('woff2');unicode-range:{rng}}}")
+    return "\n".join(out)
+
+def head(fonts: str) -> str:
+    link = f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="{FONTS}">' if fonts == "google" else f"<style>{font_css(fonts == 'inline')}</style>"
+    return f"""<title>Tríada Reader</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{link}
 <style>{css}</style>"""
 
 def full_doc(pwa: bool) -> str:
@@ -45,15 +60,16 @@ def full_doc(pwa: bool) -> str:
 <html lang="th"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 {extra}
-{head_common}
+{head("files" if pwa else "inline")}
 <style>:root{{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}} [hidden]{{display:none!important}}</style>
 </head><body>
 {body}
 {sw}
 </body></html>"""
 
-SW = f"""const CACHE='triada-{ver}';
-const CORE=['./','index.html','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png'];
+SW = f"""const FONTLIST_PLACEHOLDER=0;
+const CACHE='triada-{ver}';
+const CORE=['./','index.html','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png',FONTLIST];
 self.addEventListener('install',e=>{{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))}});
 self.addEventListener('activate',e=>{{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))}});
 self.addEventListener('fetch',e=>{{
@@ -76,10 +92,12 @@ MANIFEST = {"name": "Tríada Reader", "short_name": "Tríada", "description": "�
 DIST.mkdir(exist_ok=True); ART.mkdir(exist_ok=True)
 (DIST / "index.html").write_text(full_doc(True))
 (DIST / "triada-offline.html").write_text(full_doc(False))
-(DIST / "sw.js").write_text(SW)
+(DIST / "sw.js").write_text(SW.replace("const FONTLIST_PLACEHOLDER=0;\n", "").replace("FONTLIST", ",".join(repr("fonts/" + f[1]) for f in FACES)))
+(DIST / "fonts").mkdir(exist_ok=True)
+for f in FACES: shutil.copy(SRC / "fonts" / f[1], DIST / "fonts" / f[1])
 (DIST / "manifest.webmanifest").write_text(json.dumps(MANIFEST, ensure_ascii=False, indent=1))
 (DIST / "icon.svg").write_text(ICON)
-(ART / "index.html").write_text(head_common + "\n" + body)
+(ART / "index.html").write_text(head("google") + "\n" + body)
 
 # PNG icons via the preinstalled Playwright/Chromium (optional)
 try:

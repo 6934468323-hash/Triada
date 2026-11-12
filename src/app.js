@@ -150,18 +150,44 @@ const synth = window.speechSynthesis;
 let voicesCache = [];
 function loadVoices() { try { voicesCache = synth ? synth.getVoices() : []; } catch (e) { voicesCache = []; } }
 if (synth) { loadVoices(); synth.onvoiceschanged = () => { loadVoices(); if (S.tab === 'prefs') render(); }; }
+/* Rank the device's voices: natural/neural/enhanced voices first, robotic engines (eSpeak, compact) last. */
+const GOOD_VOICES = /amélie|amelie|thomas|audrey|aurélie|marie|denise|henri|vivienne|mónica|monica|paulina|jorge|elvira|álvaro|alvaro|xander|ellen|claire|fenna|maarten|colette|dena|arnaud/i;
+function voiceScore(v, lang) {
+  const n = v.name || '', l = (v.lang || '').toLowerCase().replace('_', '-');
+  let sc = 0;
+  if (l === LANGS[lang].tts.toLowerCase()) sc += 30; else if (l.startsWith(lang)) sc += 20;
+  if (/natural|neural|premium|enhanced|wavenet|studio|online/i.test(n)) sc += 45;
+  if (/google/i.test(n)) sc += 30;
+  if (/siri/i.test(n)) sc += 25;
+  if (GOOD_VOICES.test(n)) sc += 12;
+  if (/espeak|compact|mbrola|pico|festival/i.test(n)) sc -= 60;
+  if (v.localService) sc += 3;
+  return sc;
+}
+function voicesFor(lang) { return voicesCache.filter(v => v.lang && v.lang.toLowerCase().startsWith(lang)).sort((a, b) => voiceScore(b, lang) - voiceScore(a, lang)); }
+function voiceQuality(v, lang) { const q = voiceScore(v, lang); return q >= 70 ? 'high' : q < 30 ? 'low' : 'ok'; }
 function voiceFor(lang) {
-  const want = st().voices[lang];
-  const list = voicesCache.filter(v => v.lang && v.lang.toLowerCase().startsWith(lang));
-  return list.find(v => v.voiceURI === want) || list.find(v => v.localService) || list[0] || null;
+  const want = st().voices[lang], list = voicesFor(lang);
+  return list.find(v => v.voiceURI === want) || list[0] || null;
+}
+const voiceWarned = {};
+function voiceHelp() {
+  const ua = navigator.userAgent;
+  if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) return 'iPhone/iPad: การตั้งค่า → การช่วยการเข้าถึง → เนื้อหาที่พูด → เสียง → เลือกภาษา → ดาวน์โหลดเสียงที่มีคำว่า “คุณภาพสูง” หรือ “Premium” แล้วกลับมาเลือกเสียงนั้นที่นี่';
+  if (/Android/.test(ua)) return 'Android: การตั้งค่า → ระบบ → ภาษา → เอาต์พุตการอ่านออกเสียง → ตั้งค่าเครื่องมือของ Google → ติดตั้งข้อมูลเสียง → เลือกภาษา แล้วเปิดแอปนี้ด้วย Chrome';
+  if (/Windows/.test(ua)) return 'Windows: เปิดแอปนี้ด้วย Microsoft Edge ซึ่งมีเสียงธรรมชาติ (Natural) ให้ฟรี หรือ Settings → Time & language → Speech → Add voices';
+  if (/Macintosh/.test(ua)) return 'Mac: System Settings → Accessibility → Spoken Content → System voice → Manage Voices → ดาวน์โหลดเสียงแบบ Premium/Enhanced ของภาษานั้น';
+  return 'ติดตั้งเสียงของภาษานั้นในการตั้งค่าระบบ หรือเปิดแอปด้วย Chrome / Edge ซึ่งมีเสียงคุณภาพดีให้';
 }
 let speakRun = 0;
 function speak(text, lang, opts = {}) {
   if (!synth) { toast('อุปกรณ์นี้ไม่รองรับเสียงอ่าน'); return Promise.resolve(); }
   return new Promise(res => {
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = LANGS[lang].tts; const v = voiceFor(lang); if (v) u.voice = v;
-    u.rate = opts.rate || st().rate; u.onend = res; u.onerror = res;
+    const v = voiceFor(lang);
+    if (v) { u.voice = v; u.lang = v.lang; } else u.lang = LANGS[lang].tts;
+    if (!voiceWarned[lang] && voicesCache.length && (!v || voiceQuality(v, lang) === 'low')) { voiceWarned[lang] = 1; toast(!v ? `เครื่องนี้ยังไม่มีเสียงภาษา${LANGS[lang].th} เสียงที่ได้ยินอาจออกเสียงผิด ดูวิธีติดตั้งที่ ตั้งค่า → เสียงอ่าน` : `เสียงภาษา${LANGS[lang].th}ในเครื่องนี้คุณภาพต่ำ ดูวิธีติดตั้งเสียงที่ดีกว่าที่ ตั้งค่า → เสียงอ่าน`); }
+    u.rate = opts.rate || st().rate; u.pitch = 1; u.onend = res; u.onerror = res;
     synth.speak(u);
   });
 }
@@ -951,7 +977,9 @@ function vPrefs(m) {
   const s = st();
   const seg = (key, opts) => `<div class="seg" role="group">${opts.map(([v, l]) => `<button data-act="set" data-k="${key}" data-v="${v}" aria-pressed="${String(s[key]) === String(v)}">${l}</button>`).join('')}</div>`;
   const sw = (key) => `<span class="sw"><input type="checkbox" id="sw-${key}" data-act="setb" data-k="${key}" ${s[key] ? 'checked' : ''}><span></span></span>`;
-  const voiceSel = l => { const vs = voicesCache.filter(v => v.lang && v.lang.toLowerCase().startsWith(l)); return vs.length ? `<select id="voice-${l}" data-act="voice" data-l="${l}">${vs.map(v => `<option value="${esc(v.voiceURI)}" ${voiceFor(l) && voiceFor(l).voiceURI === v.voiceURI ? 'selected' : ''}>${esc(v.name)}${v.localService ? ' (ออฟไลน์)' : ''}</option>`).join('')}</select>` : '<span class="muted">ไม่พบเสียงในเครื่อง</span>'; };
+  const qLabel = { high: ' · คุณภาพสูง', ok: '', low: ' · คุณภาพต่ำ' };
+  const voiceSel = l => { const vs = voicesFor(l); const cur = voiceFor(l); return vs.length ? `<select id="voice-${l}" data-act="voice" data-l="${l}" style="max-width:100%">${vs.map((v, i) => `<option value="${esc(v.voiceURI)}" ${cur && cur.voiceURI === v.voiceURI ? 'selected' : ''}>${esc(v.name)}${qLabel[voiceQuality(v, l)]}${i === 0 ? ' (แนะนำ)' : ''}</option>`).join('')}</select>` : '<span class="badge" style="color:var(--bad)">ไม่มีเสียงในเครื่อง</span>'; };
+  const voiceIssue = Object.keys(LANGS).filter(l => { const v = voiceFor(l); return !v || voiceQuality(v, l) === 'low'; });
   const ncards = Object.keys(S.cards).length;
   m.innerHTML = `<button class="back" data-act="go" data-v="${S.tab}">${ic('back')}กลับ</button>
   <div class="view-head"><div><div class="eyebrow">ปรับแต่ง</div><h1>ตั้งค่า</h1></div></div>
@@ -982,6 +1010,7 @@ function vPrefs(m) {
     <div class="row"><label for="rate">ความเร็ว<small id="ratev">${s.rate}×</small></label><input id="rate" type="range" min="0.5" max="1.4" step="0.05" value="${s.rate}" data-act="range" data-k="rate"></div>
     ${Object.keys(LANGS).map(l => `<div class="row"><label>เสียง ${LANGS[l].name}</label>${voiceSel(l)}</div>`).join('')}
     <div class="row"><label>ทดสอบเสียง</label><button class="tbtn" data-act="testvoice">${ic('speaker')}ฟังตัวอย่าง</button></div>
+    <div class="row"><label>${voiceIssue.length ? `<span style="color:var(--warn)">เสียงภาษา${voiceIssue.map(l => LANGS[l].th).join(', ')}ยังไม่ดีพอหรือยังไม่มี</span>` : 'อยากได้เสียงที่ชัดและเป็นธรรมชาติกว่านี้'}<small>แอปใช้เสียงที่ติดตั้งในเครื่อง และเลือกเสียงที่ดีที่สุดให้อัตโนมัติ · ${voiceHelp()}</small></label></div>
   </section>
   <section class="set-group"><h2>ออนไลน์</h2>
     <div class="row"><label for="sw-online">ใช้พจนานุกรม/คำแปลออนไลน์เมื่อมีเน็ต<small>Wiktionary และ MyMemory · เนื้อหาหลักทั้งหมดใช้งานออฟไลน์ได้</small></label>${sw('online')}</div>
@@ -1041,7 +1070,7 @@ function onClick(e) {
       const item = buildWebItem({ lang: s.lang, title: t, paras: title ? paras : paras, src: 'ข้อความของฉัน', id: 'web:own' + hashStr(raw.slice(0, 500) + Date.now()) });
       storeWeb(item); go('article', item.id); break; }
     case 'story': go('story', b.dataset.id); break;
-    case 'say': speak(b.dataset.say, sheetState.item.lang); break;
+    case 'say': speak(b.dataset.say, sheetState.item.lang, { rate: Math.min(st().rate, 0.85) }); break;
     case 'sayw': speak(b.dataset.say, b.dataset.lang); break;
     case 'saysent': speak(sheetState.sentence.o, sheetState.item.lang); break;
     case 'togglesent': sheetState.sentEl.classList.toggle('open'); closeSheet(); break;
@@ -1121,6 +1150,6 @@ function boot() {
   view = { name: S.tab || 'feed' };
   render();
 }
-window.TriadaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, state: () => S };
+window.TriadaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, voiceScore, state: () => S };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
