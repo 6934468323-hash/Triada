@@ -13,7 +13,7 @@ DATA = ["fr.js", "fr2.js", "fr3.js", "es.js", "es2.js", "es3.js", "nl.js", "nl2.
 css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)
 app = (SRC / "app.js").read_text()
-ver = hashlib.sha1((css + data + app).encode()).hexdigest()[:10]
+ver = hashlib.sha1((css + data + app + (SRC / "i18n.js").read_text()).encode()).hexdigest()[:10]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700"
          "&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&display=swap")
@@ -21,8 +21,10 @@ ICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect wi
 <path d="M136 150h240" stroke="#8197FF" stroke-width="34" stroke-linecap="round"/><path d="M136 236h170" stroke="#FF7C60" stroke-width="34" stroke-linecap="round"/>
 <path d="M136 322h210" stroke="#FF9C4F" stroke-width="34" stroke-linecap="round"/><circle cx="372" cy="356" r="30" fill="#F3F5F8"/></svg>"""
 
+i18n = (SRC / "i18n.js").read_text()
 body = f"""<div id="app"></div>
 <script>{data}</script>
+<script>{i18n}</script>
 <script>{app}</script>"""
 
 head_common = f"""<title>Tríada Reader</title>

@@ -46,7 +46,7 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 /* ================= storage ================= */
 const KEY = 'triada.v1';
 const DEFAULTS = {
-  lang: 'fr', trLang: 'th', theme: 'auto', accent: 'lang', fontSize: 19, lineHeight: 1.75, readFont: 'serif',
+  uiLang: 'th', lang: 'fr', trLang: 'th', theme: 'auto', accent: 'lang', fontSize: 19, lineHeight: 1.75, readFont: 'serif',
   markHard: true, markSaved: true, showTrDefault: false, autoSave: true, saveLevel: 'auto',
   rate: 0.95, voices: {}, cardDir: 'word', sessionSize: 20, online: true,
   feedCats: [], feedLvls: [], readLvls: [], readCat: ''
@@ -232,7 +232,7 @@ function renderSheet(online) {
   const low = sentence.o.toLowerCase().replace(/’/g, "'"), rl = raw.toLowerCase();
   const phrases = Object.keys(item.v || {}).filter(k => k.includes(' ') && low.includes(k.toLowerCase()) && k.toLowerCase().split(/[\s'-]+/).includes(rl));
   const phraseHTML = phrases.map(k => { const pe = parseEntry(item.v[k]); const sv = !!S.cards[cardKey(item.lang, pe.lemma || k)];
-    return `<div class="sh-phrase"><span class="badge">สำนวน</span> <b>${esc(k)}</b>${pe.lvl ? ` <span class="badge lvl">${pe.lvl}</span>` : ''}<div>${esc(prim === 'th' ? pe.th : pe.en)} <span class="muted">· ${esc(prim === 'th' ? pe.en : pe.th)}</span></div>
+    return `<div class="sh-phrase"><span class="badge">สำนวน</span> <b class="c">${esc(k)}</b>${pe.lvl ? ` <span class="badge lvl">${pe.lvl}</span>` : ''}<div>${esc(prim === 'th' ? pe.th : pe.en)} <span class="muted">· ${esc(prim === 'th' ? pe.en : pe.th)}</span></div>
       <button class="tbtn" data-act="savephrase" data-p="${esc(k)}" style="margin-top:6px">${ic(sv ? 'check' : 'save')}${sv ? 'บันทึกแล้ว' : 'บันทึกสำนวน'}</button></div>`; }).join('');
   $('#sheet .sheet-in').innerHTML = `
     <div class="grip"></div>
@@ -242,7 +242,7 @@ function renderSheet(online) {
       <span style="flex:1"></span><button class="iconbtn" data-act="closesheet" aria-label="ปิด">${ic('x')}</button></div>
     ${e && hw !== raw.toLowerCase() ? `<div class="muted">รูปพื้นฐาน: <b>${esc(hw)}</b></div>` : ''}
     ${e ? `<p class="sh-mean">${esc(mean1 || mean2)}</p>${mean2 && mean1 ? `<p class="sh-mean2">${esc(mean2)}</p>` : ''}`
-      : `<p class="sh-mean2">ยังไม่มีคำนี้ในพจนานุกรมออฟไลน์ ${navigator.onLine && st().online && !phrases.length ? '— กำลังค้นออนไลน์…' : '— ดูสำนวน/คำแปลทั้งประโยคด้านล่าง'}</p>`}
+      : `<p class="sh-mean2 ui">ยังไม่มีคำนี้ในพจนานุกรมออฟไลน์ ${navigator.onLine && st().online && !phrases.length ? '— กำลังค้นออนไลน์…' : '— ดูสำนวน/คำแปลทั้งประโยคด้านล่าง'}</p>`}
     ${phraseHTML}
     <div class="online" id="onlineBox" ${online || (!e && !phrases.length && navigator.onLine && st().online) ? '' : 'hidden'}></div>
     <div class="sh-sent"><div class="o">${oHTML}</div>
@@ -347,12 +347,45 @@ function grade(c, q) {
   }
   save();
 }
-const fmtInt = d => d < 1 ? '10 นาที' : d === 1 ? '1 วัน' : d < 30 ? d + ' วัน' : Math.round(d / 30) + ' เดือน';
+const fmtInt = d => isEN() ? (d < 1 ? '10 min' : d === 1 ? '1 day' : d < 30 ? d + ' days' : Math.round(d / 30) + ' mo') : (d < 1 ? '10 นาที' : d === 1 ? '1 วัน' : d < 30 ? d + ' วัน' : Math.round(d / 30) + ' เดือน');
 function previewInt(c, q) { const x = { ...c }; const now = Date.now(); grade.call(null, x, q); /* x mutated */ return q === 0 ? '10 นาที' : fmtInt(x.int); }
 
 /* ================= misc ================= */
 function addHistory(lang, w) { S.history = [{ lang, w, t: Date.now() }, ...S.history.filter(h => !(h.lang === lang && h.w === w))].slice(0, 40); save(); }
 let toastT;
+/* ---------- interface language ----------
+   Templates are written in Thai. With the English UI, every Thai fragment outside reading content is swapped
+   for its English counterpart (window.TRIADA_I18N) as soon as it enters the page. */
+const I18N = window.TRIADA_I18N || {};
+const I18N_RE = new RegExp(Object.keys(I18N).sort((a, b) => b.length - a.length).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+const CONTENT = '.rt,.c,.sh-mean,.sh-mean2:not(.ui),.sh-sent .o,.sh-sent .t,.sh-phrase div,.entry .m,.exs,.wd>div,.fc .mean,.fc .ex,.qth,.xq,.cover p,textarea,input';
+const isEN = () => S.settings.uiLang === 'en';
+const uiDate = (d, o) => new Date(d).toLocaleDateString(isEN() ? 'en-GB' : 'th-TH', o);
+function trUI(str) { return /[\u0E00-\u0E7F]/.test(str) ? str.replace(I18N_RE, m => I18N[m]) : str; }
+function localizeText(node) {
+  const el = node.parentElement; if (!el || el.closest(CONTENT)) return;
+  const v = trUI(node.nodeValue); if (v !== node.nodeValue) node.nodeValue = v;
+}
+function localize(root) {
+  if (!isEN() || !root) return;
+  if (root.nodeType === 3) return localizeText(root);
+  if (root.nodeType !== 1) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n; const list = [];
+  while ((n = w.nextNode())) list.push(n);
+  list.forEach(localizeText);
+  [root, ...root.querySelectorAll('[placeholder],[aria-label],[title]')].forEach(e => {
+    for (const a of ['placeholder', 'aria-label', 'title']) { const v = e.getAttribute && e.getAttribute(a); if (v && /[\u0E00-\u0E7F]/.test(v)) e.setAttribute(a, trUI(v)); }
+  });
+}
+let i18nObs = null;
+function startI18n() {
+  document.documentElement.lang = isEN() ? 'en' : 'th';
+  if (i18nObs) { i18nObs.disconnect(); i18nObs = null; }
+  if (!isEN()) return;
+  localize(document.getElementById('app'));
+  i18nObs = new MutationObserver(ms => { for (const m of ms) { if (m.type === 'characterData') localizeText(m.target); else m.addedNodes.forEach(localize); } });
+  i18nObs.observe(document.getElementById('app'), { childList: true, subtree: true, characterData: true });
+}
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2800); }
 function avatar(name) { let h = 0; for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0; const ini = name.split(/\s+/).map(x => x[0]).join('').slice(0, 2).toUpperCase(); return `<span class="av" style="background:${AV_COLORS[h % AV_COLORS.length]}">${esc(ini)}</span>`; }
 function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
@@ -475,7 +508,7 @@ function vRead(m) {
         const q = S.quiz[a.id];
         return `<button class="card" data-act="open" data-id="${a.id}">
           <div class="meta"><span class="badge lvl">${a.lvl}</span><span class="badge">${READ_CATS[a.cat] || a.cat}</span><span class="badge">~${Math.max(1, Math.round(wordCount(a) / 130))} นาที</span>${q ? `<span class="badge good">${q.score}/${q.total}</span>` : ''}</div>
-          <h3>${esc(sentText(a.title))}</h3><div class="sub">${esc(trOf(a.title))}</div></button>`;
+          <h3>${esc(sentText(a.title))}</h3><div class="sub c">${esc(trOf(a.title))}</div></button>`;
       }).join('') || '<div class="empty">ไม่มีบทความในตัวกรองนี้</div>'}
 
     </div>`;
@@ -502,7 +535,7 @@ function vArticle(m) {
       ${!a.q.length ? `<div class="tools"><button class="tbtn primary" data-act="finishweb">${ic('check')}อ่านจบแล้ว · บันทึกคำยาก</button></div>` : ''}
       ${a.q.map((q, qi) => `<div class="q" data-qi="${qi}">
         <div class="qtype">ข้อ ${qi + 1} · ${QTYPES[q.t] || ''}</div>
-        <div class="qt">${esc(q.q[0])}</div><div class="qth">${esc(q.q[1] || '')}</div>
+        <div class="qt">${esc(q.q[0])}</div><div class="qth">${esc(isEN() ? (q.en || '') : (q.q[1] || ''))}</div>
         ${orders[qi].map((oi, di) => `<button class="opt" data-act="ans" data-qi="${qi}" data-oi="${di}"><span class="k">${'ABCD'[di]}</span><span>${esc(q.o[oi])}</span></button>`).join('')}
         <div class="expl" hidden></div></div>`).join('')}
       <div class="endbox" id="quizEnd" hidden></div>
@@ -519,7 +552,7 @@ function answer(qi, oi) {
   const ex = $('.expl', box); ex.hidden = false;
   // explanations were written against the original A–D order; remap the letters to the shuffled order
   const expl = q.raw ? (q.x || '') : (q.x || '').replace(/(^|[^A-Za-z\u00C0-\u024F])([A-D])(?![A-Za-z\u00C0-\u024F])/g, (m0, pre, L) => pre + 'ABCD'[ord.indexOf('ABCD'.indexOf(L))]);
-  ex.innerHTML = `<b style="color:var(${oi === q.a ? '--good' : '--bad'})">${oi === q.a ? 'ถูกต้อง' : 'ยังไม่ถูก — คำตอบคือ ' + 'ABCD'[right]}</b><br>${esc(expl)}`;
+  ex.innerHTML = `<b style="color:var(${oi === q.a ? '--good' : '--bad'})">${oi === q.a ? 'ถูกต้อง' : 'ยังไม่ถูก — คำตอบคือ ' + 'ABCD'[right]}</b><br><span class="xq">${esc(isEN() && q.xen ? q.xen : expl)}</span>${isEN() && !q.xen ? '<br><small class="muted">(คำอธิบายเฉลยเป็นภาษาไทย)</small>' : ''}`;
   if (quizState.answers.filter(x => x !== undefined).length === a.q.length) {
     const score = a.q.reduce((n, q, i) => n + (quizState.answers[i] === q.a ? 1 : 0), 0);
     const prev = S.quiz[a.id];
@@ -615,6 +648,7 @@ function autoQuiz(item) {
   const sents = item.p.flat().map(sentText);
   const words = Object.keys(item.v || {}).map(w => ({ w, ...parseEntry(item.v[w]) })).sort((a, b) => rank(b.lvl) - rank(a.lvl));
   const pool = [...DICT[L].values()].filter(e => e.th && e.pos);
+  const mk = (isEN() || st().trLang === 'en') ? 'en' : 'th';
   const distract = (e, key) => shuffle(pool.filter(d => d.pos === e.pos && (d.lemma || d.w) !== (e.lemma || e.w) && Math.abs(rank(d.lvl) - rank(e.lvl)) <= 1 && d[key] !== e[key])).slice(0, 3);
   // 1–3: fill in the blank
   for (const e of words) {
@@ -624,17 +658,18 @@ function autoQuiz(item) {
     const sent = sents.find(s => re.test(s) && s.length < 260); if (!sent) continue;
     const ds = distract(e, 'w'); if (ds.length < 3) continue;
     used.add(hw);
-    qs.push({ t: 'vocab', raw: 1, q: [sent.replace(re, '$1_____'), QT.fill[L] + ' · เลือกคำที่เหมาะสมเติมในช่องว่าง'], o: [e.w, ...ds.map(d => d.w)], a: 0,
+    qs.push({ t: 'vocab', raw: 1, q: [sent.replace(re, '$1_____'), QT.fill[L] + ' · เลือกคำที่เหมาะสมเติมในช่องว่าง'], en: QT.fill[L] + ' · Choose the word that fits the gap.', o: [e.w, ...ds.map(d => d.w)], a: 0,
+      xen: `“${e.w}” = ${e.en || e.th} · the other options mean ${ds.map(d => d.w + ' = ' + (d.en || d.th)).join(', ')}`,
       x: `“${e.w}” = ${e.th}${e.en ? ' (' + e.en + ')' : ''} · ตัวเลือกอื่นแปลว่า ${ds.map(d => d.w + ' = ' + d.th).join(', ')}` });
   }
   // 4: meaning in context
   const me = words.find(e => !used.has(e.lemma || e.w));
-  if (me) { const ds = distract(me, 'th'); if (ds.length >= 3) { used.add(me.lemma || me.w); const sent = sents.find(s => s.includes(me.w)) || '';
-    qs.push({ t: 'vocab', raw: 1, q: [QT.mean[L](me.w), 'คำนี้ในบทความหมายถึงอะไร'], o: [me.th, ...ds.map(d => d.th)], a: 0, x: `${me.w} = ${me.th} (${me.en}) · ในประโยค: “${clip(sent, 180)}”` }); } }
+  if (me) { const ds = distract(me, mk); if (ds.length >= 3) { used.add(me.lemma || me.w); const sent = sents.find(s => s.includes(me.w)) || '';
+    qs.push({ t: 'vocab', raw: 1, q: [QT.mean[L](me.w), 'คำนี้ในบทความหมายถึงอะไร'], en: 'What does this word mean here?', o: [me[mk], ...ds.map(d => d[mk])], a: 0, xen: `${me.w} = ${me.en} · in the sentence: “${clip(sent, 180)}”`, x: `${me.w} = ${me.th} (${me.en}) · ในประโยค: “${clip(sent, 180)}”` }); } }
   // 5: which sentence is NOT in the text
   const foreign = shuffle([...DB[L].read, ...DB[L].novel].flatMap(a => (a.p || []).filter(Array.isArray).flat().map(sentText))).find(s => s.length > 50 && s.length < 200);
   const mine = shuffle(sents.filter(s => s.length > 50 && s.length < 220)).slice(0, 3);
-  if (foreign && mine.length === 3) qs.push({ t: 'not', raw: 1, q: [QT.not[L], 'ประโยคใดไม่ได้อยู่ในบทความนี้'], o: [clip(foreign), ...mine.map(s => clip(s))], a: 0, x: 'ประโยคนี้มาจากบทความอื่นในแอป ส่วนอีกสามข้อปรากฏในบทความนี้ ลองย้อนกลับไปหาดูว่าอยู่ย่อหน้าไหน' });
+  if (foreign && mine.length === 3) qs.push({ t: 'not', raw: 1, q: [QT.not[L], 'ประโยคใดไม่ได้อยู่ในบทความนี้'], en: 'Which sentence is NOT in this text?', xen: 'This sentence comes from another text in the app; the other three appear in this one. Try finding which paragraph they are in.', o: [clip(foreign), ...mine.map(s => clip(s))], a: 0, x: 'ประโยคนี้มาจากบทความอื่นในแอป ส่วนอีกสามข้อปรากฏในบทความนี้ ลองย้อนกลับไปหาดูว่าอยู่ย่อหน้าไหน' });
   return qs;
 }
 function buildWebItem(o) {
@@ -680,7 +715,7 @@ function vLive(m) {
     box.innerHTML = saved.map(it => { const q = S.quiz[it.id]; return `<div class="wordrow" style="align-items:flex-start">
       <button class="card" style="border:0;padding:0;background:none" data-act="open" data-id="${esc(it.id)}">
         <div class="meta"><span class="badge lvl">~${it.lvl}</span><span class="badge">${esc(it.src)}</span>${q ? `<span class="badge good">${q.score}/${q.total}</span>` : ''}${S.read[it.id] ? '<span class="badge good">อ่านแล้ว</span>' : ''}</div>
-        <h3>${esc(sentText(it.title))}</h3><div class="sub">${new Date(it.t).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })} · ${wordCount(it)} คำ</div></button>
+        <h3>${esc(sentText(it.title))}</h3><div class="sub">${uiDate(it.t, { day: 'numeric', month: 'short' })} · ${wordCount(it)} คำ</div></button>
       <button class="iconbtn" data-act="delweb" data-id="${esc(it.id)}" aria-label="ลบ">${ic('trash')}</button></div>`; }).join('')
       || '<div class="empty">ยังไม่มีบทความที่บันทึกไว้<br>เปิดข่าวจากแท็บอื่น หรือวางบทความเอง แล้วจะเก็บไว้ที่นี่ อ่านได้แม้ออฟไลน์</div>';
     return;
@@ -697,7 +732,7 @@ function vLive(m) {
   const paint = list => {
     if (!list.length) { box.innerHTML = '<div class="empty">ยังไม่มีรายการใหม่จากแหล่งนี้ ลองแท็บอื่นหรือวางบทความเอง</div>'; return; }
     box.innerHTML = list.map(x => `<button class="card" data-act="liveopen" data-host="${esc(x.host)}" data-title="${esc(x.title)}" data-src="${esc(x.src)}">
-      <div class="meta"><span class="badge">${esc(x.src)}</span>${x.date ? `<span class="badge">${new Date(x.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' })}</span>` : ''}${x.views ? `<span class="badge">${x.views.toLocaleString()} ครั้งที่อ่าน</span>` : ''}${S.web && S.web['web:' + hashStr(lang + '|' + x.title + '|https://' + x.host + '/wiki/' + x.title)] ? '<span class="badge good">บันทึกแล้ว</span>' : ''}</div>
+      <div class="meta"><span class="badge">${esc(x.src)}</span>${x.date ? `<span class="badge">${uiDate(x.date, { day: 'numeric', month: 'short', year: 'numeric' })}</span>` : ''}${x.views ? `<span class="badge">${x.views.toLocaleString()} ครั้งที่อ่าน</span>` : ''}${S.web && S.web['web:' + hashStr(lang + '|' + x.title + '|https://' + x.host + '/wiki/' + x.title)] ? '<span class="badge good">บันทึกแล้ว</span>' : ''}</div>
       <h3>${esc(x.title)}</h3>${x.sub ? `<div class="sub">${esc(clip(x.sub, 160))}</div>` : ''}</button>`).join('')
       + `<p class="muted" style="font-size:12.5px">เนื้อหาจาก ${liveTab === 'news' ? 'Wikinews (CC BY 2.5)' : 'Wikipedia (CC BY-SA 4.0)'} · ข่าวใน Wikinews อาจไม่ได้อัปเดตทุกวัน ถ้าอยากอ่านข่าววันนี้ ให้ใช้แท็บ “วางบทความเอง”</p>`;
   };
@@ -733,7 +768,7 @@ function vNovel(m) {
       const g = GENRES[n.genre] || { th: n.genre, c: 'var(--accent)' }; const pos = S.novelPos[n.id];
       return `<button class="cover" style="--g:${g.c}" data-act="story" data-id="${n.id}"><span class="gname">${g.th}</span>
         <div class="meta"><span class="badge lvl">${n.lvl}</span><span class="badge">~${Math.max(1, Math.round(wordCount(n) / 150))} นาที</span>${S.read[n.id] ? `<span class="badge good">อ่านจบแล้ว</span>` : pos ? `<span class="badge">อ่านถึง ${pos}%</span>` : ''}</div>
-        <h3>${esc(sentText(n.title))}</h3><p>${esc(n.blurb || trOf(n.title))}</p></button>`;
+        <h3>${esc(sentText(n.title))}</h3><p>${esc(isEN() ? trOf(n.title, 'en') : (n.blurb || trOf(n.title)))}</p></button>`;
     }).join('')}</div>`;
 }
 let storyScroll = null;
@@ -744,7 +779,7 @@ function vStory(m) {
   m.innerHTML = `<div class="novel">
     <button class="back" data-act="go" data-v="novel">${ic('back')}ชั้นหนังสือ</button>
     <div class="art-head"><div class="meta"><span class="badge" style="color:${g.c}">${g.th}</span><span class="badge lvl">${n.lvl}</span></div>
-      ${textBlock(n, [n.title], tctx, 'titleblock')}<div class="tsub">${esc(n.blurb || '')}</div></div>
+      ${textBlock(n, [n.title], tctx, 'titleblock')}<div class="tsub c">${esc(isEN() ? trOf(n.title, 'en') : (n.blurb || ''))}</div></div>
     <div class="stickytools"><div class="tools" style="margin-bottom:8px">
       <button class="tbtn" data-act="readall">${ic('play')}ฟังทั้งเรื่อง</button>
       <button class="tbtn" data-act="trall" aria-pressed="${st().showTrDefault}">${ic('tr')}แปลทุกประโยค</button>
@@ -806,7 +841,7 @@ function vReview(m) {
   let dir = st().cardDir; if (dir === 'mix') dir = (rv.i + c.word.length) % 2 ? 'word' : 'mean';
   const front = dir === 'word'
     ? `<div class="eyebrow">${LANGS[c.lang].name}</div><div class="big">${esc(c.word)}</div>${c.pos ? `<span class="badge">${POS[c.pos] || c.pos}</span>` : ''}`
-    : `<div class="eyebrow">ภาษา${LANGS[c.lang].th}ว่าอะไร?</div><div class="mean">${esc(c.th || c.en)}</div><div class="muted">${esc(c.th ? c.en : '')}</div>`;
+    : `<div class="eyebrow">${isEN() ? 'Which ' + LANGS[c.lang].name + ' word?' : 'ภาษา' + LANGS[c.lang].th + 'ว่าอะไร?'}</div><div class="mean">${esc(c.th || c.en)}</div><div class="muted">${esc(c.th ? c.en : '')}</div>`;
   const back = `<div class="big">${esc(c.word)}</div><div class="mean">${esc(c.th || '')}</div><div class="muted">${esc(c.en || '')}</div>
     ${c.ex ? `<div class="ex">“${esc(c.ex)}”<br><small>${esc(st().trLang === 'en' ? c.exE : c.exT)}</small></div>` : ''}${c.src ? `<div class="muted" style="font-size:12px">จาก: ${esc(c.src)}</div>` : ''}`;
   m.innerHTML = `<div class="view-head"><div><div class="eyebrow">ใบที่ ${rv.i + 1} / ${rv.list.length}</div><h1>ทบทวน</h1></div>
@@ -877,7 +912,7 @@ async function dictResults(force) {
     out.innerHTML = h.length ? `<div class="eyebrow">ค้นหาล่าสุด</div><div class="chiprow" style="flex-wrap:wrap">${h.map(x => `<button class="chip" data-act="dictq" data-q="${esc(x.w)}">${esc(x.w)}</button>`).join('')}</div>` : '<div class="empty">พิมพ์คำที่อยากรู้ได้เลย</div>'; return;
   }
   const res = dictSearch(dictQ, lang);
-  out.innerHTML = res.map((r, i) => i < 2 ? entryHTML(r.l, r.e, true) : `<button class="card" data-act="dictq" data-q="${esc(r.e.w)}" data-l="${r.l}"><div class="meta"><b style="font-family:var(--f-read);font-size:16.5px">${esc(r.e.w)}</b>${dictAll ? `<span class="badge">${r.l.toUpperCase()}</span>` : ''}${r.e.lvl ? `<span class="badge lvl">${r.e.lvl}</span>` : ''}</div><div class="sub">${esc(r.e.th)} · ${esc(r.e.en)}</div></button>`).join('');
+  out.innerHTML = res.map((r, i) => i < 2 ? entryHTML(r.l, r.e, true) : `<button class="card" data-act="dictq" data-q="${esc(r.e.w)}" data-l="${r.l}"><div class="meta"><b style="font-family:var(--f-read);font-size:16.5px">${esc(r.e.w)}</b>${dictAll ? `<span class="badge">${r.l.toUpperCase()}</span>` : ''}${r.e.lvl ? `<span class="badge lvl">${r.e.lvl}</span>` : ''}</div><div class="sub c">${esc(r.e.th)} · ${esc(r.e.en)}</div></button>`).join('');
   const exact = res.length && res[0].sc >= 85;
   if (!exact && /\p{L}/u.test(dictQ) && st().online) {
     const q = dictQ.trim();
@@ -908,6 +943,7 @@ function vPrefs(m) {
   m.innerHTML = `<button class="back" data-act="go" data-v="${S.tab}">${ic('back')}กลับ</button>
   <div class="view-head"><div><div class="eyebrow">ปรับแต่ง</div><h1>ตั้งค่า</h1></div></div>
   <section class="set-group"><h2>ภาษา</h2>
+    <div class="row"><label>ภาษาของหน้าแอป<small>ข้อความเมนู ปุ่ม และคำแนะนำ</small></label>${seg('uiLang', [['th', 'ไทย'], ['en', 'English']])}</div>
     <div class="row"><label>ภาษาที่เรียน</label>${seg('lang', [['fr', 'Français'], ['es', 'Español'], ['nl', 'Nederlands']])}</div>
     <div class="row"><label>ภาษาคำแปลหลัก<small>ใช้ทั้งคำแปลคำศัพท์และประโยค</small></label>${seg('trLang', [['th', 'ไทย'], ['en', 'English']])}</div>
   </section>
@@ -1007,13 +1043,13 @@ function onClick(e) {
     case 'dictall': dictAll = !dictAll; b.setAttribute('aria-pressed', dictAll); dictResults(); break;
     case 'dictsave': { const l = b.dataset.lang; const e = DICT[l].get(b.dataset.w.toLowerCase()); const hw = e.lemma || e.w; const k = cardKey(l, hw); if (S.cards[k]) { delete S.cards[k]; toast('นำออกจากการ์ดแล้ว'); } else { const ex = examplesFor(l, e)[0]; addCard(l, e, e.w, ex && ex.s, ex && ex.it, false); toast('บันทึก “' + hw + '” แล้ว'); } save(); dictResults(); updateBadge(); break; }
     case 'dictsaveonline': if (dictOnline) { const { q, r } = dictOnline; sheetState = { onlineRes: r }; addCard(s.lang, null, q, null, null, false); sheetState = null; toast('บันทึก “' + q + '” แล้ว'); updateBadge(); } break;
-    case 'set': { const k = b.dataset.k; let v = b.dataset.v; if (k === 'sessionSize') v = +v; s[k] = v; save(); applyLook(); render(); break; }
+    case 'set': { const k = b.dataset.k; let v = b.dataset.v; if (k === 'sessionSize') v = +v; s[k] = v; save(); if (k === 'uiLang') { shell(); startI18n(); } applyLook(); render(); break; }
     case 'testvoice': speak({ fr: 'Bonjour ! Bienvenue dans votre bibliothèque.', es: '¡Hola! Bienvenido a tu biblioteca.', nl: 'Hallo! Welkom in je bibliotheek.' }[s.lang], s.lang); break;
     case 'export': { const row = $('#ioRow'); row.hidden = false; const json = JSON.stringify({ app: 'triada', v: 1, ...S }, null, 1); $('#ioText').value = json; try { const url = URL.createObjectURL(new Blob([json], { type: 'application/json' })); const dl = $('#dlLink'); dl.href = url; dl.download = 'triada-backup.json'; dl.hidden = window.self !== window.top; } catch (er) { } break; }
     case 'import': $('#ioRow').hidden = false; $('#ioText').value = ''; $('#ioText').placeholder = 'วางข้อมูล JSON ที่ส่งออกไว้ตรงนี้'; $('#ioText').focus(); break;
     case 'copyio': { const t = $('#ioText'); navigator.clipboard ? navigator.clipboard.writeText(t.value).then(() => toast('คัดลอกแล้ว'), () => { t.select(); toast('เลือกข้อความแล้ว กดคัดลอกได้เลย'); }) : t.select(); break; }
-    case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
-    case 'reset': if (b.dataset.sure) { try { localStorage.removeItem(KEY); } catch (er) { } S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, web: {}, tab: 'feed' }; applyLook(); toast('ล้างข้อมูลแล้ว'); render(); } else { b.dataset.sure = 1; b.innerHTML = 'แตะอีกครั้งเพื่อยืนยัน'; setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.innerHTML = ic('trash') + 'ล้างข้อมูล'; } }, 4000); } break;
+    case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); shell(); startI18n(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
+    case 'reset': if (b.dataset.sure) { try { localStorage.removeItem(KEY); } catch (er) { } S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, web: {}, tab: 'feed' }; shell(); startI18n(); applyLook(); toast('ล้างข้อมูลแล้ว'); render(); } else { b.dataset.sure = 1; b.innerHTML = 'แตะอีกครั้งเพื่อยืนยัน'; setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.innerHTML = ic('trash') + 'ล้างข้อมูล'; } }, 4000); } break;
   }
 }
 function refreshMarks() {
@@ -1048,6 +1084,7 @@ function shell() {
   <div class="scrim" id="scrim"></div>
   <div class="sheet" id="sheet" role="dialog" aria-label="ความหมายคำ"><div class="sheet-in"></div></div>
   <div class="toast" id="toast" role="status"></div>`;
+  $('#scrim').addEventListener('click', closeSheet);
 }
 function boot() {
   load(); ingest(); S.web = S.web || {}; for (const it of Object.values(S.web)) BYID[it.id] = it; shell(); applyLook();
@@ -1055,7 +1092,7 @@ function boot() {
   document.addEventListener('input', onInput);
   document.addEventListener('change', onChange);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('fc')) { e.preventDefault(); e.target.click(); } });
-  $('#scrim').addEventListener('click', closeSheet);
+  startI18n();
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('online', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
   addEventListener('offline', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
