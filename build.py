@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Build Tríada Reader.
-  dist/            installable offline PWA (index.html + sw.js + manifest + icons)
-  dist/triada-offline.html   one self-contained file (open it directly, no install needed)
+  docs/            installable offline PWA (served by GitHub Pages) (index.html + sw.js + manifest + icons)
+  docs/triada-offline.html   one self-contained file (open it directly, no install needed)
   artifact/index.html        body-only build for publishing as a claude.ai artifact
 """
 import pathlib, json, hashlib, shutil
 
 ROOT = pathlib.Path(__file__).parent
-SRC, DIST, ART = ROOT / "src", ROOT / "dist", ROOT / "artifact"
+SRC, DIST, ART = ROOT / "src", ROOT / "docs", ROOT / "artifact"
 DATA = ["fr.js", "es.js", "nl.js"]
 
 css = (SRC / "app.css").read_text()
