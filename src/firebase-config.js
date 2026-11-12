@@ -1,13 +1,12 @@
 /* Firebase settings for login + cross-device sync.
-   Paste the config object from Firebase console → Project settings → Your apps → Web app (SDK setup and configuration → Config).
+   From Firebase console → Project settings → Your apps → Web app (Config).
    These values identify the project; they are not secrets. Access is protected by the Firestore rules in README.md.
-   Leave it as null to run the app without login. */
-window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || null;
-/* Example:
+   Set it to null to run the app without login. */
 window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || {
-  apiKey: "AIza...",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project",
-  appId: "1:1234567890:web:abc123"
+  apiKey: "AIzaSyCuEMl2bFdq0hkXB5yu9F_K5MRa-VOqUTc",
+  authDomain: "triada---reader.firebaseapp.com",
+  projectId: "triada---reader",
+  storageBucket: "triada---reader.firebasestorage.app",
+  messagingSenderId: "366857452199",
+  appId: "1:366857452199:web:17008ea94740268baf3982"
 };
-*/

@@ -14,7 +14,7 @@ css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)
 app = (SRC / "app.js").read_text().replace("/*__SYNC__*/", (SRC / "sync.js").read_text())
 fbcfg = (SRC / "firebase-config.js").read_text()
-ver = hashlib.sha1((css + data + app + (SRC / "i18n.js").read_text()).encode()).hexdigest()[:10]
+ver = hashlib.sha1((css + data + app + (SRC / "i18n.js").read_text() + (SRC / "firebase-config.js").read_text()).encode()).hexdigest()[:10]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700"
          "&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&display=swap")

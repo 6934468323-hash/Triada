@@ -10,7 +10,7 @@ const sync = { fb: null, user: null, unsub: null, status: 'off', last: 0, err: '
 function stableJSON(o) { return JSON.stringify(o, (k, v) => v && typeof v === 'object' && !Array.isArray(v) ? Object.keys(v).sort().reduce((r, x) => (r[x] = v[x], r), {}) : v); }
 const pick = (x, y, tx, ty) => tx !== ty ? (tx > ty ? x : y) : (stableJSON(x) >= stableJSON(y) ? x : y);
 function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error('โหลด ' + src + ' ไม่สำเร็จ')); document.head.appendChild(s); }); }
-function fbInit() {
+function fbInit(silent) {
   if (!FB_CFG || FRAMED) return Promise.resolve(null);
   if (sync.fb) return Promise.resolve(sync.fb);
   if (sync.loading) return sync.loading;
@@ -21,7 +21,7 @@ function fbInit() {
     sync.fb.auth.onAuthStateChanged(u => { sync.user = u; if (u) startSync(); else stopSync(); accountChanged(); });
     sync.fb.auth.getRedirectResult().catch(e => { sync.err = e.code || e.message; accountChanged(); });
     return sync.fb;
-  })().catch(e => { sync.loading = null; sync.err = e.message; accountChanged(); return null; });
+  })().catch(e => { sync.loading = null; if (!silent) { sync.err = e.message; accountChanged(); } return null; });
   return sync.loading;
 }
 async function signIn() {

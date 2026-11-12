@@ -1287,18 +1287,17 @@ window.TRIADA_I18N = {
 };
 </script>
 <script>/* Firebase settings for login + cross-device sync.
-   Paste the config object from Firebase console → Project settings → Your apps → Web app (SDK setup and configuration → Config).
+   From Firebase console → Project settings → Your apps → Web app (Config).
    These values identify the project; they are not secrets. Access is protected by the Firestore rules in README.md.
-   Leave it as null to run the app without login. */
-window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || null;
-/* Example:
+   Set it to null to run the app without login. */
 window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || {
-  apiKey: "AIza...",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project",
-  appId: "1:1234567890:web:abc123"
+  apiKey: "AIzaSyCuEMl2bFdq0hkXB5yu9F_K5MRa-VOqUTc",
+  authDomain: "triada---reader.firebaseapp.com",
+  projectId: "triada---reader",
+  storageBucket: "triada---reader.firebasestorage.app",
+  messagingSenderId: "366857452199",
+  appId: "1:366857452199:web:17008ea94740268baf3982"
 };
-*/
 </script>
 <script>/* Tríada Reader — อ่านภาษาฝรั่งเศส สเปน ดัตช์ (ทำงานออฟไลน์ได้ทั้งหมด ยกเว้นฟีเจอร์ที่ระบุว่า "ออนไลน์") */
 (function () {
@@ -2311,7 +2310,7 @@ const sync = { fb: null, user: null, unsub: null, status: 'off', last: 0, err: '
 function stableJSON(o) { return JSON.stringify(o, (k, v) => v && typeof v === 'object' && !Array.isArray(v) ? Object.keys(v).sort().reduce((r, x) => (r[x] = v[x], r), {}) : v); }
 const pick = (x, y, tx, ty) => tx !== ty ? (tx > ty ? x : y) : (stableJSON(x) >= stableJSON(y) ? x : y);
 function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error('โหลด ' + src + ' ไม่สำเร็จ')); document.head.appendChild(s); }); }
-function fbInit() {
+function fbInit(silent) {
   if (!FB_CFG || FRAMED) return Promise.resolve(null);
   if (sync.fb) return Promise.resolve(sync.fb);
   if (sync.loading) return sync.loading;
@@ -2322,7 +2321,7 @@ function fbInit() {
     sync.fb.auth.onAuthStateChanged(u => { sync.user = u; if (u) startSync(); else stopSync(); accountChanged(); });
     sync.fb.auth.getRedirectResult().catch(e => { sync.err = e.code || e.message; accountChanged(); });
     return sync.fb;
-  })().catch(e => { sync.loading = null; sync.err = e.message; accountChanged(); return null; });
+  })().catch(e => { sync.loading = null; if (!silent) { sync.err = e.message; accountChanged(); } return null; });
   return sync.loading;
 }
 async function signIn() {
@@ -2531,8 +2530,8 @@ function boot() {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('fc')) { e.preventDefault(); e.target.click(); } });
   startI18n();
   lastSettingsJSON = JSON.stringify(S.settings);
-  if (typeof fbInit === 'function' && FB_CFG && navigator.onLine) fbInit();
-  addEventListener('online', () => { if (typeof fbInit === 'function' && FB_CFG) fbInit(); });
+  if (typeof fbInit === 'function' && FB_CFG && navigator.onLine) fbInit(true);
+  addEventListener('online', () => { if (typeof fbInit === 'function' && FB_CFG) fbInit(true); });
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('online', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
   addEventListener('offline', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);

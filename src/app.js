@@ -1113,8 +1113,8 @@ function boot() {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('fc')) { e.preventDefault(); e.target.click(); } });
   startI18n();
   lastSettingsJSON = JSON.stringify(S.settings);
-  if (typeof fbInit === 'function' && FB_CFG && navigator.onLine) fbInit();
-  addEventListener('online', () => { if (typeof fbInit === 'function' && FB_CFG) fbInit(); });
+  if (typeof fbInit === 'function' && FB_CFG && navigator.onLine) fbInit(true);
+  addEventListener('online', () => { if (typeof fbInit === 'function' && FB_CFG) fbInit(true); });
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('online', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
   addEventListener('offline', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
