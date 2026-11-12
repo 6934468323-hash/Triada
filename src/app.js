@@ -51,7 +51,7 @@ const DEFAULTS = {
   rate: 0.95, voices: {}, cardDir: 'word', sessionSize: 20, online: true,
   feedCats: [], feedLvls: [], readLvls: [], readCat: ''
 };
-let S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, tab: 'feed' };
+let S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, web: {}, tab: 'feed' };
 function load() {
   try { const raw = localStorage.getItem(KEY); if (raw) { const d = JSON.parse(raw); S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; } } catch (e) { }
 }
@@ -469,32 +469,37 @@ function vRead(m) {
       <div class="chiprow"><button class="chip lv" data-act="rlvl" data-v="" aria-pressed="${!s.readLvls.length}">ทุกระดับ</button>${LEVELS.map(l => `<button class="chip lv" data-act="rlvl" data-v="${l}" aria-pressed="${s.readLvls.includes(l)}">${l}</button>`).join('')}</div>
     </div>
     <div class="list">
+      <button class="card live" data-act="live"><div class="meta"><span class="badge">${ic('globe')}ข่าว</span><span class="badge">ออนไลน์ + บันทึกออฟไลน์</span></div>
+        <h3>อ่านข่าวและบทความจริง</h3><div class="sub">ข่าวจาก Wikinews · เรื่องที่กำลังเป็นกระแสใน Wikipedia · หรือวางข่าวจากเว็บใดก็ได้ ได้ระดับ คำยาก และแบบทดสอบอัตโนมัติ${Object.values(S.web || {}).filter(x => x.lang === lang).length ? ` · บันทึกไว้ ${Object.values(S.web).filter(x => x.lang === lang).length} เรื่อง` : ''}</div></button>
       ${list.map(a => {
         const q = S.quiz[a.id];
         return `<button class="card" data-act="open" data-id="${a.id}">
           <div class="meta"><span class="badge lvl">${a.lvl}</span><span class="badge">${READ_CATS[a.cat] || a.cat}</span><span class="badge">~${Math.max(1, Math.round(wordCount(a) / 130))} นาที</span>${q ? `<span class="badge good">${q.score}/${q.total}</span>` : ''}</div>
           <h3>${esc(sentText(a.title))}</h3><div class="sub">${esc(trOf(a.title))}</div></button>`;
       }).join('') || '<div class="empty">ไม่มีบทความในตัวกรองนี้</div>'}
-      <button class="card live" data-act="live"><div class="meta"><span class="badge">${ic('globe')}ออนไลน์</span><span class="badge">ข่าวสด</span></div>
-        <h3>ข่าวล่าสุดจาก Wikinews (${LANGS[lang].name})</h3><div class="sub">ดึงข่าวใหม่เมื่อมีอินเทอร์เน็ต แตะคำเพื่อดูความหมายได้ (ไม่มีชุดคำถาม)</div></button>
+
     </div>`;
 }
 function vArticle(m) {
   const a = BYID[view.id]; if (!a) return go('read');
   const ctx = makeCtx(a), tctx = makeCtx(a);
   const orders = a.q.map((q, qi) => { let h = qi + 7; for (const ch of a.id) h = (h * 33 + ch.charCodeAt(0)) >>> 0; const o = q.o.map((_, i) => i); for (let i = o.length - 1; i > 0; i--) { h = (h * 1103515245 + 12345) >>> 0; const j = h % (i + 1); [o[i], o[j]] = [o[j], o[i]]; } return o; });
+  const web = a.kind === 'web';
   m.innerHTML = `<div class="article">
-    <button class="back" data-act="go" data-v="read">${ic('back')}บทความทั้งหมด</button>
-    <div class="art-head"><div class="meta"><span class="badge lvl">${a.lvl}</span><span class="badge">${READ_CATS[a.cat] || a.cat}</span>${a.src ? `<span class="badge">${esc(a.src)}</span>` : ''}</div>
+    <button class="back" data-act="go" data-v="${web ? 'live' : 'read'}">${ic('back')}${web ? 'ข่าวและบทความออนไลน์' : 'บทความทั้งหมด'}</button>
+    <div class="art-head"><div class="meta"><span class="badge lvl">${web ? '~' : ''}${a.lvl}</span>${web ? '' : `<span class="badge">${READ_CATS[a.cat] || a.cat}</span>`}${a.src ? `<span class="badge">${esc(a.src)}</span>` : ''}${web ? `<span class="badge">${wordCount(a)} คำ</span>` : ''}</div>
       ${textBlock(a, [a.title], tctx, 'titleblock')}</div>
     <div class="stickytools tools">
       <button class="tbtn" data-act="readall">${ic('play')}ฟังทั้งเรื่อง</button>
       <button class="tbtn" data-act="trall" aria-pressed="${st().showTrDefault}">${ic('tr')}แปลทุกประโยค</button>
       <button class="tbtn" data-act="trlang">${st().trLang === 'th' ? 'TH → EN' : 'EN → TH'}</button>
+      ${web && a.url ? `<a class="tbtn" href="${esc(a.url)}" target="_blank" rel="noopener">${ic('globe')}ต้นฉบับ</a>` : ''}
     </div>
+    ${web ? `<p class="muted" style="font-size:12.5px;margin:0 0 10px">ระดับประเมินอัตโนมัติจากความยาวประโยคและคำศัพท์ · กด “แปลทุกประโยค” เพื่อแปลออนไลน์ แล้วคำแปลจะเก็บไว้อ่านออฟไลน์</p>` : ''}
     <div id="artBody">${textBlock(a, a.p, ctx)}</div>
     <section class="quiz" id="quiz">
-      <div><div class="eyebrow">แบบทดสอบความเข้าใจ</div><h2 style="font-size:22px;margin-top:4px">${a.q.length} ข้อ · ตอบแล้วดูเฉลยทันที</h2></div>
+      <div><div class="eyebrow">${web ? 'แบบทดสอบอัตโนมัติ' : 'แบบทดสอบความเข้าใจ'}</div><h2 style="font-size:22px;margin-top:4px">${a.q.length ? `${a.q.length} ข้อ · ตอบแล้วดูเฉลยทันที` : 'บทความนี้มีศัพท์ในคลังน้อยเกินไป จึงสร้างแบบทดสอบไม่ได้'}</h2></div>
+      ${!a.q.length ? `<div class="tools"><button class="tbtn primary" data-act="finishweb">${ic('check')}อ่านจบแล้ว · บันทึกคำยาก</button></div>` : ''}
       ${a.q.map((q, qi) => `<div class="q" data-qi="${qi}">
         <div class="qtype">ข้อ ${qi + 1} · ${QTYPES[q.t] || ''}</div>
         <div class="qt">${esc(q.q[0])}</div><div class="qth">${esc(q.q[1] || '')}</div>
@@ -513,7 +518,7 @@ function answer(qi, oi) {
   $$('.opt', box).forEach((b, i) => { b.disabled = true; if (i === right) b.classList.add('ok'); else if (i === di) b.classList.add('no'); });
   const ex = $('.expl', box); ex.hidden = false;
   // explanations were written against the original A–D order; remap the letters to the shuffled order
-  const expl = (q.x || '').replace(/(^|[^A-Za-z\u00C0-\u024F])([A-D])(?![A-Za-z\u00C0-\u024F])/g, (m0, pre, L) => pre + 'ABCD'[ord.indexOf('ABCD'.indexOf(L))]);
+  const expl = q.raw ? (q.x || '') : (q.x || '').replace(/(^|[^A-Za-z\u00C0-\u024F])([A-D])(?![A-Za-z\u00C0-\u024F])/g, (m0, pre, L) => pre + 'ABCD'[ord.indexOf('ABCD'.indexOf(L))]);
   ex.innerHTML = `<b style="color:var(${oi === q.a ? '--good' : '--bad'})">${oi === q.a ? 'ถูกต้อง' : 'ยังไม่ถูก — คำตอบคือ ' + 'ABCD'[right]}</b><br>${esc(expl)}`;
   if (quizState.answers.filter(x => x !== undefined).length === a.q.length) {
     const score = a.q.reduce((n, q, i) => n + (quizState.answers[i] === q.a ? 1 : 0), 0);
@@ -529,45 +534,194 @@ function answer(qi, oi) {
   }
 }
 
-/* live news (online, experimental) */
+/* ---------- online news & own articles ---------- */
+const FRAMED = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+const PAGES_URL = 'https://6934468323-hash.github.io/Triada/';
 const WIKINEWS = { fr: { host: 'fr.wikinews.org', cat: 'Catégorie:Publié' }, es: { host: 'es.wikinews.org', cat: 'Categoría:Publicado' }, nl: { host: 'nl.wikinews.org', cat: 'Categorie:Gepubliceerd' } };
+const WEB_MAX = 40;
+let liveTab = 'news';
+const liveCache = {};
+function hashStr(s) { let h = 5381; for (const c of s) h = (h * 33 + c.charCodeAt(0)) >>> 0; return h.toString(36); }
+async function getJSON(url) { const r = await fetch(url); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }
+const stripHTML = h => { const d = document.createElement('div'); d.innerHTML = h || ''; return d.textContent.replace(/\s+/g, ' ').trim(); };
+
 async function wikinewsList(lang) {
   const w = WIKINEWS[lang]; const base = `https://${w.host}/w/api.php?format=json&origin=*&`;
+  let l = [];
   try {
-    const r = await fetch(base + `action=query&list=categorymembers&cmtitle=${encodeURIComponent(w.cat)}&cmsort=timestamp&cmdir=desc&cmlimit=15&cmnamespace=0&cmprop=title|timestamp`);
-    const j = await r.json(); const l = j.query && j.query.categorymembers || [];
-    if (l.length) return l;
+    const j = await getJSON(base + `action=query&list=categorymembers&cmtitle=${encodeURIComponent(w.cat)}&cmsort=timestamp&cmdir=desc&cmlimit=20&cmnamespace=0&cmprop=title|timestamp`);
+    l = (j.query && j.query.categorymembers) || [];
   } catch (e) { }
-  const r = await fetch(base + 'action=query&list=recentchanges&rctype=new&rcnamespace=0&rclimit=15&rcprop=title|timestamp');
-  const j = await r.json(); return j.query && j.query.recentchanges || [];
+  if (!l.length) { const j = await getJSON(base + 'action=query&list=recentchanges&rctype=new&rcnamespace=0&rclimit=20&rcprop=title|timestamp'); l = (j.query && j.query.recentchanges) || []; }
+  return l.map(x => ({ title: x.title, date: x.timestamp, host: w.host, src: 'Wikinews' }));
 }
-async function wikinewsText(lang, title) {
-  const w = WIKINEWS[lang];
-  const r = await fetch(`https://${w.host}/w/api.php?format=json&origin=*&action=parse&prop=text&disableeditsection=1&page=${encodeURIComponent(title)}`);
-  const j = await r.json(); const html = j.parse && j.parse.text && j.parse.text['*'] || '';
+async function wikipediaTrending(lang) {
+  const out = [];
+  for (const back of [1, 2]) {
+    const d = new Date(Date.now() - back * 864e5);
+    const path = `${d.getUTCFullYear()}/${String(d.getUTCMonth() + 1).padStart(2, '0')}/${String(d.getUTCDate()).padStart(2, '0')}`;
+    try {
+      const j = await getJSON(`https://${lang}.wikipedia.org/api/rest_v1/feed/featured/${path}`);
+      (j.news || []).forEach(n => { const l = (n.links || [])[0]; if (l) out.push({ title: (l.titles && l.titles.normalized) || l.title, sub: stripHTML(n.story), host: `${lang}.wikipedia.org`, src: 'Wikipedia · ข่าว', hot: true }); });
+      ((j.mostread && j.mostread.articles) || []).filter(a => !a.namespace || a.namespace.id === 0).slice(0, 25)
+        .forEach(a => out.push({ title: (a.titles && a.titles.normalized) || a.title, sub: a.extract || a.description || '', views: a.views, host: `${lang}.wikipedia.org`, src: 'Wikipedia · ยอดนิยม' }));
+      if (out.length) break;
+    } catch (e) { if (back === 2) throw e; }
+  }
+  return out;
+}
+async function wikiText(host, title) {
+  const j = await getJSON(`https://${host}/w/api.php?format=json&origin=*&action=parse&prop=text&disableeditsection=1&redirects=1&page=${encodeURIComponent(title)}`);
+  const html = (j.parse && j.parse.text && j.parse.text['*']) || '';
   const doc = new DOMParser().parseFromString(html, 'text/html');
-  $$('table,style,script,.infobox,.thumb,.reference,.mw-references-wrap,sup,.noprint,.metadata,ul,ol', doc).forEach(x => x.remove());
-  return $$('p', doc).map(p => p.textContent.replace(/\s+/g, ' ').trim()).filter(t => t.length > 40).slice(0, 14);
+  $$('table,style,script,figure,.infobox,.thumb,.reference,.mw-references-wrap,sup,.noprint,.metadata,.hatnote,.bandeau-container,.mw-empty-elt,ul,ol,dl', doc).forEach(x => x.remove());
+  return $$('p', doc).map(p => p.textContent.replace(/\[[^\]]{1,40}\]/g, '').replace(/\s+/g, ' ').trim()).filter(t => t.length > 60 && /\p{L}{3}/u.test(t)).slice(0, 10);
 }
-const splitSentences = t => (t.match(/[^.!?…]+[.!?…]+["»”)]*|[^.!?…]+$/g) || [t]).map(x => x.trim()).filter(Boolean);
-async function vLive(m) {
-  const lang = st().lang;
-  m.innerHTML = `<button class="back" data-act="go" data-v="read">${ic('back')}บทความทั้งหมด</button>
-    <div class="view-head"><div><div class="eyebrow">ออนไลน์ · ทดลอง</div><h1>ข่าวล่าสุด</h1><p>จาก Wikinews ภาษา${LANGS[lang].th} แปลประโยคด้วย MyMemory เมื่อแตะปุ่มแปล</p></div></div><div id="liveBox" class="list"><div class="empty">กำลังโหลด…</div></div>`;
-  if (!navigator.onLine) { $('#liveBox').innerHTML = '<div class="empty">ตอนนี้ออฟไลน์อยู่ ข่าวสดต้องใช้อินเทอร์เน็ต<br>ระหว่างนี้อ่านบทความออฟไลน์ในหน้าก่อนหน้าได้</div>'; return; }
+
+/* sentence splitting that survives abbreviations and decimals */
+const ABBR = /(?:^|\s)(?:[A-ZÀ-Þ]|M|MM|Mme|Mlle|Dr|Pr|St|Ste|Sr|Sra|Sres|Dña|Ud|Uds|av|etc|ca|bijv|o\.a|nr|resp|dhr|mevr|blz|J\.-C|p|pp|vol|n|núm|art)\.$/;
+function splitSentences(t) {
+  const parts = t.replace(/\s+/g, ' ').trim().split(/(?<=[.!?…]["»”’)]?)\s+(?=[«"“‘(¿¡]?[\p{Lu}0-9])/u);
+  const out = [];
+  for (const p of parts) { if (out.length && ABBR.test(out[out.length - 1])) out[out.length - 1] += ' ' + p; else out.push(p); }
+  return out.map(x => x.trim()).filter(x => /\p{L}/u.test(x));
+}
+
+function autoVocab(item) {
+  const v = {};
+  for (const s of allSentences(item)) for (const tk of tokenize(sentText(s))) {
+    if (!tk.w || v[tk.w]) continue;
+    const e = lookup(item.lang, tk.w);
+    if (e && rank(e.lvl) >= rank('B1')) v[tk.w] = [e.lvl, e.pos, e.en, e.th, e.lemma || e.w].join('|');
+  }
+  return v;
+}
+function estimateLevel(item) {
+  const sents = item.p.flat(); let n = 0, chars = 0, unk = 0;
+  for (const s of sents) for (const tk of tokenize(sentText(s))) { if (!tk.w) continue; n++; chars += tk.w.length; if (!lookup(item.lang, tk.w)) unk++; }
+  if (!n) return 'B1';
+  const avgLen = n / Math.max(1, sents.length), avgW = chars / n, u = unk / n;
+  const score = 0.12 * avgLen + 0.9 * (avgW - 4) + 1.2 * u;
+  return score < 1.8 ? 'A1' : score < 2.6 ? 'A2' : score < 3.4 ? 'B1' : score < 4.2 ? 'B2' : score < 5.0 ? 'C1' : 'C2'; // calibrated on the built-in articles: 16/21 exact, rest ±1
+}
+const QT = {
+  fill: { fr: 'Complétez la phrase avec le mot qui convient.', es: 'Completa la frase con la palabra adecuada.', nl: 'Vul het juiste woord in.' },
+  mean: { fr: w => `Dans le texte, que signifie « ${w} » ?`, es: w => `En el texto, ¿qué significa «${w}»?`, nl: w => `Wat betekent ‘${w}’ in de tekst?` },
+  not: { fr: 'Laquelle de ces phrases N’APPARAÎT PAS dans le texte ?', es: '¿Cuál de estas frases NO aparece en el texto?', nl: 'Welke zin staat NIET in de tekst?' }
+};
+const clip = (s, n = 150) => s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : s;
+function autoQuiz(item) {
+  const L = item.lang, qs = [], used = new Set();
+  const sents = item.p.flat().map(sentText);
+  const words = Object.keys(item.v || {}).map(w => ({ w, ...parseEntry(item.v[w]) })).sort((a, b) => rank(b.lvl) - rank(a.lvl));
+  const pool = [...DICT[L].values()].filter(e => e.th && e.pos);
+  const distract = (e, key) => shuffle(pool.filter(d => d.pos === e.pos && (d.lemma || d.w) !== (e.lemma || e.w) && Math.abs(rank(d.lvl) - rank(e.lvl)) <= 1 && d[key] !== e[key])).slice(0, 3);
+  // 1–3: fill in the blank
+  for (const e of words) {
+    if (qs.length >= 3) break;
+    const hw = e.lemma || e.w; if (used.has(hw)) continue;
+    const re = new RegExp('(^|[^\\p{L}])' + e.w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\p{L}])', 'u');
+    const sent = sents.find(s => re.test(s) && s.length < 260); if (!sent) continue;
+    const ds = distract(e, 'w'); if (ds.length < 3) continue;
+    used.add(hw);
+    qs.push({ t: 'vocab', raw: 1, q: [sent.replace(re, '$1_____'), QT.fill[L] + ' · เลือกคำที่เหมาะสมเติมในช่องว่าง'], o: [e.w, ...ds.map(d => d.w)], a: 0,
+      x: `“${e.w}” = ${e.th}${e.en ? ' (' + e.en + ')' : ''} · ตัวเลือกอื่นแปลว่า ${ds.map(d => d.w + ' = ' + d.th).join(', ')}` });
+  }
+  // 4: meaning in context
+  const me = words.find(e => !used.has(e.lemma || e.w));
+  if (me) { const ds = distract(me, 'th'); if (ds.length >= 3) { used.add(me.lemma || me.w); const sent = sents.find(s => s.includes(me.w)) || '';
+    qs.push({ t: 'vocab', raw: 1, q: [QT.mean[L](me.w), 'คำนี้ในบทความหมายถึงอะไร'], o: [me.th, ...ds.map(d => d.th)], a: 0, x: `${me.w} = ${me.th} (${me.en}) · ในประโยค: “${clip(sent, 180)}”` }); } }
+  // 5: which sentence is NOT in the text
+  const foreign = shuffle([...DB[L].read, ...DB[L].novel].flatMap(a => (a.p || []).filter(Array.isArray).flat().map(sentText))).find(s => s.length > 50 && s.length < 200);
+  const mine = shuffle(sents.filter(s => s.length > 50 && s.length < 220)).slice(0, 3);
+  if (foreign && mine.length === 3) qs.push({ t: 'not', raw: 1, q: [QT.not[L], 'ประโยคใดไม่ได้อยู่ในบทความนี้'], o: [clip(foreign), ...mine.map(s => clip(s))], a: 0, x: 'ประโยคนี้มาจากบทความอื่นในแอป ส่วนอีกสามข้อปรากฏในบทความนี้ ลองย้อนกลับไปหาดูว่าอยู่ย่อหน้าไหน' });
+  return qs;
+}
+function buildWebItem(o) {
+  const p = o.paras.map(t => splitSentences(t).map(s => [s, '', ''])).filter(x => x.length);
+  const item = { id: o.id || ('web:' + hashStr(o.lang + '|' + o.title + '|' + (o.url || ''))), lang: o.lang, kind: 'web', src: o.src, url: o.url || '', cat: 'news', title: [o.title, '', ''], p, t: Date.now() };
+  item.v = autoVocab(item); item.lvl = estimateLevel(item); item.q = autoQuiz(item);
+  return item;
+}
+function storeWeb(item) {
+  S.web = S.web || {}; S.web[item.id] = item; BYID[item.id] = item;
+  const ids = Object.values(S.web).sort((a, b) => b.t - a.t).map(x => x.id);
+  ids.slice(WEB_MAX).forEach(id => { delete S.web[id]; });
+  save();
+}
+async function openWeb(host, title, src, btn) {
+  const lang = st().lang; const id = 'web:' + hashStr(lang + '|' + title + '|https://' + host + '/wiki/' + title);
+  if (S.web && S.web[id]) return go('article', id);
+  if (btn) { btn.disabled = true; btn.style.opacity = .6; }
+  toast('กำลังโหลดบทความ…');
   try {
-    if (view.id) {
-      const paras = await wikinewsText(lang, view.id);
-      const item = { id: 'live:' + view.id, lang, kind: 'live', lvl: 'B2', title: [view.id, '', ''], v: {}, p: paras.map(p => splitSentences(p).map(s => [s, '', ''])) };
-      const ctx = makeCtx(item);
-      $('#liveBox').outerHTML = `<div class="article"><div class="art-head"><h1>${esc(view.id)}</h1><div class="tsub">Wikinews · CC BY 2.5</div></div>
-        <div class="stickytools tools"><button class="tbtn" data-act="readall">${ic('play')}ฟังทั้งเรื่อง</button><button class="tbtn" data-act="mtall">${ic('globe')}แปลทุกประโยค (ออนไลน์)</button></div>
-        <div id="artBody">${paras.length ? textBlock(item, item.p, ctx) : '<div class="empty">อ่านเนื้อหาข่าวนี้ไม่ได้</div>'}</div></div>`;
-      return;
-    }
-    const list = await wikinewsList(lang);
-    $('#liveBox').innerHTML = list.length ? list.map(x => `<button class="card" data-act="liveopen" data-id="${esc(x.title)}"><div class="meta"><span class="badge">${x.timestamp ? new Date(x.timestamp).toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' }) : ''}</span></div><h3>${esc(x.title)}</h3></button>`).join('') : '<div class="empty">ไม่พบข่าวใหม่</div>';
-  } catch (e) { $('#liveBox').innerHTML = '<div class="empty">โหลดข่าวไม่สำเร็จ (เครือข่ายถูกบล็อกหรือ Wikinews ไม่ตอบสนอง)</div>'; }
+    const paras = await wikiText(host, title);
+    if (!paras.length) throw new Error('empty');
+    const item = buildWebItem({ id, lang, title, paras, src, url: 'https://' + host + '/wiki/' + encodeURIComponent(title.replace(/ /g, '_')) });
+    storeWeb(item); go('article', id);
+  } catch (e) { toast('โหลดบทความนี้ไม่สำเร็จ'); if (btn) { btn.disabled = false; btn.style.opacity = 1; } }
+}
+function liveError() {
+  return FRAMED
+    ? `<div class="empty">หน้าตัวอย่างบน claude.ai ไม่อนุญาตให้ดึงข้อมูลจากเว็บอื่น<br>เปิดแอปเวอร์ชันเต็มที่ <a href="${PAGES_URL}" target="_blank" rel="noopener">${PAGES_URL}</a><br>หรือใช้แท็บ “วางบทความเอง” ได้เลย</div>`
+    : `<div class="empty">โหลดไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วกดโหลดใหม่<br><button class="tbtn" data-act="liverefresh" style="margin-top:10px">${ic('refresh')}โหลดใหม่</button></div>`;
+}
+function vLive(m) {
+  const lang = st().lang;
+  const saved = Object.values(S.web || {}).filter(x => x.lang === lang).sort((a, b) => b.t - a.t);
+  const tabs = [['news', 'ข่าวล่าสุด'], ['trend', 'กำลังเป็นกระแส'], ['saved', `บันทึกไว้ (${saved.length})`], ['paste', 'วางบทความเอง']];
+  m.innerHTML = `<button class="back" data-act="go" data-v="read">${ic('back')}บทความทั้งหมด</button>
+    <div class="view-head"><div><div class="eyebrow">ข่าวและบทความจริง · ${LANGS[lang].name}</div><h1>อ่านข่าว</h1>
+      <p>เปิดแล้วเก็บไว้อ่านออฟไลน์ให้อัตโนมัติ พร้อมประเมินระดับ ศัพท์ยาก และแบบทดสอบที่สร้างให้</p></div></div>
+    <div class="seg" role="tablist" style="margin-bottom:14px">${tabs.map(([k, l]) => `<button role="tab" data-act="livetab" data-v="${k}" aria-pressed="${liveTab === k}">${l}</button>`).join('')}</div>
+    <div id="liveBox" class="list"></div>`;
+  const box = $('#liveBox');
+  if (liveTab === 'saved') {
+    box.innerHTML = saved.map(it => { const q = S.quiz[it.id]; return `<div class="wordrow" style="align-items:flex-start">
+      <button class="card" style="border:0;padding:0;background:none" data-act="open" data-id="${esc(it.id)}">
+        <div class="meta"><span class="badge lvl">~${it.lvl}</span><span class="badge">${esc(it.src)}</span>${q ? `<span class="badge good">${q.score}/${q.total}</span>` : ''}${S.read[it.id] ? '<span class="badge good">อ่านแล้ว</span>' : ''}</div>
+        <h3>${esc(sentText(it.title))}</h3><div class="sub">${new Date(it.t).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })} · ${wordCount(it)} คำ</div></button>
+      <button class="iconbtn" data-act="delweb" data-id="${esc(it.id)}" aria-label="ลบ">${ic('trash')}</button></div>`; }).join('')
+      || '<div class="empty">ยังไม่มีบทความที่บันทึกไว้<br>เปิดข่าวจากแท็บอื่น หรือวางบทความเอง แล้วจะเก็บไว้ที่นี่ อ่านได้แม้ออฟไลน์</div>';
+    return;
+  }
+  if (liveTab === 'paste') {
+    box.innerHTML = `<div class="entry"><div class="eyebrow">สร้างบทเรียนจากข้อความของคุณ</div>
+      <p class="muted" style="margin:6px 0 12px">คัดลอกข่าวหรือบทความภาษา${LANGS[lang].th}จากเว็บใดก็ได้ (เช่น ${lang === 'fr' ? 'Le Monde, France Info, RFI' : lang === 'es' ? 'El País, BBC Mundo, RTVE' : 'NOS, de Volkskrant, VRT NWS'}) มาวางที่นี่ แอปจะแบ่งประโยค ทำให้แตะคำได้ ประเมินระดับ และสร้างแบบทดสอบให้ ทำงานได้แม้ไม่มีอินเทอร์เน็ต</p>
+      <label class="sr" for="pasteTitle">ชื่อเรื่อง</label><input id="pasteTitle" type="text" placeholder="ชื่อเรื่อง (ไม่บังคับ)" style="width:100%;margin-bottom:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px">
+      <label class="sr" for="pasteText">เนื้อหา</label><textarea id="pasteText" placeholder="วางเนื้อหาข่าวที่นี่…" style="min-height:200px;font-family:var(--f-read);font-size:15px"></textarea>
+      <div class="tools" style="margin-top:10px"><button class="tbtn primary" data-act="pastego">${ic('book')}สร้างบทเรียน</button></div></div>`;
+    return;
+  }
+  const key = lang + ':' + liveTab;
+  const paint = list => {
+    if (!list.length) { box.innerHTML = '<div class="empty">ยังไม่มีรายการใหม่จากแหล่งนี้ ลองแท็บอื่นหรือวางบทความเอง</div>'; return; }
+    box.innerHTML = list.map(x => `<button class="card" data-act="liveopen" data-host="${esc(x.host)}" data-title="${esc(x.title)}" data-src="${esc(x.src)}">
+      <div class="meta"><span class="badge">${esc(x.src)}</span>${x.date ? `<span class="badge">${new Date(x.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' })}</span>` : ''}${x.views ? `<span class="badge">${x.views.toLocaleString()} ครั้งที่อ่าน</span>` : ''}${S.web && S.web['web:' + hashStr(lang + '|' + x.title + '|https://' + x.host + '/wiki/' + x.title)] ? '<span class="badge good">บันทึกแล้ว</span>' : ''}</div>
+      <h3>${esc(x.title)}</h3>${x.sub ? `<div class="sub">${esc(clip(x.sub, 160))}</div>` : ''}</button>`).join('')
+      + `<p class="muted" style="font-size:12.5px">เนื้อหาจาก ${liveTab === 'news' ? 'Wikinews (CC BY 2.5)' : 'Wikipedia (CC BY-SA 4.0)'} · ข่าวใน Wikinews อาจไม่ได้อัปเดตทุกวัน ถ้าอยากอ่านข่าววันนี้ ให้ใช้แท็บ “วางบทความเอง”</p>`;
+  };
+  if (liveCache[key]) { paint(liveCache[key]); return; }
+  if (!navigator.onLine) { box.innerHTML = `<div class="empty">ตอนนี้ออฟไลน์อยู่ ดูบทความที่บันทึกไว้ หรือวางบทความเองได้</div>`; return; }
+  box.innerHTML = '<div class="empty">กำลังโหลด…</div>';
+  (liveTab === 'news' ? wikinewsList(lang) : wikipediaTrending(lang))
+    .then(list => { liveCache[key] = list; if (view.name === 'live' && liveTab + st().lang === key.split(':')[1] + lang) paint(list); })
+    .catch(() => { if ($('#liveBox')) $('#liveBox').innerHTML = liveError(); });
+}
+async function mtAll(btn, item) {
+  if (!navigator.onLine || FRAMED) { toast(FRAMED ? 'หน้าตัวอย่างบน claude.ai แปลออนไลน์ไม่ได้' : 'ต้องใช้อินเทอร์เน็ตเพื่อแปลประโยคที่ยังไม่มีคำแปล'); return false; }
+  const want = st().trLang, idx = want === 'en' ? 1 : 2;
+  const sents = allSentences(item).filter(s => !s[idx]);
+  btn.disabled = true; let done = 0, fail = 0;
+  for (const s of sents) {
+    btn.innerHTML = `กำลังแปล ${++done}/${sents.length}…`;
+    const r = await machineTranslate(s[0], item.lang, want);
+    if (r && !/MYMEMORY WARNING|QUERY LENGTH/i.test(r)) s[idx] = r; else fail++;
+    $$(`#main .sent`).filter(el => el.dataset.text === s[0]).forEach(el => { $('.tr', el).textContent = s[idx] || ''; });
+  }
+  save(); btn.disabled = false; btn.innerHTML = ic('tr') + 'แปลทุกประโยค';
+  if (fail) toast(`แปลไม่สำเร็จ ${fail} ประโยค (บริการแปลฟรีอาจถึงโควตาวันนี้แล้ว)`);
+  return true;
 }
 
 /* ---------- 3.3 NOVELS ---------- */
@@ -811,15 +965,29 @@ function onClick(e) {
     case 'like': { const id = b.dataset.id; S.likes[id] = !S.likes[id]; save(); const p = BYID[id]; b.classList.toggle('liked', !!S.likes[id]); b.innerHTML = ic('heart') + ((p.likes || 0) + (S.likes[id] ? 1 : 0)); break; }
     case 'cmts': { const c = $('.comments', b.closest('.post')); c.hidden = !c.hidden; b.setAttribute('aria-pressed', !c.hidden); break; }
     case 'trpost': { const post = b.closest('.post'); const on = b.getAttribute('aria-pressed') !== 'true'; $$('.rt', post).forEach(r => r.classList.toggle('showtr', on)); b.setAttribute('aria-pressed', on); break; }
-    case 'trall': { const on = b.getAttribute('aria-pressed') !== 'true'; $$('#main .rt').forEach(r => r.classList.toggle('showtr', on)); b.setAttribute('aria-pressed', on); break; }
+    case 'trall': { const on = b.getAttribute('aria-pressed') !== 'true'; const it = BYID[view.id];
+      $$('#main .rt').forEach(r => r.classList.toggle('showtr', on)); b.setAttribute('aria-pressed', on);
+      if (on && it && it.kind === 'web' && allSentences(it).some(x => !x[st().trLang === 'en' ? 1 : 2])) mtAll(b, it).then(() => b.setAttribute('aria-pressed', 'true'));
+      break; }
     case 'trlang': s.trLang = s.trLang === 'th' ? 'en' : 'th'; save(); { const y = scrollY; const open = $$('#main .rt.showtr').length > 0; render(); if (open) { $$('#main .rt').forEach(r => r.classList.add('showtr')); const t = $('[data-act="trall"]'); t && t.setAttribute('aria-pressed', 'true'); } scrollTo(0, y); } break;
     case 'readall': { const root = b.closest('.post') || $('#artBody'); readAll(root, view.name === 'feed' ? BYID[$('.post-end', root).dataset.id].lang : st().lang, b); break; }
-    case 'mtall': mtAll(b); break;
+    case 'mtall': mtAll(b, BYID[view.id]); break;
     case 'open': go('article', b.dataset.id); break;
+    case 'finishweb': { const it = BYID[view.id]; const got = finishItem(it, true); toast(got.length ? `บันทึกคำยาก ${got.length} คำ` : 'บันทึกว่าอ่านจบแล้ว'); break; }
     case 'next-art': { const l = DB[s.lang].read; const i = l.indexOf(BYID[view.id]); const nx = l.find((x, j) => j > i && !S.quiz[x.id]) || l.find(x => !S.quiz[x.id]) || l[(i + 1) % l.length]; go('article', nx.id); break; }
     case 'ans': answer(+b.dataset.qi, +b.dataset.oi); break;
     case 'live': go('live'); break;
-    case 'liveopen': go('live', b.dataset.id); break;
+    case 'liveopen': openWeb(b.dataset.host, b.dataset.title, b.dataset.src, b); break;
+    case 'livetab': liveTab = b.dataset.v; render(); break;
+    case 'liverefresh': delete liveCache[s.lang + ':' + liveTab]; render(); break;
+    case 'delweb': if (b.dataset.sure) { delete S.web[b.dataset.id]; delete BYID[b.dataset.id]; save(); render(); toast('ลบแล้ว'); } else { b.dataset.sure = 1; b.style.color = 'var(--bad)'; toast('แตะถังขยะอีกครั้งเพื่อลบ'); } break;
+    case 'pastego': {
+      const raw = ($('#pasteText').value || '').trim(); const title = ($('#pasteTitle').value || '').trim();
+      const paras = raw.split(/\n\s*\n|\r?\n/).map(x => x.trim()).filter(x => /\p{L}{2}/u.test(x));
+      if (!paras.length || raw.length < 40) { toast('วางเนื้อหาอย่างน้อยหนึ่งย่อหน้า'); break; }
+      const t = title || splitSentences(paras[0])[0].slice(0, 80);
+      const item = buildWebItem({ lang: s.lang, title: t, paras: title ? paras : paras, src: 'ข้อความของฉัน', id: 'web:own' + hashStr(raw.slice(0, 500) + Date.now()) });
+      storeWeb(item); go('article', item.id); break; }
     case 'story': go('story', b.dataset.id); break;
     case 'say': speak(b.dataset.say, sheetState.item.lang); break;
     case 'sayw': speak(b.dataset.say, b.dataset.lang); break;
@@ -845,7 +1013,7 @@ function onClick(e) {
     case 'import': $('#ioRow').hidden = false; $('#ioText').value = ''; $('#ioText').placeholder = 'วางข้อมูล JSON ที่ส่งออกไว้ตรงนี้'; $('#ioText').focus(); break;
     case 'copyio': { const t = $('#ioText'); navigator.clipboard ? navigator.clipboard.writeText(t.value).then(() => toast('คัดลอกแล้ว'), () => { t.select(); toast('เลือกข้อความแล้ว กดคัดลอกได้เลย'); }) : t.select(); break; }
     case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
-    case 'reset': if (b.dataset.sure) { try { localStorage.removeItem(KEY); } catch (er) { } S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, tab: 'feed' }; applyLook(); toast('ล้างข้อมูลแล้ว'); render(); } else { b.dataset.sure = 1; b.innerHTML = 'แตะอีกครั้งเพื่อยืนยัน'; setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.innerHTML = ic('trash') + 'ล้างข้อมูล'; } }, 4000); } break;
+    case 'reset': if (b.dataset.sure) { try { localStorage.removeItem(KEY); } catch (er) { } S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, web: {}, tab: 'feed' }; applyLook(); toast('ล้างข้อมูลแล้ว'); render(); } else { b.dataset.sure = 1; b.innerHTML = 'แตะอีกครั้งเพื่อยืนยัน'; setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.innerHTML = ic('trash') + 'ล้างข้อมูล'; } }, 4000); } break;
   }
 }
 function refreshMarks() {
@@ -854,16 +1022,6 @@ function refreshMarks() {
     const item = CTX.get(block.dataset.ctx); if (!item) return;
     $$('.w', block).forEach(w => { const e = lookup(item.lang, w.dataset.w, item.v); w.classList.toggle('saved', !!S.cards[cardKey(item.lang, headword(e, w.dataset.w))]); });
   });
-}
-async function mtAll(btn) {
-  if (!navigator.onLine) { toast('ต้องใช้อินเทอร์เน็ตเพื่อแปลข่าวสด'); return; }
-  btn.disabled = true; btn.innerHTML = 'กำลังแปล…';
-  const lang = st().lang;
-  for (const el of $$('#artBody .sent')) {
-    const tr = $('.tr', el); if (!tr.textContent) tr.textContent = await machineTranslate(el.dataset.text, lang, st().trLang);
-    el.closest('.rt').classList.add('showtr');
-  }
-  btn.innerHTML = 'แปลแล้ว';
 }
 function onInput(e) {
   const t = e.target, s = st();
@@ -892,7 +1050,7 @@ function shell() {
   <div class="toast" id="toast" role="status"></div>`;
 }
 function boot() {
-  load(); ingest(); shell(); applyLook();
+  load(); ingest(); S.web = S.web || {}; for (const it of Object.values(S.web)) BYID[it.id] = it; shell(); applyLook();
   document.addEventListener('click', onClick);
   document.addEventListener('input', onInput);
   document.addEventListener('change', onChange);
@@ -904,6 +1062,6 @@ function boot() {
   view = { name: S.tab || 'feed' };
   render();
 }
-window.TriadaApp = { DB, DICT, lookup, state: () => S };
+window.TriadaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, state: () => S };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

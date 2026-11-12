@@ -91,6 +91,7 @@ main{max-width:760px;margin:0 auto;padding-block:14px calc(var(--tabbar-h) + 28p
 .tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .tbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 11px;font-size:13.5px;color:var(--ink)}
 .tbtn:hover{border-color:var(--accent)}
+a.tbtn{text-decoration:none}
 .tbtn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .tbtn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .tbtn.ghost{border-color:transparent;background:transparent}
