@@ -29,6 +29,32 @@ cd docs && python3 -m http.server 8000
 
 เสียงอ่านใช้เสียงที่ติดตั้งในเครื่อง (Web Speech API) ถ้าเครื่องไม่มีเสียงภาษานั้น ให้ติดตั้งเพิ่มในการตั้งค่าภาษาของระบบ (บน iOS และ Android มีเสียงแบบออฟไลน์ให้ดาวน์โหลด)
 
+## เข้าสู่ระบบและซิงก์ข้ามเครื่อง (ไม่บังคับ)
+
+ถ้าเข้าสู่ระบบด้วยบัญชี Google การ์ด ความคืบหน้า การตั้งค่า และข่าวที่บันทึกไว้จะซิงก์ตรงกันทุกเครื่อง ถ้าไม่เข้าสู่ระบบ แอปก็ทำงานแบบออฟไลน์ได้เหมือนเดิม ระบบนี้ใช้ Firebase ซึ่งต้องตั้งค่าครั้งเดียวดังนี้
+
+1. เข้า https://console.firebase.google.com แล้วกด **Create a project** (ไม่ต้องเปิด Google Analytics)
+2. **Build → Authentication → Get started → Sign-in method → Google → Enable** แล้วกด Save
+3. **Authentication → Settings → Authorized domains → Add domain** ใส่ `6934468323-hash.github.io`
+4. **Build → Firestore Database → Create database** เลือก location ใกล้ๆ (เช่น `asia-southeast1`) และเริ่มที่ **production mode**
+5. ที่แท็บ **Rules** ของ Firestore วางกฎด้านล่างแล้วกด Publish (แต่ละคนอ่านและเขียนได้เฉพาะข้อมูลของตัวเอง)
+6. **Project settings (ไอคอนฟันเฟือง) → Your apps → `</>` (Web)** ตั้งชื่ออะไรก็ได้ แล้วคัดลอกค่า `firebaseConfig` ไปใส่ใน `src/firebase-config.js` และรัน `python3 build.py` (หรือส่งค่านี้ให้ Claude ทำให้) ค่าเหล่านี้ไม่ใช่รหัสลับ
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}
+```
+
+**วิธีซิงก์:** ข้อมูลทั้งหมดของผู้ใช้เก็บเป็นเอกสารเดียว (`users/{uid}`) แต่ละเครื่องรวมข้อมูลกันทีละรายการ การ์ดใบไหนแก้ล่าสุดจะใช้ใบนั้น การ์ดที่ลบในเครื่องหนึ่งจะหายจากทุกเครื่อง คะแนนแบบทดสอบใช้ค่าที่สูงสุด ส่วนการตั้งค่าใช้ชุดที่เปลี่ยนล่าสุด
+
+**ข้อจำกัด:** ถ้าเป็นแอปที่ติดตั้งบน iPhone บางครั้งหน้าต่างล็อกอินของ Google อาจเปิดไม่ขึ้น ให้เข้าสู่ระบบผ่าน Safari ก่อนหนึ่งครั้ง
+
 ## เพิ่มเนื้อหา
 
 เนื้อหาอยู่ใน `src/data/` (`fr.js`, `fr2.js`, `fr3.js` และไฟล์ชุดเดียวกันของ `es` และ `nl`) เพิ่มรายการตามรูปแบบเดิมหรือสร้างไฟล์ใหม่แล้วใส่ชื่อในรายการ `DATA` ของ `build.py` แล้วรัน `python3 build.py`
@@ -48,5 +74,6 @@ cd docs && python3 -m http.server 8000
 ## ไฟล์
 
 - `src/`: ซอร์สโค้ด (`app.js`, `app.css`) และเนื้อหา (`data/`)
+- `src/sync.js`, `src/firebase-config.js`: ระบบเข้าสู่ระบบและการซิงก์ (Firebase)
 - `build.py`: สร้าง `docs/` (PWA และไฟล์ HTML ไฟล์เดียว) และ `artifact/`
 - `docs/`: ไฟล์ที่นำไปใช้งานได้จริง (GitHub Pages ใช้โฟลเดอร์นี้)

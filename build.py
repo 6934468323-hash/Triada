@@ -12,7 +12,8 @@ DATA = ["fr.js", "fr2.js", "fr3.js", "es.js", "es2.js", "es3.js", "nl.js", "nl2.
 
 css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)
-app = (SRC / "app.js").read_text()
+app = (SRC / "app.js").read_text().replace("/*__SYNC__*/", (SRC / "sync.js").read_text())
+fbcfg = (SRC / "firebase-config.js").read_text()
 ver = hashlib.sha1((css + data + app + (SRC / "i18n.js").read_text()).encode()).hexdigest()[:10]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700"
@@ -25,6 +26,7 @@ i18n = (SRC / "i18n.js").read_text()
 body = f"""<div id="app"></div>
 <script>{data}</script>
 <script>{i18n}</script>
+<script>{fbcfg}</script>
 <script>{app}</script>"""
 
 head_common = f"""<title>Tríada Reader</title>

@@ -56,7 +56,18 @@ function load() {
   try { const raw = localStorage.getItem(KEY); if (raw) { const d = JSON.parse(raw); S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; } } catch (e) { }
 }
 let saveT;
-function save() { clearTimeout(saveT); saveT = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } }, 150); }
+let lastSettingsJSON = null;
+function save() {
+  clearTimeout(saveT);
+  saveT = setTimeout(() => {
+    const sj = JSON.stringify(S.settings);
+    if (lastSettingsJSON !== null && sj !== lastSettingsJSON) S.settingsAt = Date.now(); // a user change, used to pick the newest settings when syncing
+    lastSettingsJSON = sj;
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { }
+    if (typeof schedulePush === 'function') schedulePush();
+  }, 150);
+}
+const tomb = key => { S.deleted = S.deleted || {}; S.deleted[key] = Date.now(); };
 const st = () => S.settings;
 
 /* ================= data ================= */
@@ -299,6 +310,7 @@ function addCard(lang, e, raw, sentenceArr, item, auto) {
   if (S.cards[k]) return false;
   const on = sheetState && sheetState.onlineRes;
   S.cards[k] = {
+    upd: Date.now(),
     k, lang, word: hw, form: raw, lvl: e ? e.lvl : '', pos: e ? e.pos : '',
     th: e ? e.th : (on && on.th) || '', en: e ? e.en : (on && on.en) || '',
     ex: sentenceArr ? sentText(sentenceArr) : '', exT: sentenceArr ? (sentenceArr[2] || '') : '', exE: sentenceArr ? (sentenceArr[1] || '') : '',
@@ -336,6 +348,7 @@ function finishItem(item, silent) {
 function dueCards(lang) { const now = Date.now(); return Object.values(S.cards).filter(c => (!lang || c.lang === lang) && c.due <= now); }
 function grade(c, q) {
   const now = Date.now();
+  c.upd = now;
   if (q === 0) { c.reps = 0; c.lapses++; c.int = 0; c.ease = Math.max(1.3, c.ease - 0.2); c.due = now + 10 * 60e3; }
   else {
     c.reps++;
@@ -942,6 +955,7 @@ function vPrefs(m) {
   const ncards = Object.keys(S.cards).length;
   m.innerHTML = `<button class="back" data-act="go" data-v="${S.tab}">${ic('back')}กลับ</button>
   <div class="view-head"><div><div class="eyebrow">ปรับแต่ง</div><h1>ตั้งค่า</h1></div></div>
+  <section class="set-group"><h2>บัญชีและการซิงก์</h2><div id="acctBox">${typeof accountHTML === 'function' ? accountHTML() : ''}</div></section>
   <section class="set-group"><h2>ภาษา</h2>
     <div class="row"><label>ภาษาของหน้าแอป<small>ข้อความเมนู ปุ่ม และคำแนะนำ</small></label>${seg('uiLang', [['th', 'ไทย'], ['en', 'English']])}</div>
     <div class="row"><label>ภาษาที่เรียน</label>${seg('lang', [['fr', 'Français'], ['es', 'Español'], ['nl', 'Nederlands']])}</div>
@@ -983,6 +997,8 @@ function vPrefs(m) {
   <p class="muted" style="font-size:12.5px">Tríada Reader · เนื้อหาบทความและเรื่องสั้นแต่งขึ้นเพื่อการเรียน เก็บข้อมูลไว้ในเครื่องนี้เท่านั้น</p>`;
 }
 
+/*__SYNC__*/
+
 /* ================= events ================= */
 function onClick(e) {
   const w = e.target.closest('.w');
@@ -1016,7 +1032,7 @@ function onClick(e) {
     case 'liveopen': openWeb(b.dataset.host, b.dataset.title, b.dataset.src, b); break;
     case 'livetab': liveTab = b.dataset.v; render(); break;
     case 'liverefresh': delete liveCache[s.lang + ':' + liveTab]; render(); break;
-    case 'delweb': if (b.dataset.sure) { delete S.web[b.dataset.id]; delete BYID[b.dataset.id]; save(); render(); toast('ลบแล้ว'); } else { b.dataset.sure = 1; b.style.color = 'var(--bad)'; toast('แตะถังขยะอีกครั้งเพื่อลบ'); } break;
+    case 'delweb': if (b.dataset.sure) { tomb('web:' + b.dataset.id); delete S.web[b.dataset.id]; delete BYID[b.dataset.id]; save(); render(); toast('ลบแล้ว'); } else { b.dataset.sure = 1; b.style.color = 'var(--bad)'; toast('แตะถังขยะอีกครั้งเพื่อลบ'); } break;
     case 'pastego': {
       const raw = ($('#pasteText').value || '').trim(); const title = ($('#pasteTitle').value || '').trim();
       const paras = raw.split(/\n\s*\n|\r?\n/).map(x => x.trim()).filter(x => /\p{L}{2}/u.test(x));
@@ -1031,17 +1047,20 @@ function onClick(e) {
     case 'togglesent': sheetState.sentEl.classList.toggle('open'); closeSheet(); break;
     case 'mtsent': (async () => { const t = $('#shTr'); t.hidden = false; t.textContent = 'กำลังแปล…'; const r = await machineTranslate(sheetState.sentence.o, sheetState.item.lang, st().trLang); t.textContent = r || 'แปลไม่สำเร็จ (ต้องใช้อินเทอร์เน็ต)'; if (r) { $('.tr', sheetState.sentEl).textContent = r; } })(); break;
     case 'closesheet': closeSheet(); break;
-    case 'savecard': { const { item, raw, e: en, sentence } = sheetState; const hw = headword(en, raw); const k = cardKey(item.lang, hw); if (S.cards[k]) { delete S.cards[k]; save(); toast('นำออกจากการ์ดแล้ว'); } else { addCard(item.lang, en, raw, sentence.arr, item, false); toast('บันทึก “' + hw + '” แล้ว'); } renderSheet(!!sheetState.onlineRes); refreshMarks(); updateBadge(); if (sheetState.onlineRes) $('#onlineBox').innerHTML = onlineHTML(sheetState.onlineRes); break; }
+    case 'savecard': { const { item, raw, e: en, sentence } = sheetState; const hw = headword(en, raw); const k = cardKey(item.lang, hw); if (S.cards[k]) { delete S.cards[k]; tomb('card:' + k); save(); toast('นำออกจากการ์ดแล้ว'); } else { addCard(item.lang, en, raw, sentence.arr, item, false); toast('บันทึก “' + hw + '” แล้ว'); } renderSheet(!!sheetState.onlineRes); refreshMarks(); updateBadge(); if (sheetState.onlineRes) $('#onlineBox').innerHTML = onlineHTML(sheetState.onlineRes); break; }
     case 'savephrase': { const { item, sentence } = sheetState; const k = b.dataset.p; const pe = { w: k, ...parseEntry(item.v[k]) }; if (addCard(item.lang, pe, k, sentence.arr, item, false)) toast('บันทึกสำนวน “' + k + '” แล้ว'); renderSheet(); updateBadge(); break; }
     case 'todict': dictQ = b.dataset.q; dictAll = false; go('dict'); break;
     case 'online': runOnline(); break;
     case 'review': startReview(); break;
     case 'flip': if (rv) { rv.flipped = !rv.flipped; render(); if (rv.flipped) { const c = rv.list[rv.i]; if (st().cardDir !== 'word') speak(c.word, c.lang); } } break;
     case 'grade': { const c = rv.list[rv.i]; const q = +b.dataset.q; grade(S.cards[c.k] || c, q); rv.done++; if (q === 0) { rv.again++; } rv.i++; rv.flipped = false; render(); break; }
-    case 'delcard': delete S.cards[b.dataset.k]; save(); render(); toast('ลบการ์ดแล้ว'); break;
+    case 'signin': signIn(); break;
+    case 'signout': signOut(); break;
+    case 'syncnow': if (sync.unsub) { stopSync(); startSync(); } pushNow(); break;
+    case 'delcard': tomb('card:' + b.dataset.k); delete S.cards[b.dataset.k]; save(); render(); toast('ลบการ์ดแล้ว'); break;
     case 'dictq': dictQ = b.dataset.q; if (b.dataset.l && b.dataset.l !== s.lang && dictAll) { } $('#dictInput') ? ($('#dictInput').value = dictQ, dictResults(true)) : go('dict'); scrollTo(0, 0); break;
     case 'dictall': dictAll = !dictAll; b.setAttribute('aria-pressed', dictAll); dictResults(); break;
-    case 'dictsave': { const l = b.dataset.lang; const e = DICT[l].get(b.dataset.w.toLowerCase()); const hw = e.lemma || e.w; const k = cardKey(l, hw); if (S.cards[k]) { delete S.cards[k]; toast('นำออกจากการ์ดแล้ว'); } else { const ex = examplesFor(l, e)[0]; addCard(l, e, e.w, ex && ex.s, ex && ex.it, false); toast('บันทึก “' + hw + '” แล้ว'); } save(); dictResults(); updateBadge(); break; }
+    case 'dictsave': { const l = b.dataset.lang; const e = DICT[l].get(b.dataset.w.toLowerCase()); const hw = e.lemma || e.w; const k = cardKey(l, hw); if (S.cards[k]) { delete S.cards[k]; tomb('card:' + k); toast('นำออกจากการ์ดแล้ว'); } else { const ex = examplesFor(l, e)[0]; addCard(l, e, e.w, ex && ex.s, ex && ex.it, false); toast('บันทึก “' + hw + '” แล้ว'); } save(); dictResults(); updateBadge(); break; }
     case 'dictsaveonline': if (dictOnline) { const { q, r } = dictOnline; sheetState = { onlineRes: r }; addCard(s.lang, null, q, null, null, false); sheetState = null; toast('บันทึก “' + q + '” แล้ว'); updateBadge(); } break;
     case 'set': { const k = b.dataset.k; let v = b.dataset.v; if (k === 'sessionSize') v = +v; s[k] = v; save(); if (k === 'uiLang') { shell(); startI18n(); } applyLook(); render(); break; }
     case 'testvoice': speak({ fr: 'Bonjour ! Bienvenue dans votre bibliothèque.', es: '¡Hola! Bienvenido a tu biblioteca.', nl: 'Hallo! Welkom in je bibliotheek.' }[s.lang], s.lang); break;
@@ -1093,6 +1112,9 @@ function boot() {
   document.addEventListener('change', onChange);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('fc')) { e.preventDefault(); e.target.click(); } });
   startI18n();
+  lastSettingsJSON = JSON.stringify(S.settings);
+  if (typeof fbInit === 'function' && FB_CFG && navigator.onLine) fbInit();
+  addEventListener('online', () => { if (typeof fbInit === 'function' && FB_CFG) fbInit(); });
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('online', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
   addEventListener('offline', () => view.name === 'dict' || view.name === 'prefs' ? render() : 0);
