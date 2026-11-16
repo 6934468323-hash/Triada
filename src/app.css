@@ -282,3 +282,12 @@ html[lang="th"] .view-head h1{line-height:1.45;padding-top:2px}
 .card h3,.cover h3,.art-head h1,.q .qt{line-height:1.4}
 .sheet-in .sh-mean{line-height:1.45}
 .tsub{line-height:1.5}
+
+/* feed reading progress */
+.feedinfo{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.feedinfo b{color:var(--ink);font-variant-numeric:tabular-nums}
+.post{position:relative;overflow:hidden}
+.rprog{position:absolute;left:0;right:0;bottom:0;height:3px;background:transparent}
+.rprog i{display:block;height:100%;width:0;background:color-mix(in srgb,var(--accent) 55%,transparent);transition:width .25s linear}
+.rprog.done i{background:var(--good)}
+.feed-done{text-align:left}

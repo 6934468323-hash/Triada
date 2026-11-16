@@ -8,7 +8,7 @@ import pathlib, json, hashlib, shutil, base64
 
 ROOT = pathlib.Path(__file__).parent
 SRC, DIST, ART = ROOT / "src", ROOT / "docs", ROOT / "artifact"
-DATA = ["fr.js", "fr2.js", "fr3.js", "es.js", "es2.js", "es3.js", "nl.js", "nl2.js", "nl3.js"]
+DATA = ["fr.js", "fr2.js", "fr3.js", "fr4.js", "fr5.js", "es.js", "es2.js", "es3.js", "es4.js", "es5.js", "nl.js", "nl2.js", "nl3.js", "nl4.js", "nl5.js"]
 
 css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)

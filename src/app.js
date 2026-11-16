@@ -10,7 +10,7 @@ const LANGS = {
   es: { name: 'Español', th: 'สเปน', tts: 'es-ES' },
   nl: { name: 'Nederlands', th: 'ดัตช์', tts: 'nl-NL' }
 };
-const FEED_CATS = { food: 'อาหาร', travel: 'ท่องเที่ยว', life: 'ชีวิตประจำวัน', tech: 'เทคโนโลยี', sport: 'กีฬา', culture: 'บันเทิง', work: 'การงาน', nature: 'ธรรมชาติ' };
+const FEED_CATS = { food: 'อาหาร', travel: 'ท่องเที่ยว', life: 'ชีวิตประจำวัน', tech: 'เทคโนโลยี', sport: 'กีฬา', culture: 'บันเทิง', work: 'การงาน', nature: 'ธรรมชาติ', economy: 'เศรษฐกิจ' };
 const READ_CATS = { science: 'วิทยาศาสตร์', health: 'สุขภาพ', tech: 'เทคโนโลยี', env: 'สิ่งแวดล้อม', society: 'สังคม', economy: 'เศรษฐกิจ', news: 'ข่าว', history: 'ประวัติศาสตร์' };
 const GENRES = {
   horror: { th: 'สยองขวัญ', c: '#6B2A3A' }, romance: { th: 'โรแมนติก', c: '#C2367A' }, comedy: { th: 'ตลก', c: '#C98A00' },
@@ -244,6 +244,7 @@ function textBlock(item, sentences, ctx, extraCls = '') {
 /* ================= word sheet ================= */
 let sheetState = null;
 function openWord(el) {
+  engage(el);
   const block = el.closest('[data-ctx]'); if (!block) return;
   const item = CTX.get(block.dataset.ctx); if (!item) return;
   const sentEl = el.closest('.sent');
@@ -454,6 +455,9 @@ function render() {
   const m = $('#main');
   CTX.clear();
   if (feedObserver) { feedObserver.disconnect(); feedObserver = null; }
+  if (feedVis) { feedVis.disconnect(); feedVis = null; }
+  if (dwellTimer) { clearInterval(dwellTimer); dwellTimer = null; }
+  if (storyTimer) { clearInterval(storyTimer); storyTimer = null; }
   if (endObserver) { endObserver.disconnect(); endObserver = null; }
   const tabName = view.name === 'article' ? 'read' : view.name === 'story' ? 'novel' : view.name === 'live' ? 'read' : view.name;
   $$('.tabs button').forEach(b => b.toggleAttribute('aria-current', false) || (b.dataset.tab === tabName && b.setAttribute('aria-current', 'page')));
@@ -462,15 +466,50 @@ function render() {
   updateBadge();
 }
 
-/* ---------- 3.1 FEED ---------- */
-let feedQueue = [], feedPtr = 0, feedRound = 0;
+/* ---------- 3.1 FEED ----------
+   A post counts as read only when the reader really read it:
+   - its last line has been on screen, and
+   - it was the post being looked at (most of it on screen, page in front, not mid-flick) for long enough:
+     half the time a learner at that CEFR level needs for its words, or a quarter of it once the reader
+     interacted with it (tapped a word, translated, listened, liked, opened comments).
+   Time on screen is split between the posts visible together. Read posts are left out of the feed. */
+const WPM = { A1: 60, A2: 75, B1: 90, B2: 110, C1: 130, C2: 150 };
+let feedQueue = [], feedPtr = 0, showReadFeed = false;
+const dwell = new Map();
+let dwellTimer = null, feedVis = null, scrollSpeed = 0, lastScrollY = 0, lastScrollT = 0;
+function needMs(p, engaged) {
+  const ms = wordCount(p) / (WPM[p.lvl] || 90) * 60000 * (engaged ? 0.25 : 0.5);
+  return Math.min(45000, Math.max(engaged ? 2000 : 4000, ms));
+}
 function feedPool() {
   const s = st();
   return DB[s.lang].feed.filter(p => (!s.feedCats.length || s.feedCats.includes(p.cat)) && (!s.feedLvls.length || s.feedLvls.includes(p.lvl)));
 }
+function engage(el) { const post = el && el.closest && el.closest('.post'); const d = post && dwell.get(post.dataset.id); if (d) d.engaged = true; }
+function markPostRead(id, d) {
+  d.done = true; const it = BYID[id]; if (!it) return;
+  finishItem(it);
+  if (d.el && d.el.isConnected) { const mk = $('.readmark', d.el); if (mk) mk.hidden = false; const bar = $('.rprog i', d.el); if (bar) { bar.style.width = '100%'; bar.parentElement.classList.add('done'); } }
+  const c = $('#feedCount'); if (c) c.textContent = feedPool().filter(p => !S.read[p.id]).length;
+}
+function dwellTick() {
+  if (view.name !== 'feed' || document.visibilityState !== 'visible' || !document.hasFocus()) return;
+  if (performance.now() - lastScrollT > 180) scrollSpeed = 0;
+  if (scrollSpeed > 1.2) return;                       // flicking past: not reading
+  const reading = [...dwell.entries()].filter(([, d]) => !d.done && d.focus);
+  if (!reading.length) return;
+  const share = 250 / reading.length;
+  for (const [id, d] of reading) {
+    d.ms += share;
+    const it = BYID[id], need = needMs(it, d.engaged);
+    const bar = d.el && $('.rprog i', d.el); if (bar) bar.style.width = Math.min(96, d.ms / need * 100) + '%';
+    if (d.endSeen && d.ms >= need) markPostRead(id, d);
+  }
+}
 function vFeed(m) {
   const s = st(), lang = s.lang;
   const cats = [...new Set(DB[lang].feed.map(p => p.cat))];
+  const pool = feedPool(), unread = pool.filter(p => !S.read[p.id]);
   m.innerHTML = `
     <div class="view-head"><div><div class="eyebrow">โหมดอ่านเพลิน · ${LANGS[lang].name}</div><h1>ฟีด</h1><p>โพสต์สั้นพร้อมคอมเมนต์ เลื่อนอ่านต่อได้เรื่อยๆ แตะคำเพื่อดูความหมาย</p></div></div>
     <div class="filters">
@@ -482,41 +521,53 @@ function vFeed(m) {
         <button class="chip lv" data-act="flvl" data-v="" aria-pressed="${!s.feedLvls.length}">ทุกระดับ</button>
         ${LEVELS.map(l => `<button class="chip lv" data-act="flvl" data-v="${l}" aria-pressed="${s.feedLvls.includes(l)}">${l}</button>`).join('')}
       </div>
+      <div class="feedinfo"><span>ยังไม่ได้อ่าน <b id="feedCount">${unread.length}</b> จาก ${pool.length} โพสต์</span>
+        <button class="chip" data-act="showread" aria-pressed="${showReadFeed}">รวมโพสต์ที่อ่านแล้ว</button></div>
     </div>
     <div id="feedList"></div><div id="feedSentinel" style="height:40px"></div>`;
-  const pool = feedPool();
   if (!pool.length) { $('#feedList').innerHTML = `<div class="empty">ยังไม่มีโพสต์ในหมวด/ระดับที่เลือก ลองเลือกเพิ่ม</div>`; return; }
-  // unread first, then read ones
-  feedQueue = [...shuffle(pool.filter(p => !S.read[p.id])), ...shuffle(pool.filter(p => S.read[p.id]))];
-  feedPtr = 0; feedRound = 0;
-  endObserver = new IntersectionObserver(ents => ents.forEach(en => {
-    if (en.isIntersecting) { const it = BYID[en.target.dataset.id]; if (it && !en.target.dataset.done) { en.target.dataset.done = 1; finishItem(it); const mk = en.target.closest('.post').querySelector('.readmark'); if (mk) mk.hidden = false; } }
-  }), { threshold: 1 });
+  feedQueue = showReadFeed ? [...shuffle(unread), ...shuffle(pool.filter(p => S.read[p.id]))] : shuffle(unread);
+  feedPtr = 0; dwell.clear();
+  endObserver = new IntersectionObserver(ents => ents.forEach(en => { if (en.isIntersecting) { const d = dwell.get(en.target.dataset.id); if (d) d.endSeen = true; } }), { threshold: 1 });
+  feedVis = new IntersectionObserver(ents => ents.forEach(en => {
+    const d = dwell.get(en.target.dataset.id); if (!d) return;
+    const h = en.boundingClientRect.height, vis = en.intersectionRect.height;
+    d.focus = en.isIntersecting && vis >= Math.min(h * 0.6, innerHeight * 0.45);
+  }), { threshold: [0, .15, .3, .45, .6, .75, .9, 1] });
   feedObserver = new IntersectionObserver(ents => { if (ents.some(e => e.isIntersecting)) moreFeed(); }, { rootMargin: '600px' });
+  dwellTimer = setInterval(dwellTick, 250);
   moreFeed();
   feedObserver.observe($('#feedSentinel'));
 }
 function moreFeed() {
-  const list = $('#feedList'); if (!list) return;
+  const list = $('#feedList'); if (!list || list.dataset.end) return;
   let html = '';
   for (let i = 0; i < 4; i++) {
     if (feedPtr >= feedQueue.length) {
-      feedRound++; feedPtr = 0; feedQueue = shuffle(feedPool());
-      html += `<div class="feed-end">อ่านครบทุกโพสต์ในตัวกรองนี้แล้ว · วนรอบที่ ${feedRound + 1}</div>`;
+      list.dataset.end = 1;
+      html += `<div class="endbox feed-done"><div class="eyebrow">${showReadFeed ? 'จบฟีด' : 'อ่านครบแล้ว'}</div>
+        <p>${feedQueue.length ? 'โพสต์ที่ยังไม่นับว่าอ่าน จะกลับมาให้อ่านอีกครั้งในรอบถัดไป' : 'คุณอ่านทุกโพสต์ในหมวด/ระดับนี้แล้ว'}</p>
+        <div class="tools">${showReadFeed ? '' : `<button class="tbtn" data-act="showread">${ic('refresh')}อ่านโพสต์ที่อ่านแล้วอีกครั้ง</button>`}
+        <button class="tbtn" data-act="tab" data-tab="read">${ic('quiz')}ไปอ่านบทความ</button><button class="tbtn" data-act="tab" data-tab="novel">${ic('book')}ไปอ่านนิยาย</button></div></div>`;
+      break;
     }
     html += postHTML(feedQueue[feedPtr++]);
   }
   list.insertAdjacentHTML('beforeend', html);
-  $$('.post-end:not([data-obs])', list).forEach(el => { el.dataset.obs = 1; endObserver.observe(el); });
+  $$('.post:not([data-obs])', list).forEach(el => {
+    el.dataset.obs = 1;
+    const id = el.dataset.id;
+    if (!dwell.has(id)) dwell.set(id, { ms: 0, endSeen: false, engaged: false, focus: false, done: !!S.read[id], el });
+    feedVis.observe(el); endObserver.observe($('.post-end', el));
+  });
 }
 function postHTML(p) {
   const ctx = makeCtx(p); const liked = S.likes[p.id];
   const cctxs = (p.c || []).map(c => makeCtx({ ...p, s: c.s, c: [] }));
-  return `<article class="post" data-ctxroot="${ctx}">
+  return `<article class="post" data-id="${p.id}" data-ctxroot="${ctx}">
     <div class="post-h">${avatar(p.user)}<div class="who"><b>${esc(p.user)}</b><span>@${esc(p.handle)} · ${esc(p.time || '')} · ${FEED_CATS[p.cat] || ''}</span></div>
       <span class="badge lvl">${p.lvl}</span></div>
     ${textBlock(p, p.s, ctx)}
-    <div class="post-end" data-id="${p.id}"></div>
     <div class="post-f">
       <button class="tbtn ${liked ? 'liked' : ''}" data-act="like" data-id="${p.id}">${ic('heart')}${(p.likes || 0) + (liked ? 1 : 0)}</button>
       <button class="tbtn" data-act="cmts" aria-pressed="true">${ic('chat')}${(p.c || []).length}</button>
@@ -525,6 +576,8 @@ function postHTML(p) {
       <span style="flex:1"></span><span class="readmark" ${S.read[p.id] ? '' : 'hidden'}>${ic('check')}อ่านแล้ว</span>
     </div>
     <div class="comments">${(p.c || []).map((c, i) => `<div class="cmt">${avatar(c.u)}<div class="cmt-b"><b>${esc(c.u)}</b>${textBlock({ ...p, s: c.s, c: [] }, c.s, cctxs[i])}</div></div>`).join('')}</div>
+    <div class="post-end" data-id="${p.id}"></div>
+    <div class="rprog ${S.read[p.id] ? 'done' : ''}" title="ความคืบหน้าการอ่าน"><i style="width:${S.read[p.id] ? 100 : 0}%"></i></div>
   </article>`;
 }
 
@@ -810,7 +863,7 @@ function vNovel(m) {
         <h3>${esc(sentText(n.title))}</h3><p>${esc(isEN() ? trOf(n.title, 'en') : (n.blurb || trOf(n.title)))}</p></button>`;
     }).join('')}</div>`;
 }
-let storyScroll = null;
+let storyScroll = null, storyTimer = null, storyFinish = null;
 function vStory(m) {
   const n = BYID[view.id]; if (!n) return go('novel');
   const g = GENRES[n.genre] || { th: n.genre, c: 'var(--accent)' };
@@ -829,11 +882,24 @@ function vStory(m) {
       <p>คำยากจากเรื่องนี้จะถูกบันทึกลงแฟลชการ์ดเมื่ออ่านมาถึงตรงนี้</p>
       <div class="tools"><button class="tbtn primary" data-act="go" data-v="cards">${ic('cards')}ทบทวนคำศัพท์</button><button class="tbtn" data-act="go" data-v="novel">เลือกเรื่องอื่น</button></div></div></div>`;
   $('.titleblock').style.cssText = 'font-size:29px;font-style:italic;font-weight:600;line-height:1.25;margin:8px 0 4px';
-  let ended = false;
-  endObserver = new IntersectionObserver(ents => { if (ents[0].isIntersecting && !ended) { ended = true; const got = finishItem(n, true); S.novelPos[n.id] = 100; save(); const p = $('#storyEnd p'); if (p) p.innerHTML = got.length ? `บันทึกคำยากลงแฟลชการ์ดแล้ว ${got.length} คำ: <b>${got.map(esc).join(', ')}</b>` : 'คำยากจากเรื่องนี้อยู่ในแฟลชการ์ดของคุณแล้ว'; } }, { threshold: .6 });
+  // the story counts as finished only if the reader spent at least ~35% of a learner's reading time on it
+  let ended = false, active = 0;
+  const need = Math.max(20000, wordCount(n) / (WPM[n.lvl] || 90) * 60000 * 0.35);
+  storyTimer = setInterval(() => { if (view.name === 'story' && document.visibilityState === 'visible' && document.hasFocus() && (performance.now() - lastScrollT > 180 || scrollSpeed < 2)) active += 1000; }, 1000);
+  storyFinish = () => { if (ended) return; ended = true; const got = finishItem(n, true); S.novelPos[n.id] = 100; save(); const p = $('#storyEnd p'); if (p) p.innerHTML = got.length ? `บันทึกคำยากลงแฟลชการ์ดแล้ว ${got.length} คำ: <b>${got.map(esc).join(', ')}</b>` : 'คำยากจากเรื่องนี้อยู่ในแฟลชการ์ดของคุณแล้ว'; const fb = $('#finishStoryBtn'); if (fb) fb.remove(); };
+  endObserver = new IntersectionObserver(ents => {
+    if (!ents[0].isIntersecting || ended) return;
+    if (S.read[n.id] || active >= need) return storyFinish();
+    const p = $('#storyEnd p');
+    if (p) p.innerHTML = `เลื่อนมาถึงตอนจบเร็วกว่าเวลาอ่านปกติ จึงยังไม่นับว่าอ่านจบ (อ่านไป ${Math.round(active / 1000)} จาก ~${Math.round(need / 1000)} วินาที) ลองย้อนอ่านอีกครั้ง หรือกดปุ่มด้านล่างถ้าอ่านจบแล้วจริงๆ`;
+    if (!$('#finishStoryBtn')) $('#storyEnd .tools').insertAdjacentHTML('afterbegin', `<button class="tbtn" id="finishStoryBtn" data-act="finishstory">${ic('check')}อ่านจบแล้วจริงๆ</button>`);
+  }, { threshold: .6 });
   endObserver.observe($('#storyEnd'));
 }
 function onScroll() {
+  const now = performance.now(), dt = now - lastScrollT;
+  if (dt > 0) scrollSpeed = dt > 300 ? 0 : Math.abs(scrollY - lastScrollY) / dt;
+  lastScrollY = scrollY; lastScrollT = now;
   if (view.name !== 'story') return;
   const body = $('#artBody'); if (!body) return;
   const r = body.getBoundingClientRect(); const pct = Math.min(100, Math.max(0, Math.round((innerHeight - r.top) / (r.height) * 100)));
@@ -1043,15 +1109,17 @@ function onClick(e) {
     case 'flvl': { const v = b.dataset.v; s.feedLvls = !v ? [] : s.feedLvls.includes(v) ? s.feedLvls.filter(x => x !== v) : [...s.feedLvls, v]; save(); render(); break; }
     case 'rcat': s.readCat = b.dataset.v; save(); render(); break;
     case 'rlvl': { const v = b.dataset.v; s.readLvls = !v ? [] : s.readLvls.includes(v) ? s.readLvls.filter(x => x !== v) : [...s.readLvls, v]; save(); render(); break; }
-    case 'like': { const id = b.dataset.id; S.likes[id] = !S.likes[id]; save(); const p = BYID[id]; b.classList.toggle('liked', !!S.likes[id]); b.innerHTML = ic('heart') + ((p.likes || 0) + (S.likes[id] ? 1 : 0)); break; }
-    case 'cmts': { const c = $('.comments', b.closest('.post')); c.hidden = !c.hidden; b.setAttribute('aria-pressed', !c.hidden); break; }
-    case 'trpost': { const post = b.closest('.post'); const on = b.getAttribute('aria-pressed') !== 'true'; $$('.rt', post).forEach(r => r.classList.toggle('showtr', on)); b.setAttribute('aria-pressed', on); break; }
+    case 'finishstory': if (storyFinish) storyFinish(); break;
+    case 'showread': showReadFeed = !showReadFeed; render(); scrollTo(0, 0); break;
+    case 'like': { engage(b); const id = b.dataset.id; S.likes[id] = !S.likes[id]; save(); const p = BYID[id]; b.classList.toggle('liked', !!S.likes[id]); b.innerHTML = ic('heart') + ((p.likes || 0) + (S.likes[id] ? 1 : 0)); break; }
+    case 'cmts': { engage(b); const c = $('.comments', b.closest('.post')); c.hidden = !c.hidden; b.setAttribute('aria-pressed', !c.hidden); break; }
+    case 'trpost': { engage(b); const post = b.closest('.post'); const on = b.getAttribute('aria-pressed') !== 'true'; $$('.rt', post).forEach(r => r.classList.toggle('showtr', on)); b.setAttribute('aria-pressed', on); break; }
     case 'trall': { const on = b.getAttribute('aria-pressed') !== 'true'; const it = BYID[view.id];
       $$('#main .rt').forEach(r => r.classList.toggle('showtr', on)); b.setAttribute('aria-pressed', on);
       if (on && it && it.kind === 'web' && allSentences(it).some(x => !x[st().trLang === 'en' ? 1 : 2])) mtAll(b, it).then(() => b.setAttribute('aria-pressed', 'true'));
       break; }
     case 'trlang': s.trLang = s.trLang === 'th' ? 'en' : 'th'; save(); { const y = scrollY; const open = $$('#main .rt.showtr').length > 0; render(); if (open) { $$('#main .rt').forEach(r => r.classList.add('showtr')); const t = $('[data-act="trall"]'); t && t.setAttribute('aria-pressed', 'true'); } scrollTo(0, y); } break;
-    case 'readall': { const root = b.closest('.post') || $('#artBody'); readAll(root, view.name === 'feed' ? BYID[$('.post-end', root).dataset.id].lang : st().lang, b); break; }
+    case 'readall': { engage(b); const root = b.closest('.post') || $('#artBody'); readAll(root, view.name === 'feed' ? BYID[$('.post-end', root).dataset.id].lang : st().lang, b); break; }
     case 'mtall': mtAll(b, BYID[view.id]); break;
     case 'open': go('article', b.dataset.id); break;
     case 'finishweb': { const it = BYID[view.id]; const got = finishItem(it, true); toast(got.length ? `บันทึกคำยาก ${got.length} คำ` : 'บันทึกว่าอ่านจบแล้ว'); break; }
