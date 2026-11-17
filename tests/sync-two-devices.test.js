@@ -20,7 +20,7 @@ window.TRIADA_FIREBASE = { apiKey: 'test', projectId: 'test' };
     await pg.goto('http://localhost:8765/index.html'); await pg.waitForTimeout(400); return pg; };
   const A = await dev('A');
   // A: make some cards by reading a post, then log in
-  await A.click('[data-tab="read"]'); await A.click('.card[data-act="open"] >> nth=1'); for (let q = 0; q < 5; q++) await A.click(`.q[data-qi="${q}"] .opt >> nth=0`);
+  await A.click('[data-tab="read"]'); await A.click('.card[data-act="open"][data-id="fr-r2"]'); for (let q = 0; q < 5; q++) await A.click(`.q[data-qi="${q}"] .opt >> nth=0`);
   await A.waitForTimeout(300);
   const cardsA = await A.evaluate(() => Object.keys(TriadaApp.state().cards).length);
   await A.click('[data-act="prefs"]'); await A.screenshot({ path: SP + '/s1-signedout.png' });
@@ -29,7 +29,7 @@ window.TRIADA_FIREBASE = { apiKey: 'test', projectId: 'test' };
   await A.screenshot({ path: SP + '/s2-signedin.png' });
   // B: different device with its own card + different setting, then log in
   const B = await dev('B');
-  await B.click('[data-lang="es"]'); await B.click('[data-tab="read"]'); await B.click('.card[data-act="open"] >> nth=0'); for (let q = 0; q < 5; q++) await B.click(`.q[data-qi="${q}"] .opt >> nth=0`);
+  await B.click('[data-lang="es"]'); await B.click('[data-tab="read"]'); await B.click('.card[data-act="open"][data-id="es-r2"]'); for (let q = 0; q < 5; q++) await B.click(`.q[data-qi="${q}"] .opt >> nth=0`);
   await B.waitForTimeout(300); const cardsB = await B.evaluate(() => Object.keys(TriadaApp.state().cards).length);
   await B.click('[data-act="prefs"]'); await B.click('[data-k="theme"][data-v="dark"]'); await B.waitForTimeout(300);
   await B.click('[data-act="signin"]'); await B.waitForTimeout(6000);

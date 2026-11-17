@@ -10,7 +10,7 @@ const LANGS = {
   es: { name: 'Español', th: 'สเปน', tts: 'es-ES' },
   nl: { name: 'Nederlands', th: 'ดัตช์', tts: 'nl-NL' }
 };
-const FEED_CATS = { food: 'อาหาร', travel: 'ท่องเที่ยว', life: 'ชีวิตประจำวัน', tech: 'เทคโนโลยี', sport: 'กีฬา', culture: 'บันเทิง', work: 'การงาน', nature: 'ธรรมชาติ', economy: 'เศรษฐกิจ' };
+const FEED_CATS = { food: 'อาหาร', travel: 'ท่องเที่ยว', life: 'ชีวิตประจำวัน', tech: 'เทคโนโลยี', sport: 'กีฬา', culture: 'บันเทิง', work: 'การงาน', nature: 'ธรรมชาติ', economy: 'เศรษฐกิจ', society: 'สังคม' };
 const READ_CATS = { science: 'วิทยาศาสตร์', health: 'สุขภาพ', tech: 'เทคโนโลยี', env: 'สิ่งแวดล้อม', society: 'สังคม', economy: 'เศรษฐกิจ', news: 'ข่าว', history: 'ประวัติศาสตร์' };
 const GENRES = {
   horror: { th: 'สยองขวัญ', c: '#6B2A3A' }, romance: { th: 'โรแมนติก', c: '#C2367A' }, comedy: { th: 'ตลก', c: '#C98A00' },
