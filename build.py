@@ -8,7 +8,7 @@ import pathlib, json, hashlib, shutil, base64
 
 ROOT = pathlib.Path(__file__).parent
 SRC, DIST, ART = ROOT / "src", ROOT / "docs", ROOT / "artifact"
-DATA = ["fr.js", "fr2.js", "fr3.js", "fr4.js", "fr5.js", "fr6.js", "fr7.js", "fr8.js", "fr9.js", "fr10.js", "fr11.js", "fr12.js", "fr13.js", "fr14.js", "fr15.js", "fr16.js", "fr17.js", "fr18.js", "fr19.js", "fr20.js", "fr21.js", "fr22.js", "fr23.js", "fr24.js", "fr25.js", "fr26.js", "fr27.js", "fr28.js", "fr29.js", "fr30.js", "fr31.js", "es.js", "es2.js", "es3.js", "es4.js", "es5.js", "es6.js", "es7.js", "es8.js", "es9.js", "es10.js", "es11.js", "es12.js", "es13.js", "es14.js", "es15.js", "es16.js", "es17.js", "es18.js", "es19.js", "es20.js", "es21.js", "es22.js", "es23.js", "es24.js", "es25.js", "es26.js", "es27.js", "es28.js", "es29.js", "es30.js", "es31.js", "nl.js", "nl2.js", "nl3.js", "nl4.js", "nl5.js", "nl6.js", "nl7.js", "nl8.js", "nl9.js", "nl10.js", "nl11.js", "nl12.js", "nl13.js", "nl14.js", "nl15.js", "nl16.js", "nl17.js", "nl18.js", "nl19.js", "nl20.js", "nl21.js", "nl22.js", "nl23.js", "nl24.js", "nl25.js", "nl26.js", "nl27.js", "nl28.js", "nl29.js", "nl30.js", "nl31.js"]
+DATA = [f"{l}{i}.js" for l in ("fr", "es", "nl") for i in ([""] + list(range(2, 42)))]
 
 css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)

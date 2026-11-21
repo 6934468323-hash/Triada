@@ -19,5 +19,9 @@ window.TRIADA_I18N = {
   "การบริโภค": "Consumption",
   "พลังงาน": "Energy",
   "สงคราม": "War",
-  "การจัดการน้ำ": "Water management"
+  "การจัดการน้ำ": "Water management",
+  "ภาพยนตร์": "Film",
+  "อุตสาหกรรม": "Industry",
+  "อาณานิคม": "Colonialism",
+  "กฎหมาย": "Law"
 };
