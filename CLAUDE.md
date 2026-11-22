@@ -30,7 +30,7 @@ Links:
 - `src/app.css` holds styles. Tokens are on `:root`, with dark mode and `data-skin="sepia"` variants. Thai needs taller line heights and no letter-spacing (`html[lang="th"]` rules).
 - `src/i18n.js` maps Thai interface strings and fragments to English (see i18n below).
 - `src/firebase-config.js` holds the Firebase web config for project `triada---reader`. These values are public identifiers, not secrets.
-- `src/data/{fr,es,nl}{,2..41}.js` holds the content (second batch: 6–7 feed, 8–9 articles, 10–11 stories; third batch: 12–14 feed, 15–18 articles, 19–21 stories; fourth batch: 22–24 feed, 25–28 articles, 29–31 stories; fifth batch: 32–34 feed, 35–38 articles, 39–41 stories). `DATA` in `build.py` is generated for numbers 2..41, so a new batch means raising that range.
+- `src/data/{fr,es,nl}{,2..54}.js` holds the content (second batch: 6–7 feed, 8–9 articles, 10–11 stories; third batch: 12–14 feed, 15–18 articles, 19–21 stories; fourth batch: 22–24 feed, 25–28 articles, 29–31 stories; fifth batch: 32–34 feed, 35–38 articles, 39–41 stories; sixth batch: 42–47 feed, 48–51 articles, 52–54 stories). `DATA` in `build.py` is generated for numbers 2..54, so a new batch means raising that range.
 - `src/fonts/` holds self-hosted woff2 files (Fontsource: IBM Plex Sans Thai, Literata, Bricolage Grotesque).
 - `python3 build.py` writes:
   - `docs/index.html`, `sw.js`, `manifest.webmanifest`, icons and `fonts/`: the PWA. The cache version is a hash of the sources, so installed apps update.
@@ -44,7 +44,7 @@ Links:
 - Feed post: `{id, cat, lvl, user, handle, time, likes, s:[...], v:{}, c:[{u, s:[...]}]}`. Topics are the keys of `FEED_CATS` in app.js.
 - Article: `{id, cat, lvl, src, title:[o,en,th], p:[[...paragraph...], ...], v, q:[{t, q:[question, thai], o:[4 options], a, x:"Thai explanation"}]}`. Options are shuffled when shown, and A-D letters inside `x` are remapped automatically. Question types are listed in `QTYPES`.
 - Story: `{id, genre, lvl, title, blurb (Thai), p:[...paragraphs..., "* * *", ...], v}`. Genres are listed in `GENRES`.
-- Current counts per language: 200 feed posts, 80 articles and 48 stories. Article `src` labels are Thai and shown in the UI, so every fragment (split on `/`) needs an English entry in `src/i18n.js`. Feed topics include `society`; article categories must be keys of `READ_CATS` (there is no `nature` there, so use `env`). The top-level key for articles is `read:`, not `article:`.
+- Current counts per language: 300 feed posts, 100 articles and 60 stories. Article `src` labels are Thai and shown in the UI, so every fragment (split on `/`) needs an English entry in `src/i18n.js`. Feed topics include `society`; article categories must be keys of `READ_CATS` (there is no `nature` there, so use `env`). The top-level key for articles is `read:`, not `article:`.
 - Articles must be factual. Fact-check every number and date; nothing is invented except the stories and the feed posts.
 - After adding content, run the validation snippet: it checks for duplicate ids, sentences with three parts, quiz shape and vocab with four or more fields (see git history), then rebuild.
 

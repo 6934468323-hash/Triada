@@ -23,5 +23,11 @@ window.TRIADA_I18N = {
   "ภาพยนตร์": "Film",
   "อุตสาหกรรม": "Industry",
   "อาณานิคม": "Colonialism",
-  "กฎหมาย": "Law"
+  "กฎหมาย": "Law",
+  "การ์ตูน": "Comics",
+  "การค้า": "Trade",
+  "ทะเล": "Sea",
+  "การปกครอง": "Government",
+  "ยุโรป": "Europe",
+  "การสำรวจ": "Exploration"
 };
