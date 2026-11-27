@@ -8,7 +8,7 @@ import pathlib, json, hashlib, shutil, base64
 
 ROOT = pathlib.Path(__file__).parent
 SRC, DIST, ART = ROOT / "src", ROOT / "docs", ROOT / "artifact"
-DATA = [f"{l}{i}.js" for l in ("fr", "es", "nl") for i in ([""] + list(range(2, 55)))]
+DATA = [f"{l}{i}.js" for l in ("fr", "es", "nl") for i in ([""] + list(range(2, 68)))]
 
 css = (SRC / "app.css").read_text()
 data = "\n".join((SRC / "data" / f).read_text() for f in DATA)

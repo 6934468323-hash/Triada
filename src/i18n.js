@@ -29,5 +29,13 @@ window.TRIADA_I18N = {
   "ทะเล": "Sea",
   "การปกครอง": "Government",
   "ยุโรป": "Europe",
-  "การสำรวจ": "Exploration"
+  "การสำรวจ": "Exploration",
+  "การคมนาคม": "Transport",
+  "ก่อการร้าย": "Terrorism",
+  "สันติภาพ": "Peace",
+  "ความยุติธรรม": "Justice",
+  "ภูมิภาค": "Regions",
+  "แฟชั่น": "Fashion",
+  "ราชวงศ์": "Monarchy",
+  "ภัยพิบัติ": "Disasters"
 };
