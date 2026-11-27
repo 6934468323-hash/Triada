@@ -1,5 +1,5 @@
 /* Dutch content, part 18: articles (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r36", cat:"env", lvl:"A2", src:"ธรรมชาติ/ท่องเที่ยว", title:["De Hoge Veluwe: fietsen tussen herten en kunst","The Hoge Veluwe: cycling between deer and art","โฮเคอเฟลูเวอ: ปั่นจักรยานระหว่างกวางกับงานศิลปะ"],

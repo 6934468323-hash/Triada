@@ -1,5 +1,5 @@
 /* French content, part 50: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r91", cat:"env", lvl:"B2", src:"ภูมิอากาศ/การเมือง", title:["L'accord de Paris, une promesse sans gendarme","The Paris Agreement, a promise without a policeman","ความตกลงปารีส คำสัญญาที่ไม่มีผู้บังคับ"],

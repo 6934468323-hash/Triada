@@ -1,9 +1,9 @@
 /* ---------- account & cross-device sync (Firebase Auth + Firestore) ----------
    Spliced into app.js at build time (shares its scope). Login is optional: without it the app stays fully local.
    One Firestore document per user (users/{uid}) holds the whole progress as JSON; devices merge field by field. */
-const FB_CFG = window.TRIADA_FIREBASE && window.TRIADA_FIREBASE.apiKey ? window.TRIADA_FIREBASE : null;
+const FB_CFG = window.LEXIPLUMA_FIREBASE && window.LEXIPLUMA_FIREBASE.apiKey ? window.LEXIPLUMA_FIREBASE : null;
 const FB_VER = '10.12.2';
-const CLIENT_ID = (() => { try { let c = localStorage.getItem('triada.client'); if (!c) { c = Math.random().toString(36).slice(2, 10); localStorage.setItem('triada.client', c); } return c; } catch (e) { return 'x' + Math.random().toString(36).slice(2, 8); } })();
+const CLIENT_ID = (() => { try { let c = localStorage.getItem('lexipluma.client') || localStorage.getItem('triada.client'); if (c) localStorage.setItem('lexipluma.client', c); if (!c) { c = Math.random().toString(36).slice(2, 10); localStorage.setItem('lexipluma.client', c); } return c; } catch (e) { return 'x' + Math.random().toString(36).slice(2, 8); } })();
 const SYNC_KEYS = ['cards', 'read', 'quiz', 'likes', 'history', 'novelPos', 'web', 'deleted', 'settings', 'settingsAt'];
 const sync = { fb: null, user: null, unsub: null, status: 'off', last: 0, err: '', pushT: null, applying: false, loading: null };
 

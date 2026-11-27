@@ -1,5 +1,5 @@
 /* French content, part 11: stories (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n10", genre:"mystery", lvl:"B2", title:["Le tableau qui manquait","The missing painting","ภาพวาดที่หายไป"], blurb:"ภาพวาดหายไปจากพิพิธภัณฑ์ แต่ไม่มีใครเข้าออกห้องนั้น ยกเว้นผู้คุมคนเดียวที่ตาบอดสี",

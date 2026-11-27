@@ -1,5 +1,5 @@
 /* French content, part 23: feed posts (fourth batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f118", cat:"food", lvl:"A1", user:"Sarah Lemoine", handle:"sarah_pain", time:"1 ชม.", likes:70,

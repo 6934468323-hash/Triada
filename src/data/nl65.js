@@ -1,5 +1,5 @@
 /* Dutch content, part 65: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n61", genre:"comedy", lvl:"A1", title:["Kees de papegaai","Kees the parrot","คีสนกแก้ว"], blurb:"นกแก้วของคุณตายานพูดภาษาดัตช์ได้ แต่มันชอบพูดประโยคผิดเวลา จนทำให้ทั้งบ้านวุ่นวาย",

@@ -1,5 +1,5 @@
 /* Dutch content, part 8: articles (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r11", cat:"society", lvl:"A1", src:"วัฒนธรรม/สังคม", title:["Koningsdag: het hele land is oranje","King's Day: the whole country is orange","วันกษัตริย์: ทั้งประเทศเป็นสีส้ม"],

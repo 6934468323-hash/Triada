@@ -1,5 +1,5 @@
 /* Spanish content, part 36: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r66", cat:"society", lvl:"B1", src:"กีฬา/เมือง", title:["Barcelona 92: los Juegos que cambiaron una ciudad","Barcelona '92: the Games that changed a city","บาร์เซโลนา 92: โอลิมปิกที่เปลี่ยนเมือง"],

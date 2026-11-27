@@ -1,5 +1,5 @@
 /* Dutch content, part 4: more feed posts */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f15", cat:"life", lvl:"A1", user:"Noor Visser", handle:"noor_en_poes", time:"40 นาที", likes:88,

@@ -1,5 +1,5 @@
 /* Dutch content, part 9: articles (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r16", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/ประวัติศาสตร์", title:["Antoni van Leeuwenhoek en de onzichtbare wereld","Antoni van Leeuwenhoek and the invisible world","อันโตนี ฟาน เลเวนฮุก กับโลกที่มองไม่เห็น"],

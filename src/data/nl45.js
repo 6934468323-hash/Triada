@@ -1,5 +1,5 @@
 /* Dutch content, part 45: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f252", cat:"food", lvl:"A1", user:"Fleur Peeters", handle:"fleur_hagelslag", time:"1 ชม.", likes:85,

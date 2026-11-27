@@ -1,5 +1,5 @@
 /* Dutch content, part 60: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f385", cat:"food", lvl:"A1", user:"Lieke Smeets", handle:"lieke_pannenkoek", time:"1 ชม.", likes:100,

@@ -1,5 +1,5 @@
 /* Spanish content, part 30: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n29", genre:"fantasy", lvl:"B1", title:["El reloj que devolvía las horas","The clock that gave hours back","นาฬิกาที่คืนเวลา"], blurb:"ช่างซ่อมนาฬิกาวัยชราได้รับนาฬิกาประหลาดที่หมุนย้อนเวลาได้หนึ่งชั่วโมงต่อวัน แต่ทุกชั่วโมงที่ได้คืนมามีราคาที่ต้องจ่าย",

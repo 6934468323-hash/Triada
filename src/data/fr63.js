@@ -1,5 +1,5 @@
 /* French content, part 63: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r111", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/พลังงาน", title:["ITER, un soleil miniature en Provence","ITER, a miniature sun in Provence","ITER ดวงอาทิตย์จำลองในโพรวองซ์"],

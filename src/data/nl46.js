@@ -1,5 +1,5 @@
 /* Dutch content, part 46: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f268", cat:"life", lvl:"A1", user:"Sem Dijkman", handle:"sem_woonboot", time:"1 ชม.", likes:75,

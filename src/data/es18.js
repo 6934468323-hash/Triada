@@ -1,5 +1,5 @@
 /* Spanish content, part 18: articles (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r36", cat:"env", lvl:"A2", src:"ธรรมชาติ/สัตว์", title:["El colibrí, un pájaro increíble","The hummingbird, an incredible bird","นกฮัมมิงเบิร์ด นกที่น่าทึ่ง"],

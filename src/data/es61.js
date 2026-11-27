@@ -1,5 +1,5 @@
 /* Spanish content, part 61: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r101", cat:"society", lvl:"A1", src:"เมือง/การคมนาคม", title:["El metro de Madrid","The Madrid Metro","รถไฟใต้ดินมาดริด"],

@@ -1,5 +1,5 @@
 /* Dutch content, part 50: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r91", cat:"history", lvl:"B2", src:"การเมือง/ยุโรป", title:["Het Verdrag van Maastricht: de geboorte van de Europese Unie","The Maastricht Treaty: the birth of the European Union","สนธิสัญญามาสทริชต์: กำเนิดสหภาพยุโรป"],

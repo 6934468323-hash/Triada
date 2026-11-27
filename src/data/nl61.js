@@ -1,5 +1,5 @@
 /* Dutch content, part 61: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r101", cat:"society", lvl:"A1", src:"อาหาร/วัฒนธรรม", title:["Poffertjes","Poffertjes","ปอฟเฟอร์ตเยส"],

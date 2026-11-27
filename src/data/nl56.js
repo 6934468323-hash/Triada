@@ -1,5 +1,5 @@
 /* Dutch content, part 56: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f318", cat:"food", lvl:"A1", user:"Noor Brouwer", handle:"noor_stroopwafel", time:"1 ชม.", likes:90,

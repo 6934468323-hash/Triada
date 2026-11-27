@@ -1,5 +1,5 @@
 /* Spanish content, part 21: stories (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n21", genre:"mystery", lvl:"C1", title:["El testamento del notario","The notary's will","พินัยกรรมของโนตารี"], blurb:"โนตารีเฒ่าผู้เก็บความลับของทั้งเมืองเสียชีวิต และพินัยกรรมของเขามีเงื่อนไขประหลาด: ทายาทต้องอ่านหนังสือเล่มเดียวกันทั้งเจ็ดคน",

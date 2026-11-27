@@ -1,5 +1,5 @@
 /* Dutch content, part 29: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n25", genre:"comedy", lvl:"A1", title:["De fiets van opa","Grandpa's bike","จักรยานของคุณปู่"], blurb:"คุณปู่มีจักรยานเก่ามากที่ไม่มีเบรก ทั้งหมู่บ้านรู้ดีว่าเมื่อเห็นท่านมาต้องหลบ",

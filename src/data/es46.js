@@ -1,5 +1,5 @@
 /* Spanish content, part 46: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f268", cat:"life", lvl:"A1", user:"Bruno Delgado", handle:"bruno_casa", time:"1 ชม.", likes:70,

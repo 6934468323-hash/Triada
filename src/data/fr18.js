@@ -1,5 +1,5 @@
 /* French content, part 18: articles (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r36", cat:"science", lvl:"A2", src:"วิทยาศาสตร์", title:["La Lune et les marées","The Moon and the tides","ดวงจันทร์กับน้ำขึ้นน้ำลง"],

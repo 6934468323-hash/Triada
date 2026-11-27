@@ -1,5 +1,5 @@
 /* French content, part 47: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f285", cat:"food", lvl:"A1", user:"Léna Dupuis", handle:"lena_gateau", time:"1 ชม.", likes:90,

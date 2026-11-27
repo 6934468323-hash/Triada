@@ -1,5 +1,5 @@
 /* Spanish content, part 47: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f285", cat:"food", lvl:"A1", user:"Ainara López", handle:"ainara_helado", time:"1 ชม.", likes:80,

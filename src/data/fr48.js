@@ -1,5 +1,5 @@
 /* French content, part 48: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r81", cat:"society", lvl:"A1", src:"เมือง/คมนาคม", title:["Le métro de Paris","The Paris metro","รถไฟใต้ดินปารีส"],

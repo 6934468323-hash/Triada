@@ -1,5 +1,5 @@
 /* Spanish content, part 4: more feed posts */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f15", cat:"life", lvl:"A1", user:"Sara López", handle:"sara_cumple", time:"1 ชม.", likes:96,

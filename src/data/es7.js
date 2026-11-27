@@ -1,5 +1,5 @@
 /* Spanish content, part 7: feed posts (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f42", cat:"culture", lvl:"B2", user:"Paco Jiménez", handle:"paco_siesta", time:"3 ชม.", likes:1420,

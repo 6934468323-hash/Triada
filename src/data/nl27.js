@@ -1,5 +1,5 @@
 /* Dutch content, part 27: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r51", cat:"history", lvl:"B2", src:"วรรณกรรม/ประวัติศาสตร์", title:["Max Havelaar: van roman tot keurmerk","Max Havelaar: from novel to label","มักซ์ ฮาเฟอลาร์: จากนวนิยายสู่ฉลากสินค้า"],

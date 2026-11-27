@@ -1,5 +1,5 @@
 /* French content, part 54: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n57", genre:"fantasy", lvl:"A2", title:["La boulangère et le dragon","The baker and the dragon","คนทำขนมปังกับมังกร"], blurb:"มังกรตัวน้อยมาขอไฟจากเตาอบของร้านขนมปังทุกคืน แต่ทั้งหมู่บ้านกลัวมันจนตัวสั่น",

@@ -1,5 +1,5 @@
 /* French content, part 59: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f368", cat:"life", lvl:"A1", user:"Maël Robin", handle:"mael_dimanche", time:"1 ชม.", likes:65,

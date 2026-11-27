@@ -1,5 +1,5 @@
 /* Spanish content, part 31: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n33", genre:"horror", lvl:"B2", title:["La voz del ascensor","The voice in the lift","เสียงในลิฟต์"], blurb:"ลิฟต์เก่าในอาคารมาดริดเริ่มประกาศชั้นที่ไม่มีอยู่จริง ชั้นที่สิบสาม",

@@ -1,5 +1,5 @@
 /* Spanish content, part 44: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f235", cat:"food", lvl:"A1", user:"Eva Marín", handle:"eva_gazpacho", time:"1 ชม.", likes:70,

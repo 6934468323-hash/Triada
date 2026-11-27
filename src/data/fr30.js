@@ -1,5 +1,5 @@
 /* French content, part 30: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n29", genre:"horror", lvl:"B1", title:["Le miroir du grenier","The mirror in the attic","กระจกในห้องใต้หลังคา"], blurb:"เด็กสาวพบกระจกเก่าในห้องใต้หลังคาของบ้านยาย เงาในกระจกขยับช้ากว่าเธอหนึ่งวินาที",

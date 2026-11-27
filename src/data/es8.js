@@ -1,5 +1,5 @@
 /* Spanish content, part 8: articles A1–B1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r11", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["Los horarios de comida en España","Mealtimes in Spain","เวลาอาหารในสเปน"],

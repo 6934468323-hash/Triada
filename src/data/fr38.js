@@ -1,5 +1,5 @@
 /* French content, part 38: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r76", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สังคม", title:["Mai 68, le printemps qui fit vaciller la République","May '68, the spring that shook the Republic","พฤษภาคม 1968 ฤดูใบไม้ผลิที่สั่นคลอนสาธารณรัฐ"],

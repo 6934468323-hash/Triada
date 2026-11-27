@@ -1,5 +1,5 @@
 /* Spanish content, part 14: feed posts (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f85", cat:"food", lvl:"A1", user:"Cristina Lara", handle:"cris_fruta", time:"1 ชม.", likes:66,

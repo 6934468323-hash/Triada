@@ -1,5 +1,5 @@
 /* Spanish content, part 40: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n41", genre:"horror", lvl:"B1", title:["El hotel de la carretera","The roadside hotel","โรงแรมริมทาง"], blurb:"คืนพายุ ครอบครัวหนึ่งแวะพักโรงแรมเก่าริมถนนในแคว้นกัสติยา พนักงานต้อนรับรู้ชื่อพวกเขาก่อนที่จะบอก",

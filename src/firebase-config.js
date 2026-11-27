@@ -2,7 +2,7 @@
    From Firebase console → Project settings → Your apps → Web app (Config).
    These values identify the project; they are not secrets. Access is protected by the Firestore rules in README.md.
    Set it to null to run the app without login. */
-window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || {
+window.LEXIPLUMA_FIREBASE = window.LEXIPLUMA_FIREBASE || {
   apiKey: "AIzaSyCuEMl2bFdq0hkXB5yu9F_K5MRa-VOqUTc",
   authDomain: "triada---reader.firebaseapp.com",
   projectId: "triada---reader",

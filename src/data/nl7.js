@@ -1,5 +1,5 @@
 /* Dutch content, part 7: feed posts (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f42", cat:"work", lvl:"B2", user:"Hanneke Bosch", handle:"hanneke_zzp", time:"2 ชม.", likes:1240,

@@ -1,5 +1,5 @@
 /* Dutch content, part 10: stories (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n7", genre:"mystery", lvl:"A1", title:["Waar is de kat?","Where is the cat?","แมวอยู่ไหน?"], blurb:"แมวของลีซาหายไปทุกวันตอนบ่ายสามโมง และกลับมาพร้อมกลิ่นปลา",

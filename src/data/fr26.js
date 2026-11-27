@@ -1,5 +1,5 @@
 /* French content, part 26: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r46", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/สถาปัตยกรรม", title:["Versailles, le palais d'un roi soleil","Versailles, the palace of a Sun King","แวร์ซาย พระราชวังของสุริยกษัตริย์"],

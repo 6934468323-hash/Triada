@@ -1,5 +1,5 @@
 /* Spanish content, part 26: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r46", cat:"history", lvl:"B1", src:"วรรณกรรม/ชีวประวัติ", title:["Pablo Neruda, el poeta de Chile","Pablo Neruda, Chile's poet","ปาโบล เนรูดา กวีแห่งชิลี"],

@@ -1,5 +1,5 @@
 /* Dutch content, part 53: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n53", genre:"horror", lvl:"B1", title:["De laatste bus naar Nieuwlande","The last bus to Nieuwlande","รถเมล์เที่ยวสุดท้ายไปนีวลันเดอ"], blurb:"หญิงสาวขึ้นรถเมล์เที่ยวสุดท้ายไปหมู่บ้านของยายในเดรนเทอ ผู้โดยสารคนอื่นๆ ดูแปลก และไม่มีใครลงจากรถเลย",

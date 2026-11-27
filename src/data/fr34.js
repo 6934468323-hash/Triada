@@ -1,5 +1,5 @@
 /* French content, part 34: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f185", cat:"food", lvl:"A1", user:"Nina Clément", handle:"nina_marche", time:"2 ชม.", likes:90,

@@ -1,5 +1,5 @@
 /* Dutch content, part 25: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r41", cat:"society", lvl:"A1", src:"อาหาร/ชีวิตประจำวัน", title:["Drop","Dutch liquorice","ชะเอมดำ (โดรป)"],

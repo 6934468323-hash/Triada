@@ -1,5 +1,5 @@
 /* Dutch content, part 54: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n57", genre:"fantasy", lvl:"A2", title:["De bakker en de draak","The baker and the dragon","คนทำขนมปังกับมังกร"], blurb:"มังกรน้อยมาขอไฟจากเตาอบของร้านขนมปังทุกคืน แต่ชาวหมู่บ้านกลับกลัวมันจนตัวสั่น",

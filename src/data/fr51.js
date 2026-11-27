@@ -1,5 +1,5 @@
 /* French content, part 51: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r96", cat:"history", lvl:"C1", src:"ประวัติศาสตร์การเมือง", title:["1944 : le droit de vote des femmes, si tard","1944: women's right to vote, so late","ปี 1944 สิทธิเลือกตั้งของสตรี ที่มาช้าเหลือเกิน"],

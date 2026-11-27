@@ -1,5 +1,5 @@
 /* Dutch content, part 30: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n29", genre:"horror", lvl:"B1", title:["Het hunebed","The dolmen","หินตั้งโบราณ"], blurb:"สามเพื่อนตั้งแคมป์ข้างหินตั้งยุคก่อนประวัติศาสตร์ในเดรนเทอ คนหนึ่งหยิบหินก้อนเล็กกลับบ้านไปเป็นที่ระลึก",

@@ -1,5 +1,5 @@
 /* French content, part 35: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r61", cat:"society", lvl:"A1", src:"อาหาร/ชีวิตประจำวัน", title:["À la boulangerie","At the bakery","ที่ร้านขนมปัง"],

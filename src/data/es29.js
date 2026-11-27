@@ -1,5 +1,5 @@
 /* Spanish content, part 29: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n25", genre:"mystery", lvl:"A1", title:["¿Dónde está mi sombrero?","Where is my hat?","หมวกของฉันอยู่ไหน?"], blurb:"หมวกสีแดงของคุณยายโรซาหายไปทุกเช้า ใครกันนะที่เอาไป",

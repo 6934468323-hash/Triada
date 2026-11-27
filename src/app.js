@@ -1,4 +1,4 @@
-/* Tríada Reader — อ่านภาษาฝรั่งเศส สเปน ดัตช์ (ทำงานออฟไลน์ได้ทั้งหมด ยกเว้นฟีเจอร์ที่ระบุว่า "ออนไลน์") */
+/* LexiPluma — อ่านภาษาฝรั่งเศส สเปน ดัตช์ (ทำงานออฟไลน์ได้ทั้งหมด ยกเว้นฟีเจอร์ที่ระบุว่า "ออนไลน์") */
 (function () {
 'use strict';
 
@@ -44,7 +44,8 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
 /* ================= storage ================= */
-const KEY = 'triada.v1';
+const KEY = 'lexipluma.v1';
+try { if (!localStorage.getItem(KEY) && localStorage.getItem('triada.v1')) { localStorage.setItem(KEY, localStorage.getItem('triada.v1')); localStorage.removeItem('triada.v1'); } } catch (e) { } /* carry data over from the old name */
 const DEFAULTS = {
   uiLang: 'th', lang: 'fr', trLang: 'th', theme: 'auto', accent: 'lang', fontSize: 19, lineHeight: 1.75, readFont: 'serif',
   markHard: true, markSaved: true, showTrDefault: false, autoSave: true, saveLevel: 'auto',
@@ -87,7 +88,7 @@ function allSentences(item) {
   return out;
 }
 function ingest() {
-  (window.TRIADA_DATA || []).forEach(d => {
+  (window.LEXIPLUMA_DATA || []).forEach(d => {
     const L = DB[d.lang]; if (!L) return;
     Object.assign(L.base, d.base || {});
     ['feed', 'read', 'novel'].forEach(k => (d[k] || []).forEach(it => { if (it.vv) { it.v = Object.assign(it.v || {}, it.vv); delete it.vv; } it.lang = d.lang; it.kind = k; L[k].push(it); BYID[it.id] = it; }));
@@ -395,8 +396,8 @@ function addHistory(lang, w) { S.history = [{ lang, w, t: Date.now() }, ...S.his
 let toastT;
 /* ---------- interface language ----------
    Templates are written in Thai. With the English UI, every Thai fragment outside reading content is swapped
-   for its English counterpart (window.TRIADA_I18N) as soon as it enters the page. */
-const I18N = window.TRIADA_I18N || {};
+   for its English counterpart (window.LEXIPLUMA_I18N) as soon as it enters the page. */
+const I18N = window.LEXIPLUMA_I18N || {};
 const I18N_RE = new RegExp(Object.keys(I18N).sort((a, b) => b.length - a.length).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
 const CONTENT = '.rt,.c,.sh-mean,.sh-mean2:not(.ui),.sh-sent .o,.sh-sent .t,.sh-phrase div,.entry .m,.exs,.wd>div,.fc .mean,.fc .ex,.qth,.xq,.cover p,textarea,input';
 const isEN = () => S.settings.uiLang === 'en';
@@ -1089,7 +1090,7 @@ function vPrefs(m) {
       <div class="tools"><button class="tbtn" data-act="copyio">คัดลอก</button><button class="tbtn primary" data-act="doimport">นำเข้าจากข้อความนี้</button><a class="tbtn" id="dlLink" hidden>ดาวน์โหลดไฟล์</a></div></div>
     <div class="row"><label>ล้างข้อมูลทั้งหมด<small>ลบการ์ด ประวัติ และการตั้งค่า</small></label><button class="tbtn" data-act="reset" style="color:var(--bad)">${ic('trash')}ล้างข้อมูล</button></div>
   </section>
-  <p class="muted" style="font-size:12.5px">Tríada Reader · เนื้อหาบทความและเรื่องสั้นแต่งขึ้นเพื่อการเรียน เก็บข้อมูลไว้ในเครื่องนี้เท่านั้น</p>`;
+  <p class="muted" style="font-size:12.5px">LexiPluma · เนื้อหาบทความและเรื่องสั้นแต่งขึ้นเพื่อการเรียน เก็บข้อมูลไว้ในเครื่องนี้เท่านั้น</p>`;
 }
 
 /*__SYNC__*/
@@ -1161,10 +1162,10 @@ function onClick(e) {
     case 'dictsaveonline': if (dictOnline) { const { q, r } = dictOnline; sheetState = { onlineRes: r }; addCard(s.lang, null, q, null, null, false); sheetState = null; toast('บันทึก “' + q + '” แล้ว'); updateBadge(); } break;
     case 'set': { const k = b.dataset.k; let v = b.dataset.v; if (k === 'sessionSize') v = +v; s[k] = v; save(); if (k === 'uiLang') { shell(); startI18n(); } applyLook(); render(); break; }
     case 'testvoice': speak({ fr: 'Bonjour ! Bienvenue dans votre bibliothèque.', es: '¡Hola! Bienvenido a tu biblioteca.', nl: 'Hallo! Welkom in je bibliotheek.' }[s.lang], s.lang); break;
-    case 'export': { const row = $('#ioRow'); row.hidden = false; const json = JSON.stringify({ app: 'triada', v: 1, ...S }, null, 1); $('#ioText').value = json; try { const url = URL.createObjectURL(new Blob([json], { type: 'application/json' })); const dl = $('#dlLink'); dl.href = url; dl.download = 'triada-backup.json'; dl.hidden = window.self !== window.top; } catch (er) { } break; }
+    case 'export': { const row = $('#ioRow'); row.hidden = false; const json = JSON.stringify({ app: 'lexipluma', v: 1, ...S }, null, 1); $('#ioText').value = json; try { const url = URL.createObjectURL(new Blob([json], { type: 'application/json' })); const dl = $('#dlLink'); dl.href = url; dl.download = 'lexipluma-backup.json'; dl.hidden = window.self !== window.top; } catch (er) { } break; }
     case 'import': $('#ioRow').hidden = false; $('#ioText').value = ''; $('#ioText').placeholder = 'วางข้อมูล JSON ที่ส่งออกไว้ตรงนี้'; $('#ioText').focus(); break;
     case 'copyio': { const t = $('#ioText'); navigator.clipboard ? navigator.clipboard.writeText(t.value).then(() => toast('คัดลอกแล้ว'), () => { t.select(); toast('เลือกข้อความแล้ว กดคัดลอกได้เลย'); }) : t.select(); break; }
-    case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); shell(); startI18n(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
+    case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'lexipluma' && d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); shell(); startI18n(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
     case 'reset': if (b.dataset.sure) { try { localStorage.removeItem(KEY); } catch (er) { } S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, web: {}, tab: 'feed' }; shell(); startI18n(); applyLook(); toast('ล้างข้อมูลแล้ว'); render(); } else { b.dataset.sure = 1; b.innerHTML = 'แตะอีกครั้งเพื่อยืนยัน'; setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.innerHTML = ic('trash') + 'ล้างข้อมูล'; } }, 4000); } break;
   }
 }
@@ -1189,7 +1190,7 @@ function onChange(e) {
 function shell() {
   document.getElementById('app').innerHTML = `
   <header class="top"><div class="top-in">
-    <div class="brand">Tríada<small>อ่านฝรั่งเศส · สเปน · ดัตช์</small></div>
+    <div class="brand"><svg class="logo" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="lpg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF7C60"/><stop offset="1" stop-color="#FFB25F"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="#18202D"/><g transform="translate(18 6)"><path d="M118 418c70-12 118-12 168 6" stroke="#8197FF" stroke-width="20" stroke-linecap="round" fill="none"/><path d="M170 356C168 250 250 140 404 92C380 214 300 318 196 362Z" fill="url(#lpg)"/><path d="M196 362C232 300 300 214 404 92" stroke="#18202D" stroke-width="9" stroke-linecap="round" fill="none" opacity=".55"/><path d="M232 300l-34-6M262 260l-40-10M292 222l-42-14M322 184l-40-16M352 148l-34-14M248 282l30 12M278 242l34 10M310 202l32 8" stroke="#18202D" stroke-width="6" stroke-linecap="round" opacity=".35"/><path d="M196 362L150 420" stroke="#F3F5F8" stroke-width="16" stroke-linecap="round"/><path d="M150 420l-12 18" stroke="#F3F5F8" stroke-width="7" stroke-linecap="round"/></g></svg>LexiPluma<small>อ่านฝรั่งเศส · สเปน · ดัตช์</small></div>
     <div class="langs" role="group" aria-label="ภาษาที่เรียน">${Object.keys(LANGS).map(l => `<button data-act="lang" data-lang="${l}" title="${LANGS[l].name}">${l.toUpperCase()}</button>`).join('')}</div>
     <button class="iconbtn" data-act="prefs" aria-label="ตั้งค่า">${ic('gear')}</button>
   </div></header>
@@ -1218,6 +1219,6 @@ function boot() {
   view = { name: S.tab || 'feed' };
   render();
 }
-window.TriadaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, voiceScore, state: () => S };
+window.LexiPlumaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, voiceScore, state: () => S };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

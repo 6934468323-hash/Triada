@@ -1,5 +1,5 @@
 /* Spanish content, part 6: feed posts (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f25", cat:"life", lvl:"A1", user:"Elena Ruiz", handle:"elena_y_mishi", time:"30 นาที", likes:77,

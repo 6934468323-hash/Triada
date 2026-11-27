@@ -1,5 +1,5 @@
 /* French content, part 39: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n37", genre:"comedy", lvl:"A1", title:["Le chat qui aimait la baguette","The cat who loved baguettes","แมวที่ชอบขนมปังบาแก็ต"], blurb:"ทุกเช้าบาแก็ตของคุณเลอบลองถูกกัดปลายหายไป เขาคิดว่าเป็นเด็กข้างบ้าน แต่ความจริงไม่ใช่",

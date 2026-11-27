@@ -1,5 +1,5 @@
 /* French content, part 33: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f168", cat:"food", lvl:"A1", user:"Zoé Bernard", handle:"zoe_gouter", time:"1 ชม.", likes:75,

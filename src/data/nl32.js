@@ -1,5 +1,5 @@
 /* Dutch content, part 32: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f151", cat:"food", lvl:"A1", user:"Roos Kramer", handle:"roos_appeltaart", time:"1 ชม.", likes:90,

@@ -1,5 +1,5 @@
 /* Spanish content, part 17: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r31", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["El mate: una bebida para compartir","Mate: a drink for sharing","มาเต: เครื่องดื่มสำหรับแบ่งปัน"],

@@ -1,5 +1,5 @@
 /* French content, part 13: feed posts (third batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f68", cat:"life", lvl:"A1", user:"Emma Rousseau", handle:"emma_chien", time:"2 ชม.", likes:233,

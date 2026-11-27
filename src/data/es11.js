@@ -1,5 +1,5 @@
 /* Spanish content, part 11: stories (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n10", genre:"comedy", lvl:"B2", title:["La boda de mi prima","My cousin's wedding","งานแต่งของลูกพี่ลูกน้อง"], blurb:"เขาได้รับหน้าที่ดูแลแหวนแต่งงานในงานแต่งที่เซบียา และนกพิราบตัวหนึ่งก็มีแผนของมันเอง",

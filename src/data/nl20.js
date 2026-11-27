@@ -1,5 +1,5 @@
 /* Dutch content, part 20: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n17", genre:"mystery", lvl:"B1", title:["De laatste pont","The last ferry","เรือข้ามฟากเที่ยวสุดท้าย"], blurb:"ทุกคืน เรือข้ามฟากเที่ยวสุดท้ายในอัมสเตอร์ดัมพาผู้โดยสารคนเดิมข้ามแม่น้ำ แต่เขาไม่เคยลงจากเรือเลย",

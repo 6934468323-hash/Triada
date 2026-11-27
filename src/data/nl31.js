@@ -1,5 +1,5 @@
 /* Dutch content, part 31: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n33", genre:"fantasy", lvl:"B2", title:["De stad onder het water","The city under the water","เมืองใต้น้ำ"], blurb:"ระหว่างดำน้ำในทะเลสาบไอส์เซิลเมียร์ ลีอันพบหอระฆังของเมืองที่จมหายไปเมื่อหลายร้อยปีก่อน และได้ยินเสียงระฆังดังขึ้นมา",

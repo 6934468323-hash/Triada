@@ -1,5 +1,5 @@
 /* Dutch content, part 51: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r96", cat:"society", lvl:"C1", src:"กฎหมาย/สิทธิมนุษยชน", title:["Den Haag, stad van vrede en recht","The Hague, city of peace and justice","เดอะเฮก เมืองแห่งสันติภาพและความยุติธรรม"],

@@ -1,5 +1,5 @@
 /* Spanish content, part 3: stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n3", genre:"mystery", lvl:"B2", title:["El último pasajero del tranvía","The last passenger on the tram","ผู้โดยสารคนสุดท้ายบนรถราง"], blurb:"คนขับรถรางสายสุดท้ายของลิสบอนเจอกระเป๋าหนังที่ถูกลืมไว้ ข้างในมีรูปถ่ายของตัวเขาเองเมื่อสามสิบปีก่อน",

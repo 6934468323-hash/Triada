@@ -1,5 +1,5 @@
 /* Dutch content, part 55: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f301", cat:"food", lvl:"A1", user:"Sanne de Vries", handle:"sanne_hagelslag", time:"1 ชม.", likes:85,

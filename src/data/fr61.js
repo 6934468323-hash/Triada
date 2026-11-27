@@ -1,5 +1,5 @@
 /* French content, part 61: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r101", cat:"society", lvl:"A1", src:"กีฬา/วัฒนธรรม", title:["La pétanque","Pétanque","เปตอง"],

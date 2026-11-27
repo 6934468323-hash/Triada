@@ -1,5 +1,5 @@
 /* Dutch content, part 63: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r111", cat:"society", lvl:"B2", src:"การปกครอง/ราชวงศ์", title:["Afstand doen van de troon","Abdicating the throne","การสละราชบัลลังก์"],

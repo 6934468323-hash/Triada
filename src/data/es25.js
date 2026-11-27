@@ -1,5 +1,5 @@
 /* Spanish content, part 25: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r41", cat:"society", lvl:"A1", src:"อาหาร/ชีวิตประจำวัน", title:["Ir de tapas","Going out for tapas","ไปกินทาปาส"],

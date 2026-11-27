@@ -1,5 +1,5 @@
 /* French content, part 28: articles (fourth batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r56", cat:"history", lvl:"C1", src:"ประวัติศาสตร์การเมือง", title:["L'affaire Dreyfus, ou la France coupée en deux","The Dreyfus affair, or France split in two","คดีเดรฟุส หรือฝรั่งเศสที่แตกเป็นสองฝ่าย"],

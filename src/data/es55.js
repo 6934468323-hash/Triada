@@ -1,5 +1,5 @@
 /* Spanish content, part 55: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f301", cat:"food", lvl:"A1", user:"Rocío Gil", handle:"rocio_tostada", time:"1 ชม.", likes:75,

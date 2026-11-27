@@ -1,5 +1,5 @@
 /* Spanish content, part 20: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n17", genre:"romance", lvl:"B1", title:["Número equivocado","Wrong number","เบอร์ผิด"], blurb:"ข้อความที่ส่งผิดเบอร์ทำให้คนแปลกหน้าสองคนเริ่มคุยกันทุกคืน โดยไม่รู้ว่าอยู่ห่างกันแค่ถนนเดียว",

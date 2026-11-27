@@ -1,5 +1,5 @@
 /* Spanish content, part 37: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r71", cat:"env", lvl:"B2", src:"พลังงาน/สิ่งแวดล้อม", title:["El Hierro, la isla que quiere vivir del viento y del agua","El Hierro, the island that wants to live off wind and water","เอลเอียร์โร เกาะที่อยากพึ่งลมและน้ำ"],

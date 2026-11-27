@@ -1,5 +1,5 @@
 /* French content, part 19: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n13", genre:"comedy", lvl:"A1", title:["Le chien qui aimait le fromage","The dog who loved cheese","สุนัขที่รักชีส"], blurb:"ชีสในตู้เย็นหายทุกคืน ทั้งบ้านสงสัยกันเอง จนกระทั่งพ่อแอบตั้งกล้อง",

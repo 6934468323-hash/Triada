@@ -1,5 +1,5 @@
 /* Spanish content, part 54: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n57", genre:"fantasy", lvl:"A2", title:["El paraguas de los deseos","The umbrella of wishes","ร่มแห่งความปรารถนา"], blurb:"เด็กหญิงซื้อร่มเก่าจากตลาดนัด ทุกครั้งที่กางร่มในวันฝนตก ความปรารถนาหนึ่งข้อจะเป็นจริง แต่ฝนก็ไม่ค่อยตกเสียด้วย",

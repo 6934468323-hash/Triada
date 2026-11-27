@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build Tríada Reader.
   docs/            installable offline PWA (served by GitHub Pages) (index.html + sw.js + manifest + icons)
-  docs/triada-offline.html   one self-contained file (open it directly, no install needed)
+  docs/lexipluma-offline.html   one self-contained file (open it directly, no install needed)
   artifact/index.html        body-only build for publishing as a claude.ai artifact
 """
 import pathlib, json, hashlib, shutil, base64
@@ -18,9 +18,7 @@ ver = hashlib.sha1((css + data + app + "fonts-v1" + (SRC / "i18n.js").read_text(
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700"
          "&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&display=swap")
-ICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#18202D"/>
-<path d="M136 150h240" stroke="#8197FF" stroke-width="34" stroke-linecap="round"/><path d="M136 236h170" stroke="#FF7C60" stroke-width="34" stroke-linecap="round"/>
-<path d="M136 322h210" stroke="#FF9C4F" stroke-width="34" stroke-linecap="round"/><circle cx="372" cy="356" r="30" fill="#F3F5F8"/></svg>"""
+ICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF7C60"/><stop offset="1" stop-color="#FFB25F"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="#18202D"/><g transform="translate(18 6)"><path d="M118 418c70-12 118-12 168 6" stroke="#8197FF" stroke-width="20" stroke-linecap="round" fill="none"/><path d="M170 356C168 250 250 140 404 92C380 214 300 318 196 362Z" fill="url(#g)"/><path d="M196 362C232 300 300 214 404 92" stroke="#18202D" stroke-width="9" stroke-linecap="round" fill="none" opacity=".55"/><path d="M232 300l-34-6M262 260l-40-10M292 222l-42-14M322 184l-40-16M352 148l-34-14M248 282l30 12M278 242l34 10M310 202l32 8" stroke="#18202D" stroke-width="6" stroke-linecap="round" opacity=".35"/><path d="M196 362L150 420" stroke="#F3F5F8" stroke-width="16" stroke-linecap="round"/><path d="M150 420l-12 18" stroke="#F3F5F8" stroke-width="7" stroke-linecap="round"/></g></svg>"""
 
 i18n = (SRC / "i18n.js").read_text()
 body = f"""<div id="app"></div>
@@ -45,7 +43,7 @@ def font_css(inline: bool) -> str:
 
 def head(fonts: str) -> str:
     link = f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="{FONTS}">' if fonts == "google" else f"<style>{font_css(fonts == 'inline')}</style>"
-    return f"""<title>Tríada Reader</title>
+    return f"""<title>LexiPluma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 {link}
 <style>{css}</style>"""
@@ -68,7 +66,7 @@ def full_doc(pwa: bool) -> str:
 </body></html>"""
 
 SW = f"""const FONTLIST_PLACEHOLDER=0;
-const CACHE='triada-{ver}';
+const CACHE='lexipluma-{ver}';
 const CORE=['./','index.html','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png',FONTLIST];
 self.addEventListener('install',e=>{{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))}});
 self.addEventListener('activate',e=>{{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))}});
@@ -84,14 +82,14 @@ self.addEventListener('fetch',e=>{{
 }});
 """
 
-MANIFEST = {"name": "Tríada Reader", "short_name": "Tríada", "description": "อ่านภาษาฝรั่งเศส สเปน ดัตช์ แบบออฟไลน์",
+MANIFEST = {"name": "LexiPluma", "short_name": "LexiPluma", "description": "อ่านภาษาฝรั่งเศส สเปน ดัตช์ แบบออฟไลน์",
             "lang": "th", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#F3F5F8", "theme_color": "#18202D",
             "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
                       {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]}
 
 DIST.mkdir(exist_ok=True); ART.mkdir(exist_ok=True)
 (DIST / "index.html").write_text(full_doc(True))
-(DIST / "triada-offline.html").write_text(full_doc(False))
+(DIST / "lexipluma-offline.html").write_text(full_doc(False))
 (DIST / "sw.js").write_text(SW.replace("const FONTLIST_PLACEHOLDER=0;\n", "").replace("FONTLIST", ",".join(repr("fonts/" + f[1]) for f in FACES)))
 (DIST / "fonts").mkdir(exist_ok=True)
 for f in FACES: shutil.copy(SRC / "fonts" / f[1], DIST / "fonts" / f[1])

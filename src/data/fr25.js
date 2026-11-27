@@ -1,5 +1,5 @@
 /* French content, part 25: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r41", cat:"society", lvl:"A1", src:"ชีวิตประจำวัน", title:["Le marché du dimanche","The Sunday market","ตลาดวันอาทิตย์"],

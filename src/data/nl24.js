@@ -1,5 +1,5 @@
 /* Dutch content, part 24: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f135", cat:"food", lvl:"A1", user:"Iris Dijkstra", handle:"iris_stamppot", time:"2 ชม.", likes:110,

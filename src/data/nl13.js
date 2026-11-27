@@ -1,5 +1,5 @@
 /* Dutch content, part 13: feed posts (third batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f68", cat:"food", lvl:"A1", user:"Fleur Vos", handle:"fleur_ontbijt", time:"1 ชม.", likes:102,

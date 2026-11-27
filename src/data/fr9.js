@@ -1,5 +1,5 @@
 /* French content, part 9: articles B2–C1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r16", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/ชีวประวัติ", title:["Marie Curie, deux fois pionnière","Marie Curie, a pioneer twice over","มารี กูรี ผู้บุกเบิกถึงสองครั้ง"],

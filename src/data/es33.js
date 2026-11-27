@@ -1,5 +1,5 @@
 /* Spanish content, part 33: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f168", cat:"food", lvl:"A1", user:"Marta Ruiz", handle:"marta_cafe", time:"1 ชม.", likes:70,

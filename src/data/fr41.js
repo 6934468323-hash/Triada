@@ -1,5 +1,5 @@
 /* French content, part 41: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n45", genre:"romance", lvl:"B2", title:["Les cartes postales de Lisbonne","The postcards from Lisbon","โปสการ์ดจากลิสบอน"], blurb:"หลังหย่าร้าง แคลร์ได้รับโปสการ์ดจากลิสบอนทุกเดือนโดยไม่มีชื่อผู้ส่ง แต่ลายมือนั้นคุ้นตาอย่างประหลาด",

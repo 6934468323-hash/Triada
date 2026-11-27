@@ -1,5 +1,5 @@
 /* Dutch content, part 15: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r21", cat:"env", lvl:"A1", src:"ชีวิตประจำวัน/อากาศ", title:["Praten over het weer","Talking about the weather","คุยกันเรื่องอากาศ"],

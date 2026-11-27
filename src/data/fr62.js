@@ -1,5 +1,5 @@
 /* French content, part 62: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r106", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/ชีวประวัติ", title:["Jeanne d'Arc, la bergère devenue symbole","Joan of Arc, the shepherdess who became a symbol","ฌาน ดาร์ก เด็กเลี้ยงแกะผู้กลายเป็นสัญลักษณ์"],

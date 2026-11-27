@@ -1,5 +1,5 @@
 /* Spanish content, part 5: more articles and stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r8", cat:"economy", lvl:"A2", src:"อาหาร/เศรษฐกิจ", title:["El oro líquido de España","Spain's liquid gold","ทองคำเหลวของสเปน"],

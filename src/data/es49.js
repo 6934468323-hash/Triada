@@ -1,5 +1,5 @@
 /* Spanish content, part 49: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r86", cat:"env", lvl:"B1", src:"ธรรมชาติ/ประวัติศาสตร์", title:["Covadonga, el primer parque nacional de España","Covadonga, Spain's first national park","โกบาดองกา อุทยานแห่งชาติแห่งแรกของสเปน"],

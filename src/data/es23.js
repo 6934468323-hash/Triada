@@ -1,5 +1,5 @@
 /* Spanish content, part 23: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f118", cat:"food", lvl:"A1", user:"Sara Núñez", handle:"sara_frutas", time:"1 ชม.", likes:70,

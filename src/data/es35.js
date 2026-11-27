@@ -1,5 +1,5 @@
 /* Spanish content, part 35: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r61", cat:"env", lvl:"A1", src:"ภูมิศาสตร์/ท่องเที่ยว", title:["Las islas Canarias","The Canary Islands","หมู่เกาะคานารี"],

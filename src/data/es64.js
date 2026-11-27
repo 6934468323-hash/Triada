@@ -1,5 +1,5 @@
 /* Spanish content, part 64: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r116", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สิทธิมนุษยชน", title:["La Operación Cóndor","Operation Condor","ปฏิบัติการคอนดอร์"],

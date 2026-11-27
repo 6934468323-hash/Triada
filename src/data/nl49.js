@@ -1,5 +1,5 @@
 /* Dutch content, part 49: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r86", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/การจัดการน้ำ", title:["De Hollandse Waterlinie: verdedigen met water","The Dutch Water Line: defending with water","แนวป้องกันน้ำฮอลแลนด์: ป้องกันประเทศด้วยน้ำ"],

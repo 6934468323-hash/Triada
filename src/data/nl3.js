@@ -1,5 +1,5 @@
 /* Dutch content, part 3: stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n3", genre:"romance", lvl:"A2", title:["De trein van 7.42","The 7.42 train","รถไฟเที่ยว 7.42"], blurb:"ทุกเช้าเขานั่งตรงข้ามหญิงสาวที่อ่านหนังสือเล่มเดิม จนวันหนึ่งเธอไม่มา",

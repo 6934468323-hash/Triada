@@ -1,5 +1,5 @@
 /* Dutch content, part 36: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r66", cat:"history", lvl:"B1", src:"ศิลปะ/คณิตศาสตร์", title:["M.C. Escher: de kunstenaar van het onmogelijke","M.C. Escher: the artist of the impossible","เอ็ม.ซี. เอเชอร์ ศิลปินแห่งสิ่งที่เป็นไปไม่ได้"],

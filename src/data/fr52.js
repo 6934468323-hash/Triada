@@ -1,5 +1,5 @@
 /* French content, part 52: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n49", genre:"comedy", lvl:"A1", title:["Le perroquet de Madame Rose","Madame Rose's parrot","นกแก้วของคุณนายโรส"], blurb:"นกแก้วของคุณนายโรสพูดได้แค่คำเดียว แต่วันหนึ่งมันพูดคำใหม่ต่อหน้าแขกทุกคน",

@@ -1,5 +1,5 @@
 /* Dutch content, part 28: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r56", cat:"history", lvl:"C1", src:"ประวัติศาสตร์การเมือง", title:["Thorbecke en de Grondwet van 1848","Thorbecke and the Constitution of 1848","ทอร์เบกเกอกับรัฐธรรมนูญปี 1848"],

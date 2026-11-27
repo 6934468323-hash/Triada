@@ -1,5 +1,5 @@
 /* Dutch content, part 34: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f185", cat:"food", lvl:"A1", user:"Julia Bakker", handle:"julia_oliebol", time:"2 ชม.", likes:110,

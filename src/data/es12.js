@@ -1,5 +1,5 @@
 /* Spanish content, part 12: feed posts (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f51", cat:"food", lvl:"A1", user:"Lucía Romero", handle:"lucia_cocina", time:"1 ชม.", likes:88,

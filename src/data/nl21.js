@@ -1,5 +1,5 @@
 /* Dutch content, part 21: stories (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n21", genre:"mystery", lvl:"C1", title:["De handtekening","The signature","ลายเซ็น"], blurb:"ผู้เชี่ยวชาญลายมือได้รับจดหมายรักเก่าที่อ้างว่าเขียนโดยกวีชื่อดัง ลายมือเป็นของจริงทุกอย่าง ยกเว้นสิ่งเดียวที่ทำให้เธอสงสัย",

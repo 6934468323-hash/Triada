@@ -1,5 +1,5 @@
 /* Dutch content, part 2: feed + articles */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 base: {
 "week":"A1|n|week|สัปดาห์","uur":"A1|n|hour; o'clock|ชั่วโมง; นาฬิกา","persoon":"A1|n|person|คน","land":"A1|n|country|ประเทศ","werk":"A1|n|work|งาน","boek":"A1|n|book|หนังสือ","geld":"A1|n|money|เงิน","eten":"A1|v|to eat; food|กิน; อาหาร","drinken":"A1|v|to drink|ดื่ม","slapen":"A1|v|to sleep|นอน","werken":"A1|v|to work|ทำงาน","wonen":"A1|v|to live (reside)|อาศัยอยู่","woon":"A1|v|live (ik)|อาศัยอยู่|wonen","spreken":"A1|v|to speak|พูด","zien":"A1|v|to see|เห็น","komen":"A1|v|to come|มา","komt":"A1|v|comes|มา|komen","denk":"A2|v|think (ik)|คิด|denken","vind":"A2|v|find, think (ik)|คิดว่า, เห็นว่า|vinden","vindt":"A2|v|finds, thinks|คิดว่า|vinden","weet":"A2|v|know(s)|รู้|weten","iets":"A2|pron|something|บางสิ่ง","niets":"A2|pron|nothing|ไม่มีอะไร","iemand":"A2|pron|someone|ใครบางคน","elk":"A2|det|each|แต่ละ","mooi":"A1|adj|beautiful|สวย","blij":"A1|adj|happy, glad|ดีใจ","moeilijk":"A2|adj|difficult|ยาก","makkelijk":"A1|adj|easy|ง่าย","belangrijk":"A2|adj|important|สำคัญ","echt":"A2|adv|really|จริงๆ","samen":"A1|adv|together|ด้วยกัน","weer":"A1|adv|again|อีกครั้ง","weg":"A2|adv|away, gone|ไป, หายไป"

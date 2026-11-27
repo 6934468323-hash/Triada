@@ -1,5 +1,5 @@
 /* French content, part 20: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n17", genre:"fantasy", lvl:"A2", title:["Le jardin qui parlait","The garden that talked","สวนที่พูดได้"], blurb:"เด็กหญิงย้ายไปอยู่บ้านคุณตา แล้วพบว่าผักในสวนพูดได้และขี้บ่นมาก",

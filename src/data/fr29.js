@@ -1,5 +1,5 @@
 /* French content, part 29: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n25", genre:"fantasy", lvl:"A1", title:["Le nuage qui voulait voyager","The cloud who wanted to travel","ก้อนเมฆที่อยากเดินทาง"], blurb:"ก้อนเมฆน้อยเบื่อการลอยอยู่เหนือหมู่บ้านเดิมทุกวัน จึงออกเดินทางไปดูโลก",

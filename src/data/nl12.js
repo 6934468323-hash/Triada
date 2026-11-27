@@ -1,5 +1,5 @@
 /* Dutch content, part 12: feed posts (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f51", cat:"food", lvl:"A1", user:"Lotte de Wit", handle:"lotte_kookt", time:"1 ชม.", likes:84,

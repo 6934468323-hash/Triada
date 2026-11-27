@@ -1,5 +1,5 @@
 /* French content, part 8: articles A1–B1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r11", cat:"env", lvl:"A1", src:"ธรรมชาติ", title:["Les quatre saisons en France","The four seasons in France","สี่ฤดูในฝรั่งเศส"],

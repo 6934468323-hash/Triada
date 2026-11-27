@@ -1,5 +1,5 @@
 /* Spanish content, part 38: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r76", cat:"history", lvl:"C1", src:"ประวัติศาสตร์ละตินอเมริกา", title:["El plebiscito chileno de 1988: un «No» que abrió la puerta","The 1988 Chilean plebiscite: a 'No' that opened the door","ประชามติชิลีปี 1988: ‘ไม่’ ที่เปิดประตู"],

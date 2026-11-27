@@ -1,5 +1,5 @@
 /* Spanish content, part 9: articles B2–C1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r16", cat:"history", lvl:"B2", src:"ศิลปะ/ชีวประวัติ", title:["Frida Kahlo: pintar el dolor","Frida Kahlo: painting pain","ฟรีดา คาห์โล: วาดความเจ็บปวด"],

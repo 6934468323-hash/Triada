@@ -1,5 +1,5 @@
 /* Dutch content, part 66: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n65", genre:"horror", lvl:"B1", title:["De wekker van tante Mien","Aunt Mien's alarm clock","นาฬิกาปลุกของป้ามีน"], blurb:"ลอตเทอได้รับมรดกเป็นบ้านของป้ามีน และทุกคืนเวลาตีสามสิบเจ็ดนาที นาฬิกาปลุกเก่าจะดัง แล้วข้าวของในบ้านก็กลับไปอยู่ที่เดิม",

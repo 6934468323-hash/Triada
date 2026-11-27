@@ -1,5 +1,5 @@
 /* Dutch content, part 62: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r106", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/สงคราม", title:["4 en 5 mei","4 and 5 May","วันที่ 4 และ 5 พฤษภาคม"],

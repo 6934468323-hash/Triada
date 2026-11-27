@@ -1,5 +1,5 @@
 /* French content, part 42: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f201", cat:"food", lvl:"A1", user:"Inès Garnier", handle:"ines_soupe", time:"1 ชม.", likes:70,

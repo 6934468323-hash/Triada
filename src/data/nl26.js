@@ -1,5 +1,5 @@
 /* Dutch content, part 26: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r46", cat:"env", lvl:"B1", src:"ภูมิศาสตร์/ประวัติศาสตร์", title:["Flevoland: een provincie uit de zee","Flevoland: a province from the sea","เฟลโวลันด์: จังหวัดที่เกิดจากทะเล"],

@@ -1,5 +1,5 @@
 /* Spanish content, part 59: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f369", cat:"food", lvl:"A1", user:"Julia Serrano", handle:"julia_naranjas", time:"1 ชม.", likes:70,

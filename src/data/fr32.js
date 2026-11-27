@@ -1,5 +1,5 @@
 /* French content, part 32: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f151", cat:"food", lvl:"A1", user:"Léa Martin", handle:"lea_crepes", time:"1 ชม.", likes:85,

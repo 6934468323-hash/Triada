@@ -1,5 +1,5 @@
 /* Spanish content, part 16: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r26", cat:"society", lvl:"B1", src:"วัฒนธรรม/ประเพณี", title:["Los castells: torres humanas","Castells: human towers","กัสเตลส์: หอคอยมนุษย์"],

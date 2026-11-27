@@ -1,5 +1,5 @@
 /* Spanish content, part 67: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n69", genre:"fantasy", lvl:"A2", title:["El niño que hablaba con los volcanes","The boy who talked to volcanoes","เด็กชายผู้คุยกับภูเขาไฟ"], blurb:"บนเกาะลันซาโรเต เด็กชายชื่อเอเชดีได้ยินภูเขาไฟพูด และมีเพียงเขาที่รู้ว่าภูเขาไฟเก่าแก่ตัวหนึ่งกำลังเหงา",

@@ -1,5 +1,5 @@
 /* Dutch content, part 37: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r71", cat:"env", lvl:"B2", src:"สิ่งแวดล้อม/กฎหมาย", title:["De Urgenda-zaak: een rechter over het klimaat","The Urgenda case: a judge on the climate","คดีเออร์เคินดา: ศาลกับภาวะโลกร้อน"],

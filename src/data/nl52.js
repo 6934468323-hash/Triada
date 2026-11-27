@@ -1,5 +1,5 @@
 /* Dutch content, part 52: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n49", genre:"comedy", lvl:"A1", title:["De kip van meneer Jansen","Mr Jansen's chicken","แม่ไก่ของคุณยันเซิน"], blurb:"คุณยันเซินเลี้ยงไก่บนระเบียงอพาร์ตเมนต์ในอัมสเตอร์ดัม ทุกเช้ามันปลุกทั้งตึก จนเพื่อนบ้านต้องจัดประชุม",

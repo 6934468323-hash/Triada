@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#18202D"><meta name="apple-mobile-web-app-capable" content="yes">
-<title>Tríada Reader</title>
+<title>LexiPluma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>@font-face{font-family:'IBM Plex Sans Thai';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-sans-thai-thai-400-normal.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
 @font-face{font-family:'IBM Plex Sans Thai';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-sans-thai-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -65,6 +65,7 @@ svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .top-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:10px;padding-block:10px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .brand{font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.02em;display:flex;align-items:baseline;gap:6px;margin-right:auto;min-width:0}
+.brand .logo{width:26px;height:26px;flex:none;align-self:center;border-radius:7px}
 .brand small{font-family:var(--f-ui);font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .langs{display:flex;background:var(--surface-2);border-radius:999px;padding:3px;gap:2px}
 .langs button{border:0;background:transparent;border-radius:999px;padding:5px 11px;font-weight:600;font-size:13px;color:var(--muted);letter-spacing:.04em}
@@ -317,7 +318,7 @@ html[lang="th"] .view-head h1{line-height:1.45;padding-top:2px}
 </head><body>
 <div id="app"></div>
 <script>/* French content. Sentence = [original, English, Thai]. Vocab = "LEVEL|pos|English|Thai|lemma" */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 base: {
 "le":"A1|det|the|(คำนำหน้านาม เพศชาย)","la":"A1|det|the|(คำนำหน้านาม เพศหญิง)","les":"A1|det|the (plural)|(คำนำหน้านาม พหูพจน์)","l'":"A1|det|the (before vowel)|(คำนำหน้านามหน้าสระ)","un":"A1|det|a, one|หนึ่ง (เพศชาย)","une":"A1|det|a, one|หนึ่ง (เพศหญิง)","des":"A1|det|some|บางส่วน, หลาย","du":"A1|det|some, of the|ของ, บางส่วน (เพศชาย)","de":"A1|prep|of, from|ของ, จาก","d'":"A1|prep|of, from (before vowel)|ของ, จาก","au":"A1|prep|to the, at the|ไปที่, ที่","aux":"A1|prep|to the (plural)|ไปยัง, ที่ (พหูพจน์)","à":"A1|prep|to, at|ที่, ไปยัง","en":"A1|prep|in, by|ใน, โดย","dans":"A1|prep|in, inside|ใน, ข้างใน","sur":"A1|prep|on|บน","sous":"A1|prep|under|ใต้","avec":"A1|prep|with|กับ","sans":"A1|prep|without|โดยไม่มี","pour":"A1|prep|for|สำหรับ, เพื่อ","par":"A1|prep|by, through|โดย, ผ่าน","chez":"A2|prep|at (someone's place)|ที่บ้านของ","entre":"A2|prep|between|ระหว่าง","vers":"A2|prep|towards|ไปทาง","après":"A1|prep|after|หลังจาก","avant":"A1|prep|before|ก่อน","depuis":"A2|prep|since, for|ตั้งแต่","pendant":"A2|prep|during|ระหว่าง","et":"A1|conj|and|และ","ou":"A1|conj|or|หรือ","mais":"A1|conj|but|แต่","donc":"A2|conj|so, therefore|ดังนั้น","car":"B1|conj|because|เพราะว่า","que":"A1|conj|that, than|ว่า, กว่า","qu'":"A1|conj|that (before vowel)|ว่า","qui":"A1|pron|who, which|ผู้ซึ่ง, ที่","quand":"A1|conj|when|เมื่อ","si":"A1|conj|if, so|ถ้า, มาก","comme":"A2|conj|like, as|เหมือน, เนื่องจาก","parce":"A1|conj|because (parce que)|เพราะ","je":"A1|pron|I|ฉัน","j'":"A1|pron|I (before vowel)|ฉัน","tu":"A1|pron|you|เธอ","il":"A1|pron|he, it|เขา, มัน","elle":"A1|pron|she, it|เธอ (หญิง)","on":"A1|pron|we, one, people|เรา, คนทั่วไป","nous":"A1|pron|we, us|เรา","vous":"A1|pron|you (formal/plural)|คุณ, พวกคุณ","ils":"A1|pron|they|พวกเขา","elles":"A1|pron|they (fem.)|พวกเธอ","me":"A1|pron|me|ฉัน (กรรม)","m'":"A1|pron|me (before vowel)|ฉัน (กรรม)","te":"A1|pron|you (object)|เธอ (กรรม)","se":"A1|pron|oneself|ตัวเอง","s'":"A1|pron|oneself (before vowel)|ตัวเอง","lui":"A1|pron|him, to him/her|เขา, แก่เขา","leur":"A2|pron|their, to them|ของพวกเขา","y":"A2|pron|there|ที่นั่น","ce":"A1|pron|this, it|นี่, มัน","c'":"A1|pron|it, this (before vowel)|นี่, มัน","ça":"A1|pron|that, it|นั่น","cette":"A1|det|this (fem.)|นี้ (หญิง)","cet":"A1|det|this (before vowel)|นี้","ces":"A1|det|these|เหล่านี้","mon":"A1|det|my|ของฉัน","ma":"A1|det|my (fem.)|ของฉัน","mes":"A1|det|my (plural)|ของฉัน","ton":"A1|det|your|ของเธอ","ta":"A1|det|your (fem.)|ของเธอ","son":"A1|det|his, her|ของเขา","sa":"A1|det|his, her (fem.)|ของเขา","ses":"A1|det|his, her (plural)|ของเขา","notre":"A1|det|our|ของเรา","votre":"A1|det|your (formal)|ของคุณ","tout":"A1|det|all, everything|ทั้งหมด","tous":"A1|det|all (plural)|ทุก, ทั้งหมด","toute":"A1|det|all (fem.)|ทั้งหมด","ne":"A1|adv|not (ne…pas)|ไม่","n'":"A1|adv|not (before vowel)|ไม่","pas":"A1|adv|not|ไม่","plus":"A1|adv|more, no longer|มากกว่า, ไม่…อีกแล้ว","très":"A1|adv|very|มาก","trop":"A1|adv|too much|เกินไป","bien":"A1|adv|well|ดี","aussi":"A1|adv|also|ด้วย, เช่นกัน","encore":"A2|adv|still, again|ยัง, อีก","déjà":"A2|adv|already|แล้ว","toujours":"A2|adv|always, still|เสมอ, ยังคง","jamais":"A2|adv|never|ไม่เคย","ici":"A1|adv|here|ที่นี่","là":"A1|adv|there|ที่นั่น","peu":"A2|adv|little|น้อย","beaucoup":"A1|adv|a lot|มาก","maintenant":"A1|adv|now|ตอนนี้","aujourd'hui":"A1|adv|today|วันนี้","hier":"A1|adv|yesterday|เมื่อวาน","demain":"A1|adv|tomorrow|พรุ่งนี้","enfin":"A2|adv|finally|ในที่สุด","seulement":"A2|adv|only|เท่านั้น","est":"A1|v|is|เป็น, อยู่|être","suis":"A1|v|am|เป็น, อยู่|être","es":"A1|v|are (tu)|เป็น|être","sont":"A1|v|are|เป็น|être","était":"A2|v|was|เคยเป็น|être","être":"A1|v|to be|เป็น, อยู่","ai":"A1|v|have (j'ai)|มี|avoir","as":"A1|v|have (tu as)|มี|avoir","a":"A1|v|has|มี|avoir","avons":"A1|v|have (nous)|มี|avoir","avez":"A1|v|have (vous)|มี|avoir","ont":"A1|v|have (ils)|มี|avoir","avait":"A2|v|had|เคยมี|avoir","avoir":"A1|v|to have|มี","fait":"A1|v|does, made|ทำ|faire","faire":"A1|v|to do, to make|ทำ","va":"A1|v|goes|ไป|aller","vais":"A1|v|go (je)|ไป|aller","aller":"A1|v|to go|ไป","peut":"A2|v|can|สามารถ|pouvoir","peux":"A2|v|can (je/tu)|สามารถ|pouvoir","veux":"A1|v|want (je/tu)|ต้องการ|vouloir","veut":"A1|v|wants|ต้องการ|vouloir","dit":"A2|v|says, said|พูด|dire","sais":"A2|v|know (je/tu)|รู้|savoir","faut":"A2|v|it is necessary|จำเป็นต้อง|falloir","oui":"A1|int|yes|ใช่","non":"A1|int|no|ไม่","merci":"A1|int|thank you|ขอบคุณ","bonjour":"A1|int|hello|สวัสดี","jour":"A1|n|day|วัน","week-end":"A1|n|weekend|สุดสัปดาห์","nuit":"A1|n|night|กลางคืน","matin":"A1|n|morning|ตอนเช้า","soir":"A1|n|evening|ตอนเย็น","temps":"A1|n|time, weather|เวลา, อากาศ","an":"A1|n|year|ปี","ans":"A1|n|years|ปี|an","année":"A1|n|year|ปี","fois":"A2|n|time (occurrence)|ครั้ง","homme":"A1|n|man|ผู้ชาย","femme":"A1|n|woman, wife|ผู้หญิง, ภรรยา","enfant":"A1|n|child|เด็ก","enfants":"A1|n|children|เด็กๆ|enfant","ami":"A1|n|friend|เพื่อน","amis":"A1|n|friends|เพื่อนๆ|ami","maison":"A1|n|house|บ้าน","ville":"A1|n|city|เมือง","rue":"A1|n|street|ถนน","eau":"A1|n|water|น้ำ","vie":"A2|n|life|ชีวิต","monde":"A2|n|world, people|โลก, ผู้คน","chose":"A2|n|thing|สิ่ง","gens":"A2|n|people|ผู้คน","petit":"A1|adj|small|เล็ก","petite":"A1|adj|small (fem.)|เล็ก|petit","grand":"A1|adj|big, tall|ใหญ่, สูง","grande":"A1|adj|big (fem.)|ใหญ่|grand","bon":"A1|adj|good|ดี","bonne":"A1|adj|good (fem.)|ดี|bon","nouveau":"A1|adj|new|ใหม่","nouvelle":"A1|adj|new (fem.)|ใหม่|nouveau","vieux":"A1|adj|old|เก่า, แก่","premier":"A1|adj|first|แรก","première":"A1|adj|first (fem.)|แรก|premier","dernier":"A2|adj|last|สุดท้าย","dernière":"A2|adj|last (fem.)|สุดท้าย|dernier","même":"A2|adj|same, even|เดียวกัน, แม้แต่","autre":"A1|adj|other|อื่น","deux":"A1|num|two|สอง","trois":"A1|num|three|สาม","cent":"A1|num|hundred|ร้อย","mille":"A2|num|thousand|พัน"
@@ -475,7 +476,7 @@ novel: [
 });
 
 /* French content, part 2: feed + articles. Sentence = [original, English, Thai]. Vocab = "LEVEL|pos|English|Thai|lemma" */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 base: {
 "week-end":"A1|n|weekend|สุดสัปดาห์","semaine":"A1|n|week|สัปดาห์","heure":"A1|n|hour|ชั่วโมง","heures":"A1|n|hours|ชั่วโมง|heure","personne":"A2|n|person; nobody|คน; ไม่มีใคร","personnes":"A2|n|people|ผู้คน|personne","pays":"A2|n|country|ประเทศ","travail":"A1|n|work|งาน","école":"A1|n|school|โรงเรียน","livre":"A1|n|book|หนังสือ","argent":"A2|n|money|เงิน","voiture":"A1|n|car|รถยนต์","toit":"B1|n|roof|หลังคา","plusieurs":"A2|det|several|หลาย","chaque":"A2|det|each|แต่ละ","quelques":"A2|det|a few|บาง, สองสาม","sans doute":"B1|expr|probably|คงจะ","beau":"A1|adj|beautiful|สวย","belle":"A1|adj|beautiful (fem.)|สวย|beau","content":"A2|adj|happy, pleased|พอใจ, ดีใจ","difficile":"A2|adj|difficult|ยาก","facile":"A1|adj|easy|ง่าย","important":"A2|adj|important|สำคัญ","vrai":"A2|adj|true|จริง","fois":"A2|n|time(s)|ครั้ง","depuis":"A2|prep|since, for|ตั้งแต่","voir":"A1|v|to see|เห็น","venir":"A1|v|to come|มา","prendre":"A1|v|to take|เอา, ขึ้น (รถ)","mettre":"A2|v|to put|วาง, ใส่","trouver":"A2|v|to find|พบ","penser":"A2|v|to think|คิด","aimer":"A1|v|to like, love|ชอบ, รัก","aime":"A1|v|like(s), love(s)|ชอบ, รัก|aimer","adore":"A1|v|love(s), adore(s)|ชอบมาก|adorer","commencer":"A2|v|to begin|เริ่ม","manger":"A1|v|to eat|กิน","boire":"A1|v|to drink|ดื่ม","dormir":"A1|v|to sleep|นอนหลับ","travailler":"A1|v|to work|ทำงาน","habiter":"A1|v|to live (reside)|อาศัยอยู่","habite":"A1|v|live(s)|อาศัยอยู่|habiter","parler":"A1|v|to speak|พูด","comprendre":"A2|v|to understand|เข้าใจ","vivre":"A2|v|to live|ใช้ชีวิต","savoir":"A2|v|to know|รู้","pouvoir":"A2|v|to be able|สามารถ","vouloir":"A1|v|to want|ต้องการ","devoir":"A2|v|must|ต้อง"
@@ -617,7 +618,7 @@ read: [
 });
 
 /* French content, part 3: stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n3", genre:"comedy", lvl:"B1", title:["Le GPS de tonton Gérard","Uncle Gérard's GPS","จีพีเอสของลุงเฌราร์"], blurb:"ลุงเชื่อเครื่องนำทางมากกว่าเชื่อเมีย ทริปไปงานแต่งเลยกลายเป็นการผจญภัย",
@@ -659,7 +660,7 @@ novel: [
 });
 
 /* French content, part 4: more feed posts */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f16", cat:"life", lvl:"A1", user:"Jade Morel", handle:"jade_famille", time:"1 ชม.", likes:74,
@@ -743,7 +744,7 @@ feed: [
 });
 
 /* French content, part 5: more articles and stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r8", cat:"science", lvl:"A2", src:"วิทยาศาสตร์", title:["Pourquoi le ciel est-il bleu ?","Why is the sky blue?","ทำไมท้องฟ้าจึงเป็นสีฟ้า?"],
@@ -832,7 +833,7 @@ novel: [
 });
 
 /* French content, part 6: feed posts (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f26", cat:"life", lvl:"A1", user:"Alice Bonnet", handle:"alice_matin", time:"25 นาที", likes:52,
@@ -945,7 +946,7 @@ feed: [
 });
 
 /* French content, part 7: feed posts (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f43", cat:"work", lvl:"B2", user:"Nathalie Girard", handle:"nathalie_prof", time:"3 ชม.", likes:1320,
@@ -1005,7 +1006,7 @@ feed: [
 });
 
 /* French content, part 8: articles A1–B1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r11", cat:"env", lvl:"A1", src:"ธรรมชาติ", title:["Les quatre saisons en France","The four seasons in France","สี่ฤดูในฝรั่งเศส"],
@@ -1084,7 +1085,7 @@ read: [
 });
 
 /* French content, part 9: articles B2–C1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r16", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/ชีวประวัติ", title:["Marie Curie, deux fois pionnière","Marie Curie, a pioneer twice over","มารี กูรี ผู้บุกเบิกถึงสองครั้ง"],
@@ -1160,7 +1161,7 @@ read: [
 });
 
 /* French content, part 10: stories (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n7", genre:"romance", lvl:"A1", title:["Le café du coin","The corner café","ร้านกาแฟหัวมุม"], blurb:"ทุกเช้าเขาสั่งกาแฟแก้วเดิม และทุกเช้าเธอเขียนข้อความเล็กๆ ไว้บนแก้ว",
@@ -1215,7 +1216,7 @@ novel: [
 });
 
 /* French content, part 11: stories (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n10", genre:"mystery", lvl:"B2", title:["Le tableau qui manquait","The missing painting","ภาพวาดที่หายไป"], blurb:"ภาพวาดหายไปจากพิพิธภัณฑ์ แต่ไม่มีใครเข้าออกห้องนั้น ยกเว้นผู้คุมคนเดียวที่ตาบอดสี",
@@ -1269,7 +1270,7 @@ novel: [
 });
 
 /* French content, part 12: feed posts (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f51", cat:"food", lvl:"A1", user:"Zoé Petit", handle:"zoe_cuisine", time:"1 ชม.", likes:96,
@@ -1378,7 +1379,7 @@ feed: [
 });
 
 /* French content, part 13: feed posts (third batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f68", cat:"life", lvl:"A1", user:"Emma Rousseau", handle:"emma_chien", time:"2 ชม.", likes:233,
@@ -1487,7 +1488,7 @@ feed: [
 });
 
 /* French content, part 14: feed posts (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f85", cat:"food", lvl:"A1", user:"Victor Blanc", handle:"victor_pizza", time:"1 ชม.", likes:74,
@@ -1590,7 +1591,7 @@ feed: [
 });
 
 /* French content, part 15: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r21", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["La bise : combien de bisous ?","La bise: how many kisses?","ลาบิซ: หอมแก้มกี่ที?"],
@@ -1680,7 +1681,7 @@ read: [
 });
 
 /* French content, part 16: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r26", cat:"env", lvl:"B1", src:"ธรรมชาติ/ภูมิศาสตร์", title:["La Camargue, le pays des flamants roses","The Camargue, land of pink flamingos","กามาร์ก ดินแดนแห่งนกฟลามิงโก"],
@@ -1771,7 +1772,7 @@ read: [
 });
 
 /* French content, part 17: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r31", cat:"society", lvl:"A1", src:"ชีวิตประจำวัน", title:["Les repas d'une journée en France","The meals of a day in France","มื้ออาหารในหนึ่งวันของคนฝรั่งเศส"],
@@ -1861,7 +1862,7 @@ read: [
 });
 
 /* French content, part 18: articles (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r36", cat:"science", lvl:"A2", src:"วิทยาศาสตร์", title:["La Lune et les marées","The Moon and the tides","ดวงจันทร์กับน้ำขึ้นน้ำลง"],
@@ -1952,7 +1953,7 @@ read: [
 });
 
 /* French content, part 19: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n13", genre:"comedy", lvl:"A1", title:["Le chien qui aimait le fromage","The dog who loved cheese","สุนัขที่รักชีส"], blurb:"ชีสในตู้เย็นหายทุกคืน ทั้งบ้านสงสัยกันเอง จนกระทั่งพ่อแอบตั้งกล้อง",
@@ -2042,7 +2043,7 @@ novel: [
 });
 
 /* French content, part 20: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n17", genre:"fantasy", lvl:"A2", title:["Le jardin qui parlait","The garden that talked","สวนที่พูดได้"], blurb:"เด็กหญิงย้ายไปอยู่บ้านคุณตา แล้วพบว่าผักในสวนพูดได้และขี้บ่นมาก",
@@ -2122,7 +2123,7 @@ novel: [
 });
 
 /* French content, part 21: stories (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n21", genre:"mystery", lvl:"B2", title:["L'homme du banc numéro sept","The man on bench number seven","ชายบนม้านั่งหมายเลขเจ็ด"], blurb:"ชายชรานั่งที่ม้านั่งตัวเดิมในสวนลุกซ็องบูร์ทุกวันพร้อมหนังสือพิมพ์ฉบับเก่า วันหนึ่งเขาหายไป ทิ้งไว้เพียงกุญแจดอกหนึ่ง",
@@ -2211,7 +2212,7 @@ novel: [
 });
 
 /* French content, part 22: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f101", cat:"food", lvl:"A1", user:"Léna Morel", handle:"lena_crepes", time:"1 ชม.", likes:92,
@@ -2320,7 +2321,7 @@ feed: [
 });
 
 /* French content, part 23: feed posts (fourth batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f118", cat:"food", lvl:"A1", user:"Sarah Lemoine", handle:"sarah_pain", time:"1 ชม.", likes:70,
@@ -2429,7 +2430,7 @@ feed: [
 });
 
 /* French content, part 24: feed posts (fourth batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f135", cat:"food", lvl:"A1", user:"Paul Martin", handle:"paul_fromage", time:"1 ชม.", likes:85,
@@ -2532,7 +2533,7 @@ feed: [
 });
 
 /* French content, part 25: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r41", cat:"society", lvl:"A1", src:"ชีวิตประจำวัน", title:["Le marché du dimanche","The Sunday market","ตลาดวันอาทิตย์"],
@@ -2620,7 +2621,7 @@ read: [
 });
 
 /* French content, part 26: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r46", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/สถาปัตยกรรม", title:["Versailles, le palais d'un roi soleil","Versailles, the palace of a Sun King","แวร์ซาย พระราชวังของสุริยกษัตริย์"],
@@ -2711,7 +2712,7 @@ read: [
 });
 
 /* French content, part 27: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r51", cat:"history", lvl:"B2", src:"วรรณกรรม/ประวัติศาสตร์", title:["Victor Hugo, l'exilé devenu monument","Victor Hugo, the exile who became a monument","วิกตอร์ อูโก ผู้ถูกเนรเทศที่กลายเป็นอนุสรณ์"],
@@ -2802,7 +2803,7 @@ read: [
 });
 
 /* French content, part 28: articles (fourth batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r56", cat:"history", lvl:"C1", src:"ประวัติศาสตร์การเมือง", title:["L'affaire Dreyfus, ou la France coupée en deux","The Dreyfus affair, or France split in two","คดีเดรฟุส หรือฝรั่งเศสที่แตกเป็นสองฝ่าย"],
@@ -2893,7 +2894,7 @@ read: [
 });
 
 /* French content, part 29: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n25", genre:"fantasy", lvl:"A1", title:["Le nuage qui voulait voyager","The cloud who wanted to travel","ก้อนเมฆที่อยากเดินทาง"], blurb:"ก้อนเมฆน้อยเบื่อการลอยอยู่เหนือหมู่บ้านเดิมทุกวัน จึงออกเดินทางไปดูโลก",
@@ -2963,7 +2964,7 @@ novel: [
 });
 
 /* French content, part 30: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n29", genre:"horror", lvl:"B1", title:["Le miroir du grenier","The mirror in the attic","กระจกในห้องใต้หลังคา"], blurb:"เด็กสาวพบกระจกเก่าในห้องใต้หลังคาของบ้านยาย เงาในกระจกขยับช้ากว่าเธอหนึ่งวินาที",
@@ -3031,7 +3032,7 @@ novel: [
 });
 
 /* French content, part 31: stories (fourth batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n33", genre:"fantasy", lvl:"B2", title:["La ville qui oubliait","The town that forgot","เมืองที่ลืม"], blurb:"ทุกเช้า ชาวเมืองแห่งหนึ่งตื่นมาโดยจำเรื่องเมื่อวานไม่ได้ ยกเว้นบรรณารักษ์สาวคนเดียว",
@@ -3101,7 +3102,7 @@ novel: [
 });
 
 /* French content, part 32: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f151", cat:"food", lvl:"A1", user:"Léa Martin", handle:"lea_crepes", time:"1 ชม.", likes:85,
@@ -3210,7 +3211,7 @@ feed: [
 });
 
 /* French content, part 33: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f168", cat:"food", lvl:"A1", user:"Zoé Bernard", handle:"zoe_gouter", time:"1 ชม.", likes:75,
@@ -3319,7 +3320,7 @@ feed: [
 });
 
 /* French content, part 34: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f185", cat:"food", lvl:"A1", user:"Nina Clément", handle:"nina_marche", time:"2 ชม.", likes:90,
@@ -3422,7 +3423,7 @@ feed: [
 });
 
 /* French content, part 35: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r61", cat:"society", lvl:"A1", src:"อาหาร/ชีวิตประจำวัน", title:["À la boulangerie","At the bakery","ที่ร้านขนมปัง"],
@@ -3513,7 +3514,7 @@ read: [
 });
 
 /* French content, part 36: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r66", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/สถาปัตยกรรม", title:["Les châteaux de la Loire","The châteaux of the Loire","ปราสาทลุ่มแม่น้ำลัวร์"],
@@ -3604,7 +3605,7 @@ read: [
 });
 
 /* French content, part 37: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r71", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/ประวัติศาสตร์", title:["Le mètre, une mesure pour tous les peuples","The metre, a measure for all peoples","เมตร หน่วยวัดเพื่อมวลมนุษย์"],
@@ -3695,7 +3696,7 @@ read: [
 });
 
 /* French content, part 38: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r76", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สังคม", title:["Mai 68, le printemps qui fit vaciller la République","May '68, the spring that shook the Republic","พฤษภาคม 1968 ฤดูใบไม้ผลิที่สั่นคลอนสาธารณรัฐ"],
@@ -3786,7 +3787,7 @@ read: [
 });
 
 /* French content, part 39: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n37", genre:"comedy", lvl:"A1", title:["Le chat qui aimait la baguette","The cat who loved baguettes","แมวที่ชอบขนมปังบาแก็ต"], blurb:"ทุกเช้าบาแก็ตของคุณเลอบลองถูกกัดปลายหายไป เขาคิดว่าเป็นเด็กข้างบ้าน แต่ความจริงไม่ใช่",
@@ -3861,7 +3862,7 @@ novel: [
 });
 
 /* French content, part 40: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n41", genre:"horror", lvl:"B1", title:["Le répondeur","The answering machine","เครื่องตอบรับโทรศัพท์"], blurb:"ปอลซื้อเครื่องตอบรับโทรศัพท์เก่าจากตลาดนัด ในเครื่องมีข้อความจากหญิงคนหนึ่งที่ดูเหมือนรู้ว่าเขาอยู่ที่ไหน",
@@ -3943,7 +3944,7 @@ novel: [
 });
 
 /* French content, part 41: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n45", genre:"romance", lvl:"B2", title:["Les cartes postales de Lisbonne","The postcards from Lisbon","โปสการ์ดจากลิสบอน"], blurb:"หลังหย่าร้าง แคลร์ได้รับโปสการ์ดจากลิสบอนทุกเดือนโดยไม่มีชื่อผู้ส่ง แต่ลายมือนั้นคุ้นตาอย่างประหลาด",
@@ -4023,7 +4024,7 @@ novel: [
 });
 
 /* French content, part 42: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f201", cat:"food", lvl:"A1", user:"Inès Garnier", handle:"ines_soupe", time:"1 ชม.", likes:70,
@@ -4132,7 +4133,7 @@ feed: [
 });
 
 /* French content, part 43: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f218", cat:"life", lvl:"A1", user:"Jade Moreau", handle:"jade_lapin", time:"1 ชม.", likes:95,
@@ -4241,7 +4242,7 @@ feed: [
 });
 
 /* French content, part 44: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f235", cat:"food", lvl:"A1", user:"Emma Picard", handle:"emma_pomme", time:"1 ชม.", likes:60,
@@ -4350,7 +4351,7 @@ feed: [
 });
 
 /* French content, part 45: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f252", cat:"food", lvl:"A1", user:"Lou Mathieu", handle:"lou_chocolat", time:"1 ชม.", likes:85,
@@ -4453,7 +4454,7 @@ feed: [
 });
 
 /* French content, part 46: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f268", cat:"life", lvl:"A1", user:"Nathan Giraud", handle:"nathan_maison", time:"1 ชม.", likes:70,
@@ -4562,7 +4563,7 @@ feed: [
 });
 
 /* French content, part 47: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f285", cat:"food", lvl:"A1", user:"Léna Dupuis", handle:"lena_gateau", time:"1 ชม.", likes:90,
@@ -4665,7 +4666,7 @@ feed: [
 });
 
 /* French content, part 48: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r81", cat:"society", lvl:"A1", src:"เมือง/คมนาคม", title:["Le métro de Paris","The Paris metro","รถไฟใต้ดินปารีส"],
@@ -4756,7 +4757,7 @@ read: [
 });
 
 /* French content, part 49: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r86", cat:"science", lvl:"B1", src:"ชีวประวัติ/ทะเล", title:["Jacques-Yves Cousteau, l'homme qui montra la mer","Jacques-Yves Cousteau, the man who showed the sea","ฌัก-อีฟ กุสโต ชายผู้เปิดโลกใต้ทะเล"],
@@ -4847,7 +4848,7 @@ read: [
 });
 
 /* French content, part 50: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r91", cat:"env", lvl:"B2", src:"ภูมิอากาศ/การเมือง", title:["L'accord de Paris, une promesse sans gendarme","The Paris Agreement, a promise without a policeman","ความตกลงปารีส คำสัญญาที่ไม่มีผู้บังคับ"],
@@ -4938,7 +4939,7 @@ read: [
 });
 
 /* French content, part 51: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r96", cat:"history", lvl:"C1", src:"ประวัติศาสตร์การเมือง", title:["1944 : le droit de vote des femmes, si tard","1944: women's right to vote, so late","ปี 1944 สิทธิเลือกตั้งของสตรี ที่มาช้าเหลือเกิน"],
@@ -5029,7 +5030,7 @@ read: [
 });
 
 /* French content, part 52: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n49", genre:"comedy", lvl:"A1", title:["Le perroquet de Madame Rose","Madame Rose's parrot","นกแก้วของคุณนายโรส"], blurb:"นกแก้วของคุณนายโรสพูดได้แค่คำเดียว แต่วันหนึ่งมันพูดคำใหม่ต่อหน้าแขกทุกคน",
@@ -5106,7 +5107,7 @@ novel: [
 });
 
 /* French content, part 53: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n53", genre:"horror", lvl:"B1", title:["La chambre d'hôte du col","The guesthouse on the pass","บ้านพักบนช่องเขา"], blurb:"นักปั่นจักรยานติดพายุบนช่องเขา และได้พักในบ้านพักเงียบๆ ที่เจ้าของดูเหมือนจะรอเขามานานแล้ว",
@@ -5185,7 +5186,7 @@ novel: [
 });
 
 /* French content, part 54: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n57", genre:"fantasy", lvl:"A2", title:["La boulangère et le dragon","The baker and the dragon","คนทำขนมปังกับมังกร"], blurb:"มังกรตัวน้อยมาขอไฟจากเตาอบของร้านขนมปังทุกคืน แต่ทั้งหมู่บ้านกลัวมันจนตัวสั่น",
@@ -5265,7 +5266,7 @@ novel: [
 });
 
 /* French content, part 55: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f301", cat:"food", lvl:"A1", user:"Lucie Bernard", handle:"lucie_omelette", time:"1 ชม.", likes:75,
@@ -5374,7 +5375,7 @@ feed: [
 });
 
 /* French content, part 56: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f318", cat:"life", lvl:"A1", user:"Emma Rousseau", handle:"emma_velo", time:"1 ชม.", likes:70,
@@ -5483,7 +5484,7 @@ feed: [
 });
 
 /* French content, part 57: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f335", cat:"food", lvl:"A1", user:"Jeanne Petit", handle:"jeanne_confiture", time:"1 ชม.", likes:75,
@@ -5592,7 +5593,7 @@ feed: [
 });
 
 /* French content, part 58: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f352", cat:"food", lvl:"A1", user:"Nora Blanc", handle:"nora_crepe", time:"1 ชม.", likes:85,
@@ -5695,7 +5696,7 @@ feed: [
 });
 
 /* French content, part 59: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f368", cat:"life", lvl:"A1", user:"Maël Robin", handle:"mael_dimanche", time:"1 ชม.", likes:65,
@@ -5804,7 +5805,7 @@ feed: [
 });
 
 /* French content, part 60: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f385", cat:"food", lvl:"A1", user:"Rose Lemoine", handle:"rose_fromage", time:"1 ชม.", likes:70,
@@ -5907,7 +5908,7 @@ feed: [
 });
 
 /* French content, part 61: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r101", cat:"society", lvl:"A1", src:"กีฬา/วัฒนธรรม", title:["La pétanque","Pétanque","เปตอง"],
@@ -5998,7 +5999,7 @@ read: [
 });
 
 /* French content, part 62: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r106", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/ชีวประวัติ", title:["Jeanne d'Arc, la bergère devenue symbole","Joan of Arc, the shepherdess who became a symbol","ฌาน ดาร์ก เด็กเลี้ยงแกะผู้กลายเป็นสัญลักษณ์"],
@@ -6089,7 +6090,7 @@ read: [
 });
 
 /* French content, part 63: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r111", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/พลังงาน", title:["ITER, un soleil miniature en Provence","ITER, a miniature sun in Provence","ITER ดวงอาทิตย์จำลองในโพรวองซ์"],
@@ -6180,7 +6181,7 @@ read: [
 });
 
 /* French content, part 64: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r116", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/อาณานิคม", title:["Diên Biên Phu, la fin de l'Indochine française","Dien Bien Phu, the end of French Indochina","เดียนเบียนฟู จุดจบของอินโดจีนฝรั่งเศส"],
@@ -6271,7 +6272,7 @@ read: [
 });
 
 /* French content, part 65: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n61", genre:"comedy", lvl:"A1", title:["Le chien qui prenait le bus","The dog who took the bus","หมาที่นั่งรถเมล์"], blurb:"ทุกเช้าหมาตัวหนึ่งขึ้นรถเมล์สาย 12 คนเดียว คนขับอยากรู้ว่ามันไปไหน",
@@ -6348,7 +6349,7 @@ novel: [
 });
 
 /* French content, part 66: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n65", genre:"horror", lvl:"B1", title:["La dernière séance","The last showing","รอบฉายสุดท้าย"], blurb:"ชายคนหนึ่งเข้าโรงหนังเก่ารอบดึกคนเดียว หนังที่ฉายกลับเป็นภาพชีวิตของเขาเอง และกำลังฉายไปถึงคืนนี้",
@@ -6427,7 +6428,7 @@ novel: [
 });
 
 /* French content, part 67: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n69", genre:"fantasy", lvl:"A2", title:["Le chat qui collectionnait les étoiles","The cat who collected stars","แมวนักสะสมดวงดาว"], blurb:"แมวดำตัวหนึ่งปีนขึ้นหลังคาทุกคืนเพื่อเก็บดาวที่ตกลงมา วันหนึ่งท้องฟ้าเหนือหมู่บ้านไม่มีดาวเหลือเลย",
@@ -6507,7 +6508,7 @@ novel: [
 });
 
 /* Spanish content. Sentence = [original, English, Thai]. Vocab = "LEVEL|pos|English|Thai|lemma" */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 base: {
 "el":"A1|det|the|(คำนำหน้านามเพศชาย)","la":"A1|det|the (fem.)|(คำนำหน้านามเพศหญิง)","los":"A1|det|the (plural)|(คำนำหน้านามพหูพจน์ ชาย)","las":"A1|det|the (fem. plural)|(คำนำหน้านามพหูพจน์ หญิง)","un":"A1|det|a, one|หนึ่ง","una":"A1|det|a, one (fem.)|หนึ่ง (หญิง)","unos":"A1|det|some|บาง","unas":"A1|det|some (fem.)|บาง","lo":"A1|pron|it, the (neuter)|มัน, สิ่งที่","de":"A1|prep|of, from|ของ, จาก","del":"A1|prep|of the|ของ (de+el)","a":"A1|prep|to, at|ไปยัง, ที่","al":"A1|prep|to the|ไปยัง (a+el)","en":"A1|prep|in, on|ใน, บน","con":"A1|prep|with|กับ","sin":"A1|prep|without|โดยไม่มี","por":"A1|prep|for, by, through|โดย, เพราะ, ผ่าน","para":"A1|prep|for, in order to|เพื่อ, สำหรับ","sobre":"A2|prep|on, about|บน, เกี่ยวกับ","entre":"A2|prep|between|ระหว่าง","hasta":"A2|prep|until|จนถึง","desde":"A2|prep|since, from|ตั้งแต่","hacia":"B1|prep|towards|ไปทาง","durante":"A2|prep|during|ระหว่าง","y":"A1|conj|and|และ","e":"A2|conj|and (before i-)|และ","o":"A1|conj|or|หรือ","pero":"A1|conj|but|แต่","que":"A1|conj|that, than|ว่า, กว่า","porque":"A1|conj|because|เพราะว่า","cuando":"A1|conj|when|เมื่อ","si":"A1|conj|if|ถ้า","como":"A1|conj|like, as|เหมือน, ในฐานะ","aunque":"B1|conj|although|แม้ว่า","yo":"A1|pron|I|ฉัน","tú":"A1|pron|you|เธอ","él":"A1|pron|he|เขา","ella":"A1|pron|she|เธอ (หญิง)","nosotros":"A1|pron|we|พวกเรา","vosotros":"A1|pron|you (plural, Spain)|พวกเธอ","ellos":"A1|pron|they|พวกเขา","usted":"A1|pron|you (formal)|คุณ","me":"A1|pron|me|ฉัน (กรรม)","te":"A1|pron|you (object)|เธอ (กรรม)","se":"A1|pron|oneself|ตัวเอง","le":"A1|pron|him, her (indirect)|แก่เขา","les":"A1|pron|them (indirect)|แก่พวกเขา","nos":"A1|pron|us|พวกเรา (กรรม)","mi":"A1|det|my|ของฉัน","mis":"A1|det|my (plural)|ของฉัน","tu":"A1|det|your|ของเธอ","su":"A1|det|his, her, their|ของเขา","sus":"A1|det|his, her, their (plural)|ของเขา","nuestro":"A1|det|our|ของเรา","este":"A1|det|this|นี้","esta":"A1|det|this (fem.)|นี้","ese":"A1|det|that|นั้น","esa":"A1|det|that (fem.)|นั้น","esto":"A1|pron|this|สิ่งนี้","eso":"A1|pron|that|สิ่งนั้น","todo":"A1|det|all, everything|ทั้งหมด","todos":"A1|det|all, everyone|ทุกคน","toda":"A1|det|all (fem.)|ทั้ง","no":"A1|adv|no, not|ไม่","sí":"A1|adv|yes|ใช่","muy":"A1|adv|very|มาก","más":"A1|adv|more|มากกว่า","menos":"A1|adv|less|น้อยกว่า","bien":"A1|adv|well|ดี","mal":"A1|adv|badly|ไม่ดี","también":"A1|adv|also|ด้วย","ya":"A2|adv|already, now|แล้ว","todavía":"A2|adv|still, yet|ยัง","siempre":"A1|adv|always|เสมอ","nunca":"A1|adv|never|ไม่เคย","aquí":"A1|adv|here|ที่นี่","allí":"A1|adv|there|ที่นั่น","hoy":"A1|adv|today|วันนี้","ayer":"A1|adv|yesterday|เมื่อวาน","mañana":"A1|n|tomorrow, morning|พรุ่งนี้, ตอนเช้า","ahora":"A1|adv|now|ตอนนี้","después":"A1|adv|after, later|หลังจากนั้น","antes":"A1|adv|before|ก่อน","solo":"A2|adv|only, alone|เท่านั้น, คนเดียว","mucho":"A1|adv|a lot|มาก","poco":"A1|adv|little|น้อย","es":"A1|v|is|เป็น|ser","soy":"A1|v|am|เป็น|ser","son":"A1|v|are|เป็น|ser","era":"A2|v|was|เคยเป็น|ser","fue":"A2|v|was, went|เป็น, ไป (อดีต)|ser","ser":"A1|v|to be|เป็น","está":"A1|v|is (state/location)|อยู่, เป็น|estar","estoy":"A1|v|am (state)|อยู่, เป็น|estar","están":"A1|v|are (state)|อยู่|estar","estaba":"A2|v|was (state)|อยู่ (อดีต)|estar","estar":"A1|v|to be (state)|อยู่, เป็น","hay":"A1|v|there is/are|มี|haber","había":"A2|v|there was / had|มี (อดีต)|haber","he":"A1|v|have (aux.)|ได้ (กริยาช่วย)|haber","ha":"A1|v|has (aux.)|ได้ (กริยาช่วย)|haber","han":"A1|v|have (aux.)|ได้ (กริยาช่วย)|haber","tengo":"A1|v|I have|ฉันมี|tener","tiene":"A1|v|has|มี|tener","tener":"A1|v|to have|มี","hace":"A1|v|does, makes; ago|ทำ; ที่แล้ว|hacer","hacer":"A1|v|to do, to make|ทำ","voy":"A1|v|I go|ฉันไป|ir","va":"A1|v|goes|ไป|ir","ir":"A1|v|to go|ไป","puede":"A2|v|can|สามารถ|poder","puedo":"A2|v|I can|ฉันสามารถ|poder","quiero":"A1|v|I want|ฉันต้องการ|querer","sé":"A2|v|I know|ฉันรู้|saber","dijo":"A2|v|said|พูด (อดีต)|decir","gracias":"A1|int|thank you|ขอบคุณ","hola":"A1|int|hello|สวัสดี","día":"A1|n|day|วัน","días":"A1|n|days|วัน|día","noche":"A1|n|night|กลางคืน","año":"A1|n|year|ปี","años":"A1|n|years|ปี|año","vez":"A2|n|time (occurrence)|ครั้ง","casa":"A1|n|house, home|บ้าน","ciudad":"A1|n|city|เมือง","calle":"A1|n|street|ถนน","agua":"A1|n|water|น้ำ","gente":"A1|n|people|ผู้คน","vida":"A2|n|life|ชีวิต","mundo":"A2|n|world|โลก","cosa":"A2|n|thing|สิ่ง","hombre":"A1|n|man|ผู้ชาย","mujer":"A1|n|woman|ผู้หญิง","amigo":"A1|n|friend|เพื่อน","amigos":"A1|n|friends|เพื่อนๆ|amigo","grande":"A1|adj|big|ใหญ่","pequeño":"A1|adj|small|เล็ก","bueno":"A1|adj|good|ดี","buena":"A1|adj|good (fem.)|ดี|bueno","nuevo":"A1|adj|new|ใหม่","nueva":"A1|adj|new (fem.)|ใหม่|nuevo","viejo":"A1|adj|old|เก่า, แก่","primer":"A1|adj|first|แรก","primera":"A1|adj|first (fem.)|แรก","último":"A2|adj|last|สุดท้าย","mismo":"A2|adj|same|เดียวกัน","otro":"A1|adj|other|อื่น","otra":"A1|adj|other (fem.)|อื่น","dos":"A1|num|two|สอง","tres":"A1|num|three|สาม","cien":"A1|num|hundred|ร้อย","mil":"A2|num|thousand|พัน"
@@ -6654,7 +6655,7 @@ novel: [
 });
 
 /* Spanish content, part 2: feed + articles */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 base: {
 "semana":"A1|n|week|สัปดาห์","hora":"A1|n|hour|ชั่วโมง","horas":"A1|n|hours|ชั่วโมง|hora","persona":"A1|n|person|คน","personas":"A1|n|people|ผู้คน|persona","país":"A1|n|country|ประเทศ","trabajo":"A1|n|work, job|งาน","escuela":"A1|n|school|โรงเรียน","libro":"A1|n|book|หนังสือ","dinero":"A1|n|money|เงิน","coche":"A1|n|car|รถยนต์","familia":"A1|n|family|ครอบครัว","perro":"A1|n|dog|สุนัข","comida":"A1|n|food, meal|อาหาร","algo":"A1|pron|something|บางสิ่ง","alguien":"A2|pron|someone|ใครบางคน","nadie":"A2|pron|nobody|ไม่มีใคร","nada":"A1|pron|nothing|ไม่มีอะไร","cada":"A2|det|each|แต่ละ","varios":"A2|det|several|หลาย","bonito":"A1|adj|pretty|สวย","feliz":"A1|adj|happy|มีความสุข","difícil":"A1|adj|difficult|ยาก","fácil":"A1|adj|easy|ง่าย","importante":"A1|adj|important|สำคัญ","ver":"A1|v|to see|เห็น","venir":"A1|v|to come|มา","comer":"A1|v|to eat|กิน","beber":"A1|v|to drink|ดื่ม","vivir":"A1|v|to live|อาศัย, ใช้ชีวิต","vivo":"A1|v|I live|ฉันอาศัยอยู่|vivir","hablar":"A1|v|to speak|พูด","trabajar":"A1|v|to work|ทำงาน","dormir":"A1|v|to sleep|นอน","pensar":"A2|v|to think|คิด","creo":"A2|v|I think, believe|ฉันคิดว่า|creer","sabe":"A2|v|knows|รู้|saber","encanta":"A1|v|love(s) (me encanta)|ชอบมาก|encantar","gusta":"A1|v|like(s) (me gusta)|ชอบ|gustar"
@@ -6790,7 +6791,7 @@ read: [
 });
 
 /* Spanish content, part 3: stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n3", genre:"mystery", lvl:"B2", title:["El último pasajero del tranvía","The last passenger on the tram","ผู้โดยสารคนสุดท้ายบนรถราง"], blurb:"คนขับรถรางสายสุดท้ายของลิสบอนเจอกระเป๋าหนังที่ถูกลืมไว้ ข้างในมีรูปถ่ายของตัวเขาเองเมื่อสามสิบปีก่อน",
@@ -6832,7 +6833,7 @@ novel: [
 });
 
 /* Spanish content, part 4: more feed posts */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f15", cat:"life", lvl:"A1", user:"Sara López", handle:"sara_cumple", time:"1 ชม.", likes:96,
@@ -6914,7 +6915,7 @@ feed: [
 });
 
 /* Spanish content, part 5: more articles and stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r8", cat:"economy", lvl:"A2", src:"อาหาร/เศรษฐกิจ", title:["El oro líquido de España","Spain's liquid gold","ทองคำเหลวของสเปน"],
@@ -7000,7 +7001,7 @@ novel: [
 });
 
 /* Spanish content, part 6: feed posts (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f25", cat:"life", lvl:"A1", user:"Elena Ruiz", handle:"elena_y_mishi", time:"30 นาที", likes:77,
@@ -7111,7 +7112,7 @@ feed: [
 });
 
 /* Spanish content, part 7: feed posts (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f42", cat:"culture", lvl:"B2", user:"Paco Jiménez", handle:"paco_siesta", time:"3 ชม.", likes:1420,
@@ -7176,7 +7177,7 @@ feed: [
 });
 
 /* Spanish content, part 8: articles A1–B1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r11", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["Los horarios de comida en España","Mealtimes in Spain","เวลาอาหารในสเปน"],
@@ -7249,7 +7250,7 @@ read: [
 });
 
 /* Spanish content, part 9: articles B2–C1 */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r16", cat:"history", lvl:"B2", src:"ศิลปะ/ชีวประวัติ", title:["Frida Kahlo: pintar el dolor","Frida Kahlo: painting pain","ฟรีดา คาห์โล: วาดความเจ็บปวด"],
@@ -7324,7 +7325,7 @@ read: [
 });
 
 /* Spanish content, part 10: stories (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n7", genre:"romance", lvl:"A1", title:["La chica de la biblioteca","The girl from the library","สาวน้อยในห้องสมุด"], blurb:"ทุกวันเสาร์ เขาไปห้องสมุดเพื่ออ่านหนังสือ แต่จริงๆ แล้วไปเพื่อเจอเธอ",
@@ -7379,7 +7380,7 @@ novel: [
 });
 
 /* Spanish content, part 11: stories (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n10", genre:"comedy", lvl:"B2", title:["La boda de mi prima","My cousin's wedding","งานแต่งของลูกพี่ลูกน้อง"], blurb:"เขาได้รับหน้าที่ดูแลแหวนแต่งงานในงานแต่งที่เซบียา และนกพิราบตัวหนึ่งก็มีแผนของมันเอง",
@@ -7426,7 +7427,7 @@ novel: [
 });
 
 /* Spanish content, part 12: feed posts (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f51", cat:"food", lvl:"A1", user:"Lucía Romero", handle:"lucia_cocina", time:"1 ชม.", likes:88,
@@ -7535,7 +7536,7 @@ feed: [
 });
 
 /* Spanish content, part 13: feed posts (third batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f68", cat:"food", lvl:"A1", user:"Paula Iglesias", handle:"paula_desayuno", time:"1 ชม.", likes:120,
@@ -7644,7 +7645,7 @@ feed: [
 });
 
 /* Spanish content, part 14: feed posts (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f85", cat:"food", lvl:"A1", user:"Cristina Lara", handle:"cris_fruta", time:"1 ชม.", likes:66,
@@ -7747,7 +7748,7 @@ feed: [
 });
 
 /* Spanish content, part 15: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r21", cat:"society", lvl:"A1", src:"ประเพณี", title:["Las doce uvas de Nochevieja","The twelve grapes of New Year's Eve","องุ่นสิบสองลูกคืนส่งท้ายปีเก่า"],
@@ -7837,7 +7838,7 @@ read: [
 });
 
 /* Spanish content, part 16: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r26", cat:"society", lvl:"B1", src:"วัฒนธรรม/ประเพณี", title:["Los castells: torres humanas","Castells: human towers","กัสเตลส์: หอคอยมนุษย์"],
@@ -7928,7 +7929,7 @@ read: [
 });
 
 /* Spanish content, part 17: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r31", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["El mate: una bebida para compartir","Mate: a drink for sharing","มาเต: เครื่องดื่มสำหรับแบ่งปัน"],
@@ -8018,7 +8019,7 @@ read: [
 });
 
 /* Spanish content, part 18: articles (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r36", cat:"env", lvl:"A2", src:"ธรรมชาติ/สัตว์", title:["El colibrí, un pájaro increíble","The hummingbird, an incredible bird","นกฮัมมิงเบิร์ด นกที่น่าทึ่ง"],
@@ -8109,7 +8110,7 @@ read: [
 });
 
 /* Spanish content, part 19: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n13", genre:"comedy", lvl:"A1", title:["El perro que no quería pasear","The dog who didn't want to go for a walk","สุนัขที่ไม่อยากไปเดินเล่น"], blurb:"หมาทุกตัวชอบเดินเล่น ยกเว้นโตโต้ ที่ยอมทำทุกอย่างเพื่ออยู่บนโซฟา",
@@ -8184,7 +8185,7 @@ novel: [
 });
 
 /* Spanish content, part 20: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n17", genre:"romance", lvl:"B1", title:["Número equivocado","Wrong number","เบอร์ผิด"], blurb:"ข้อความที่ส่งผิดเบอร์ทำให้คนแปลกหน้าสองคนเริ่มคุยกันทุกคืน โดยไม่รู้ว่าอยู่ห่างกันแค่ถนนเดียว",
@@ -8266,7 +8267,7 @@ novel: [
 });
 
 /* Spanish content, part 21: stories (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n21", genre:"mystery", lvl:"C1", title:["El testamento del notario","The notary's will","พินัยกรรมของโนตารี"], blurb:"โนตารีเฒ่าผู้เก็บความลับของทั้งเมืองเสียชีวิต และพินัยกรรมของเขามีเงื่อนไขประหลาด: ทายาทต้องอ่านหนังสือเล่มเดียวกันทั้งเจ็ดคน",
@@ -8346,7 +8347,7 @@ novel: [
 });
 
 /* Spanish content, part 22: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f101", cat:"food", lvl:"A1", user:"Nuria Campos", handle:"nuria_gazpacho", time:"1 ชม.", likes:95,
@@ -8455,7 +8456,7 @@ feed: [
 });
 
 /* Spanish content, part 23: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f118", cat:"food", lvl:"A1", user:"Sara Núñez", handle:"sara_frutas", time:"1 ชม.", likes:70,
@@ -8564,7 +8565,7 @@ feed: [
 });
 
 /* Spanish content, part 24: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f135", cat:"food", lvl:"A1", user:"Leo Martín", handle:"leo_tortilla", time:"2 ชม.", likes:120,
@@ -8667,7 +8668,7 @@ feed: [
 });
 
 /* Spanish content, part 25: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r41", cat:"society", lvl:"A1", src:"อาหาร/ชีวิตประจำวัน", title:["Ir de tapas","Going out for tapas","ไปกินทาปาส"],
@@ -8758,7 +8759,7 @@ read: [
 });
 
 /* Spanish content, part 26: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r46", cat:"history", lvl:"B1", src:"วรรณกรรม/ชีวประวัติ", title:["Pablo Neruda, el poeta de Chile","Pablo Neruda, Chile's poet","ปาโบล เนรูดา กวีแห่งชิลี"],
@@ -8849,7 +8850,7 @@ read: [
 });
 
 /* Spanish content, part 27: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r51", cat:"science", lvl:"B2", src:"ดาราศาสตร์/เทคโนโลยี", title:["ALMA: mirar el universo desde el desierto","ALMA: watching the universe from the desert","ALMA: มองจักรวาลจากทะเลทราย"],
@@ -8940,7 +8941,7 @@ read: [
 });
 
 /* Spanish content, part 28: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r55", cat:"society", lvl:"C1", src:"สังคม/ประชากร", title:["La España vaciada","'Emptied' Spain","สเปนที่ถูกทิ้งร้าง"],
@@ -9031,7 +9032,7 @@ read: [
 });
 
 /* Spanish content, part 29: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n25", genre:"mystery", lvl:"A1", title:["¿Dónde está mi sombrero?","Where is my hat?","หมวกของฉันอยู่ไหน?"], blurb:"หมวกสีแดงของคุณยายโรซาหายไปทุกเช้า ใครกันนะที่เอาไป",
@@ -9114,7 +9115,7 @@ novel: [
 });
 
 /* Spanish content, part 30: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n29", genre:"fantasy", lvl:"B1", title:["El reloj que devolvía las horas","The clock that gave hours back","นาฬิกาที่คืนเวลา"], blurb:"ช่างซ่อมนาฬิกาวัยชราได้รับนาฬิกาประหลาดที่หมุนย้อนเวลาได้หนึ่งชั่วโมงต่อวัน แต่ทุกชั่วโมงที่ได้คืนมามีราคาที่ต้องจ่าย",
@@ -9198,7 +9199,7 @@ novel: [
 });
 
 /* Spanish content, part 31: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n33", genre:"horror", lvl:"B2", title:["La voz del ascensor","The voice in the lift","เสียงในลิฟต์"], blurb:"ลิฟต์เก่าในอาคารมาดริดเริ่มประกาศชั้นที่ไม่มีอยู่จริง ชั้นที่สิบสาม",
@@ -9282,7 +9283,7 @@ novel: [
 });
 
 /* Spanish content, part 32: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f151", cat:"food", lvl:"A1", user:"Irene Molina", handle:"irene_croquetas", time:"1 ชม.", likes:90,
@@ -9391,7 +9392,7 @@ feed: [
 });
 
 /* Spanish content, part 33: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f168", cat:"food", lvl:"A1", user:"Marta Ruiz", handle:"marta_cafe", time:"1 ชม.", likes:70,
@@ -9500,7 +9501,7 @@ feed: [
 });
 
 /* Spanish content, part 34: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f185", cat:"food", lvl:"A1", user:"Óscar Pérez", handle:"oscar_paella", time:"2 ชม.", likes:100,
@@ -9603,7 +9604,7 @@ feed: [
 });
 
 /* Spanish content, part 35: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r61", cat:"env", lvl:"A1", src:"ภูมิศาสตร์/ท่องเที่ยว", title:["Las islas Canarias","The Canary Islands","หมู่เกาะคานารี"],
@@ -9694,7 +9695,7 @@ read: [
 });
 
 /* Spanish content, part 36: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r66", cat:"society", lvl:"B1", src:"กีฬา/เมือง", title:["Barcelona 92: los Juegos que cambiaron una ciudad","Barcelona '92: the Games that changed a city","บาร์เซโลนา 92: โอลิมปิกที่เปลี่ยนเมือง"],
@@ -9785,7 +9786,7 @@ read: [
 });
 
 /* Spanish content, part 37: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r71", cat:"env", lvl:"B2", src:"พลังงาน/สิ่งแวดล้อม", title:["El Hierro, la isla que quiere vivir del viento y del agua","El Hierro, the island that wants to live off wind and water","เอลเอียร์โร เกาะที่อยากพึ่งลมและน้ำ"],
@@ -9876,7 +9877,7 @@ read: [
 });
 
 /* Spanish content, part 38: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r76", cat:"history", lvl:"C1", src:"ประวัติศาสตร์ละตินอเมริกา", title:["El plebiscito chileno de 1988: un «No» que abrió la puerta","The 1988 Chilean plebiscite: a 'No' that opened the door","ประชามติชิลีปี 1988: ‘ไม่’ ที่เปิดประตู"],
@@ -9967,7 +9968,7 @@ read: [
 });
 
 /* Spanish content, part 39: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n37", genre:"comedy", lvl:"A1", title:["El abuelo y el móvil","Grandpa and the mobile phone","คุณตากับมือถือ"], blurb:"คุณตาได้มือถือเครื่องใหม่ แต่ทุกครั้งที่ท่านอยากโทรหาหลาน ท่านกลับโทรไปหาร้านพิซซ่าแทน",
@@ -10045,7 +10046,7 @@ novel: [
 });
 
 /* Spanish content, part 40: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n41", genre:"horror", lvl:"B1", title:["El hotel de la carretera","The roadside hotel","โรงแรมริมทาง"], blurb:"คืนพายุ ครอบครัวหนึ่งแวะพักโรงแรมเก่าริมถนนในแคว้นกัสติยา พนักงานต้อนรับรู้ชื่อพวกเขาก่อนที่จะบอก",
@@ -10125,7 +10126,7 @@ novel: [
 });
 
 /* Spanish content, part 41: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n45", genre:"fantasy", lvl:"B2", title:["La ciudad de las sombras perdidas","The city of lost shadows","เมืองแห่งเงาที่หายไป"], blurb:"วันหนึ่งไอตอร์ตื่นขึ้นมาพบว่าเงาของเขาหายไป และเงาได้หนีไปใช้ชีวิตในเมืองที่มีแต่เงา",
@@ -10203,7 +10204,7 @@ novel: [
 });
 
 /* Spanish content, part 42: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f201", cat:"food", lvl:"A1", user:"Nuria Campos", handle:"nuria_churros", time:"1 ชม.", likes:85,
@@ -10312,7 +10313,7 @@ feed: [
 });
 
 /* Spanish content, part 43: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f218", cat:"life", lvl:"A1", user:"Carla Rubio", handle:"carla_piso", time:"1 ชม.", likes:75,
@@ -10421,7 +10422,7 @@ feed: [
 });
 
 /* Spanish content, part 44: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f235", cat:"food", lvl:"A1", user:"Eva Marín", handle:"eva_gazpacho", time:"1 ชม.", likes:70,
@@ -10530,7 +10531,7 @@ feed: [
 });
 
 /* Spanish content, part 45: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f252", cat:"food", lvl:"A1", user:"Marta Iglesias", handle:"marta_fruta", time:"1 ชม.", likes:65,
@@ -10633,7 +10634,7 @@ feed: [
 });
 
 /* Spanish content, part 46: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f268", cat:"life", lvl:"A1", user:"Bruno Delgado", handle:"bruno_casa", time:"1 ชม.", likes:70,
@@ -10742,7 +10743,7 @@ feed: [
 });
 
 /* Spanish content, part 47: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f285", cat:"food", lvl:"A1", user:"Ainara López", handle:"ainara_helado", time:"1 ชม.", likes:80,
@@ -10845,7 +10846,7 @@ feed: [
 });
 
 /* Spanish content, part 48: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r81", cat:"society", lvl:"A1", src:"ชีวิตประจำวัน/วัฒนธรรม", title:["La siesta","The siesta","การนอนกลางวัน (เซียสตา)"],
@@ -10936,7 +10937,7 @@ read: [
 });
 
 /* Spanish content, part 49: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r86", cat:"env", lvl:"B1", src:"ธรรมชาติ/ประวัติศาสตร์", title:["Covadonga, el primer parque nacional de España","Covadonga, Spain's first national park","โกบาดองกา อุทยานแห่งชาติแห่งแรกของสเปน"],
@@ -11027,7 +11028,7 @@ read: [
 });
 
 /* Spanish content, part 50: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r91", cat:"history", lvl:"B2", src:"ประวัติศาสตร์การเมือง", title:["Clara Campoamor y el voto de las mujeres","Clara Campoamor and women's suffrage","กลารา กัมโปอามอร์ กับสิทธิเลือกตั้งของสตรี"],
@@ -11118,7 +11119,7 @@ read: [
 });
 
 /* Spanish content, part 51: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r96", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สิทธิมนุษยชน", title:["Bartolomé de las Casas y el debate de Valladolid","Bartolomé de las Casas and the Valladolid debate","บาร์โตโลเม เด ลาส กาซาส กับการโต้วาทีที่บายาโดลิด"],
@@ -11209,7 +11210,7 @@ read: [
 });
 
 /* Spanish content, part 52: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n49", genre:"comedy", lvl:"A1", title:["La gallina del quinto piso","The hen on the fifth floor","แม่ไก่ชั้นห้า"], blurb:"คุณตาอันเซลโมเลี้ยงไก่ในอพาร์ตเมนต์กลางเมืองมาดริด และทุกเช้ามันปลุกทั้งตึกตอนหกโมง",
@@ -11286,7 +11287,7 @@ novel: [
 });
 
 /* Spanish content, part 53: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n53", genre:"horror", lvl:"B1", title:["El último autobús a Valdemora","The last bus to Valdemora","รถเมล์เที่ยวสุดท้ายไปบัลเดโมรา"], blurb:"หญิงสาวขึ้นรถเมล์เที่ยวสุดท้ายไปหมู่บ้านของยาย ผู้โดยสารคนอื่นๆ ดูแปลกไป และไม่มีใครลงจากรถเลย",
@@ -11366,7 +11367,7 @@ novel: [
 });
 
 /* Spanish content, part 54: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n57", genre:"fantasy", lvl:"A2", title:["El paraguas de los deseos","The umbrella of wishes","ร่มแห่งความปรารถนา"], blurb:"เด็กหญิงซื้อร่มเก่าจากตลาดนัด ทุกครั้งที่กางร่มในวันฝนตก ความปรารถนาหนึ่งข้อจะเป็นจริง แต่ฝนก็ไม่ค่อยตกเสียด้วย",
@@ -11446,7 +11447,7 @@ novel: [
 });
 
 /* Spanish content, part 55: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f301", cat:"food", lvl:"A1", user:"Rocío Gil", handle:"rocio_tostada", time:"1 ชม.", likes:75,
@@ -11555,7 +11556,7 @@ feed: [
 });
 
 /* Spanish content, part 56: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f318", cat:"life", lvl:"A1", user:"Sofía Blanco", handle:"sofia_bici", time:"1 ชม.", likes:70,
@@ -11664,7 +11665,7 @@ feed: [
 });
 
 /* Spanish content, part 57: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f335", cat:"food", lvl:"A1", user:"Irene Vega", handle:"irene_flan", time:"1 ชม.", likes:75,
@@ -11773,7 +11774,7 @@ feed: [
 });
 
 /* Spanish content, part 58: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f352", cat:"food", lvl:"A1", user:"Ángela Ruiz", handle:"angela_churros", time:"1 ชม.", likes:95,
@@ -11882,7 +11883,7 @@ feed: [
 });
 
 /* Spanish content, part 59: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f369", cat:"food", lvl:"A1", user:"Julia Serrano", handle:"julia_naranjas", time:"1 ชม.", likes:70,
@@ -11991,7 +11992,7 @@ feed: [
 });
 
 /* Spanish content, part 60: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f386", cat:"food", lvl:"A1", user:"Nerea Alonso", handle:"nerea_pintxos", time:"1 ชม.", likes:100,
@@ -12088,7 +12089,7 @@ feed: [
 });
 
 /* Spanish content, part 61: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r101", cat:"society", lvl:"A1", src:"เมือง/การคมนาคม", title:["El metro de Madrid","The Madrid Metro","รถไฟใต้ดินมาดริด"],
@@ -12179,7 +12180,7 @@ read: [
 });
 
 /* Spanish content, part 62: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r106", cat:"society", lvl:"B1", src:"กีฬา/ชีวประวัติ", title:["Rafael Nadal y la tierra batida","Rafael Nadal and clay","ราฟาเอล นาดาล กับคอร์ตดิน"],
@@ -12270,7 +12271,7 @@ read: [
 });
 
 /* Spanish content, part 63: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r111", cat:"history", lvl:"B2", src:"ชีวประวัติ/การเมือง", title:["Eva Perón, «Evita»","Eva Perón, 'Evita'","เอวา เปรอน ‘เอวิตา’"],
@@ -12361,7 +12362,7 @@ read: [
 });
 
 /* Spanish content, part 64: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r116", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สิทธิมนุษยชน", title:["La Operación Cóndor","Operation Condor","ปฏิบัติการคอนดอร์"],
@@ -12452,7 +12453,7 @@ read: [
 });
 
 /* Spanish content, part 65: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n61", genre:"comedy", lvl:"A1", title:["El gato portero","The goalkeeper cat","แมวผู้รักษาประตู"], blurb:"แมวจรตัวหนึ่งชอบนอนในประตูฟุตบอลของโรงเรียน จนวันหนึ่งมันกลายเป็นดาวเด่นของทีม",
@@ -12550,7 +12551,7 @@ novel: [
 });
 
 /* Spanish content, part 66: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n65", genre:"horror", lvl:"B1", title:["La radio del abuelo","Grandpa's radio","วิทยุของคุณปู่"], blurb:"หลังคุณปู่เสียชีวิต ดานิเอลได้รับวิทยุเก่าที่ยังเปิดได้ และทุกคืนเวลาตีสาม มันกระซิบข่าวของวันพรุ่งนี้",
@@ -12648,7 +12649,7 @@ novel: [
 });
 
 /* Spanish content, part 67: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n69", genre:"fantasy", lvl:"A2", title:["El niño que hablaba con los volcanes","The boy who talked to volcanoes","เด็กชายผู้คุยกับภูเขาไฟ"], blurb:"บนเกาะลันซาโรเต เด็กชายชื่อเอเชดีได้ยินภูเขาไฟพูด และมีเพียงเขาที่รู้ว่าภูเขาไฟเก่าแก่ตัวหนึ่งกำลังเหงา",
@@ -12746,7 +12747,7 @@ novel: [
 });
 
 /* Dutch content. Sentence = [original, English, Thai]. Vocab = "LEVEL|pos|English|Thai|lemma" */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 base: {
 "de":"A1|det|the|(คำนำหน้านาม de-woord)","het":"A1|det|the, it|(คำนำหน้านาม het-woord), มัน","een":"A1|det|a, one|หนึ่ง","van":"A1|prep|of, from|ของ, จาก","in":"A1|prep|in|ใน","op":"A1|prep|on|บน","aan":"A1|prep|at, on, to|ที่, แก่","met":"A1|prep|with|กับ","voor":"A1|prep|for, before|สำหรับ, ก่อน","naar":"A1|prep|to|ไปยัง","bij":"A1|prep|at, near|ที่, ใกล้","uit":"A1|prep|out of, from|ออกจาก","over":"A2|prep|about, over|เกี่ยวกับ, ข้าม","om":"A1|prep|at, around|ตอน, รอบ","tot":"A2|prep|until|จนถึง","door":"A2|prep|through, by|ผ่าน, โดย","zonder":"A2|prep|without|โดยไม่มี","tussen":"A2|prep|between|ระหว่าง","onder":"A2|prep|under|ใต้","achter":"A2|prep|behind|ข้างหลัง","na":"A2|prep|after|หลังจาก","en":"A1|conj|and|และ","of":"A1|conj|or, whether|หรือ, ว่า…หรือไม่","maar":"A1|conj|but|แต่","want":"A2|conj|because|เพราะ","dat":"A1|conj|that|ว่า, นั้น","als":"A1|conj|if, when, as|ถ้า, เมื่อ, ในฐานะ","omdat":"A2|conj|because|เพราะว่า","toen":"A2|conj|when (past), then|ตอนที่, ตอนนั้น","terwijl":"B1|conj|while|ขณะที่","ik":"A1|pron|I|ฉัน","je":"A1|pron|you, your|เธอ, ของเธอ","jij":"A1|pron|you|เธอ","hij":"A1|pron|he|เขา","zij":"A1|pron|she, they|เธอ, พวกเขา","ze":"A1|pron|she, they|เธอ, พวกเขา","we":"A1|pron|we|พวกเรา","wij":"A1|pron|we|พวกเรา","jullie":"A1|pron|you (plural)|พวกเธอ","u":"A1|pron|you (formal)|คุณ","mij":"A1|pron|me|ฉัน (กรรม)","me":"A1|pron|me|ฉัน (กรรม)","hem":"A1|pron|him|เขา (กรรม)","haar":"A1|pron|her|เธอ, ของเธอ","ons":"A1|pron|us|พวกเรา (กรรม)","zich":"A2|pron|oneself|ตัวเอง","er":"A2|adv|there|ที่นั่น (คำเติม)","mijn":"A1|det|my|ของฉัน","zijn":"A1|v|to be; his|เป็น, อยู่; ของเขา","onze":"A1|det|our|ของเรา","die":"A1|pron|that, who|นั้น, ที่ซึ่ง","deze":"A1|det|this, these|นี้","dit":"A1|det|this|นี้","wat":"A1|pron|what|อะไร","wie":"A1|pron|who|ใคร","alle":"A1|det|all|ทั้งหมด","alles":"A1|pron|everything|ทุกอย่าง","niet":"A1|adv|not|ไม่","geen":"A1|det|no, not any|ไม่มี","wel":"A2|adv|indeed, well|ก็…นะ (เน้น)","ook":"A1|adv|also|ด้วย","heel":"A1|adv|very|มาก","erg":"A2|adv|very, badly|มาก","veel":"A1|adv|much, many|มาก","meer":"A1|adv|more|มากขึ้น","nog":"A1|adv|still, yet|ยัง, อีก","al":"A2|adv|already|แล้ว","nu":"A1|adv|now|ตอนนี้","hier":"A1|adv|here|ที่นี่","daar":"A1|adv|there|ที่นั่น","vandaag":"A1|adv|today|วันนี้","gisteren":"A1|adv|yesterday|เมื่อวาน","morgen":"A1|adv|tomorrow|พรุ่งนี้","altijd":"A1|adv|always|เสมอ","nooit":"A1|adv|never|ไม่เคย","dan":"A1|adv|then, than|แล้ว, กว่า","zo":"A1|adv|so|อย่างนั้น, มาก","toch":"B1|adv|still, after all|ถึงอย่างไรก็","even":"A2|adv|just, for a moment|แป๊บหนึ่ง","ja":"A1|int|yes|ใช่","nee":"A1|int|no|ไม่","dank":"A1|n|thanks|ขอบคุณ","is":"A1|v|is|เป็น|zijn","ben":"A1|v|am|เป็น|zijn","bent":"A1|v|are (jij/u)|เป็น|zijn","was":"A2|v|was|เคยเป็น|zijn","waren":"A2|v|were|เคยเป็น|zijn","heb":"A1|v|have (ik)|มี|hebben","heeft":"A1|v|has|มี|hebben","hebben":"A1|v|to have|มี","had":"A2|v|had|เคยมี|hebben","word":"A2|v|become (ik)|กลายเป็น|worden","wordt":"A2|v|becomes, is (passive)|กลายเป็น, ถูก|worden","werd":"B1|v|became, was (passive)|กลายเป็น (อดีต)|worden","kan":"A1|v|can|สามารถ|kunnen","kunnen":"A1|v|can, to be able|สามารถ","wil":"A1|v|want|ต้องการ|willen","moet":"A1|v|must|ต้อง|moeten","ga":"A1|v|go (ik)|ไป|gaan","gaat":"A1|v|goes|ไป|gaan","gaan":"A1|v|to go|ไป","doe":"A1|v|do (ik)|ทำ|doen","doet":"A1|v|does|ทำ|doen","zei":"A2|v|said|พูด (อดีต)|zeggen","dag":"A1|n|day|วัน","nacht":"A1|n|night|กลางคืน","jaar":"A1|n|year|ปี","jaren":"A1|n|years|ปี|jaar","tijd":"A1|n|time|เวลา","keer":"A2|n|time (occurrence)|ครั้ง","huis":"A1|n|house|บ้าน","stad":"A1|n|city|เมือง","straat":"A1|n|street|ถนน","water":"A1|n|water|น้ำ","mensen":"A1|n|people|ผู้คน|mens","leven":"A2|n|life|ชีวิต","wereld":"A2|n|world|โลก","man":"A1|n|man|ผู้ชาย","vrouw":"A1|n|woman, wife|ผู้หญิง, ภรรยา","kind":"A1|n|child|เด็ก","kinderen":"A1|n|children|เด็กๆ|kind","vriend":"A1|n|friend|เพื่อน","groot":"A1|adj|big|ใหญ่","grote":"A1|adj|big|ใหญ่|groot","klein":"A1|adj|small|เล็ก","kleine":"A1|adj|small|เล็ก|klein","goed":"A1|adj|good|ดี","goede":"A1|adj|good|ดี|goed","nieuw":"A1|adj|new|ใหม่","nieuwe":"A1|adj|new|ใหม่|nieuw","oud":"A1|adj|old|เก่า, แก่","oude":"A1|adj|old|เก่า|oud","eerste":"A1|adj|first|แรก","laatste":"A2|adj|last|สุดท้าย","andere":"A1|adj|other|อื่น","twee":"A1|num|two|สอง","drie":"A1|num|three|สาม","honderd":"A1|num|hundred|ร้อย","duizend":"A2|num|thousand|พัน"
@@ -12892,7 +12893,7 @@ novel: [
 });
 
 /* Dutch content, part 2: feed + articles */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 base: {
 "week":"A1|n|week|สัปดาห์","uur":"A1|n|hour; o'clock|ชั่วโมง; นาฬิกา","persoon":"A1|n|person|คน","land":"A1|n|country|ประเทศ","werk":"A1|n|work|งาน","boek":"A1|n|book|หนังสือ","geld":"A1|n|money|เงิน","eten":"A1|v|to eat; food|กิน; อาหาร","drinken":"A1|v|to drink|ดื่ม","slapen":"A1|v|to sleep|นอน","werken":"A1|v|to work|ทำงาน","wonen":"A1|v|to live (reside)|อาศัยอยู่","woon":"A1|v|live (ik)|อาศัยอยู่|wonen","spreken":"A1|v|to speak|พูด","zien":"A1|v|to see|เห็น","komen":"A1|v|to come|มา","komt":"A1|v|comes|มา|komen","denk":"A2|v|think (ik)|คิด|denken","vind":"A2|v|find, think (ik)|คิดว่า, เห็นว่า|vinden","vindt":"A2|v|finds, thinks|คิดว่า|vinden","weet":"A2|v|know(s)|รู้|weten","iets":"A2|pron|something|บางสิ่ง","niets":"A2|pron|nothing|ไม่มีอะไร","iemand":"A2|pron|someone|ใครบางคน","elk":"A2|det|each|แต่ละ","mooi":"A1|adj|beautiful|สวย","blij":"A1|adj|happy, glad|ดีใจ","moeilijk":"A2|adj|difficult|ยาก","makkelijk":"A1|adj|easy|ง่าย","belangrijk":"A2|adj|important|สำคัญ","echt":"A2|adv|really|จริงๆ","samen":"A1|adv|together|ด้วยกัน","weer":"A1|adv|again|อีกครั้ง","weg":"A2|adv|away, gone|ไป, หายไป"
@@ -13029,7 +13030,7 @@ read: [
 });
 
 /* Dutch content, part 3: stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n3", genre:"romance", lvl:"A2", title:["De trein van 7.42","The 7.42 train","รถไฟเที่ยว 7.42"], blurb:"ทุกเช้าเขานั่งตรงข้ามหญิงสาวที่อ่านหนังสือเล่มเดิม จนวันหนึ่งเธอไม่มา",
@@ -13073,7 +13074,7 @@ novel: [
 });
 
 /* Dutch content, part 4: more feed posts */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f15", cat:"life", lvl:"A1", user:"Noor Visser", handle:"noor_en_poes", time:"40 นาที", likes:88,
@@ -13158,7 +13159,7 @@ feed: [
 });
 
 /* Dutch content, part 5: more articles and stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r8", cat:"history", lvl:"A2", src:"ประวัติศาสตร์/วิศวกรรม", title:["De Afsluitdijk: een weg door de zee","The Afsluitdijk: a road through the sea","อัฟสลาวต์ไดก์: ถนนที่ตัดผ่านทะเล"],
@@ -13244,7 +13245,7 @@ novel: [
 });
 
 /* Dutch content, part 6: feed posts (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f25", cat:"food", lvl:"A1", user:"Lotte Jansen", handle:"lotte_soep", time:"20 นาที", likes:58,
@@ -13354,7 +13355,7 @@ feed: [
 });
 
 /* Dutch content, part 7: feed posts (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f42", cat:"work", lvl:"B2", user:"Hanneke Bosch", handle:"hanneke_zzp", time:"2 ชม.", likes:1240,
@@ -13418,7 +13419,7 @@ feed: [
 });
 
 /* Dutch content, part 8: articles (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r11", cat:"society", lvl:"A1", src:"วัฒนธรรม/สังคม", title:["Koningsdag: het hele land is oranje","King's Day: the whole country is orange","วันกษัตริย์: ทั้งประเทศเป็นสีส้ม"],
@@ -13510,7 +13511,7 @@ read: [
 });
 
 /* Dutch content, part 9: articles (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r16", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/ประวัติศาสตร์", title:["Antoni van Leeuwenhoek en de onzichtbare wereld","Antoni van Leeuwenhoek and the invisible world","อันโตนี ฟาน เลเวนฮุก กับโลกที่มองไม่เห็น"],
@@ -13603,7 +13604,7 @@ read: [
 });
 
 /* Dutch content, part 10: stories (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n7", genre:"mystery", lvl:"A1", title:["Waar is de kat?","Where is the cat?","แมวอยู่ไหน?"], blurb:"แมวของลีซาหายไปทุกวันตอนบ่ายสามโมง และกลับมาพร้อมกลิ่นปลา",
@@ -13677,7 +13678,7 @@ novel: [
 });
 
 /* Dutch content, part 11: stories (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n10", genre:"comedy", lvl:"B2", title:["De verjaardagskring","The birthday circle","วงนั่งวันเกิด"], blurb:"หนุ่มอังกฤษไปงานวันเกิดแบบดัตช์ครั้งแรก และพบว่าการนั่งเป็นวงกลมมีกฎที่ไม่มีใครบอก",
@@ -13759,7 +13760,7 @@ novel: [
 });
 
 /* Dutch content, part 12: feed posts (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f51", cat:"food", lvl:"A1", user:"Lotte de Wit", handle:"lotte_kookt", time:"1 ชม.", likes:84,
@@ -13868,7 +13869,7 @@ feed: [
 });
 
 /* Dutch content, part 13: feed posts (third batch, continued) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f68", cat:"food", lvl:"A1", user:"Fleur Vos", handle:"fleur_ontbijt", time:"1 ชม.", likes:102,
@@ -13977,7 +13978,7 @@ feed: [
 });
 
 /* Dutch content, part 14: feed posts (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f85", cat:"food", lvl:"A1", user:"Bas Verhoeven", handle:"bas_patat", time:"1 ชม.", likes:130,
@@ -14080,7 +14081,7 @@ feed: [
 });
 
 /* Dutch content, part 15: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r21", cat:"env", lvl:"A1", src:"ชีวิตประจำวัน/อากาศ", title:["Praten over het weer","Talking about the weather","คุยกันเรื่องอากาศ"],
@@ -14171,7 +14172,7 @@ read: [
 });
 
 /* Dutch content, part 16: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r26", cat:"env", lvl:"B1", src:"ธรรมชาติ/มรดกโลก", title:["De Waddenzee: twee keer per dag een ander landschap","The Wadden Sea: a different landscape twice a day","ทะเลวัดเดิน: ภูมิทัศน์ที่เปลี่ยนวันละสองครั้ง"],
@@ -14262,7 +14263,7 @@ read: [
 });
 
 /* Dutch content, part 17: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r31", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["Koffie met één koekje","Coffee with one biscuit","กาแฟกับคุกกี้หนึ่งชิ้น"],
@@ -14353,7 +14354,7 @@ read: [
 });
 
 /* Dutch content, part 18: articles (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r36", cat:"env", lvl:"A2", src:"ธรรมชาติ/ท่องเที่ยว", title:["De Hoge Veluwe: fietsen tussen herten en kunst","The Hoge Veluwe: cycling between deer and art","โฮเคอเฟลูเวอ: ปั่นจักรยานระหว่างกวางกับงานศิลปะ"],
@@ -14444,7 +14445,7 @@ read: [
 });
 
 /* Dutch content, part 19: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n13", genre:"romance", lvl:"A1", title:["De bakker en de bloemist","The baker and the florist","คนทำขนมปังกับคนขายดอกไม้"], blurb:"ร้านขนมปังกับร้านดอกไม้อยู่ตรงข้ามกัน ทุกเช้าทั้งสองแลกของขวัญเล็กๆ โดยไม่พูดอะไรเลย",
@@ -14526,7 +14527,7 @@ novel: [
 });
 
 /* Dutch content, part 20: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n17", genre:"mystery", lvl:"B1", title:["De laatste pont","The last ferry","เรือข้ามฟากเที่ยวสุดท้าย"], blurb:"ทุกคืน เรือข้ามฟากเที่ยวสุดท้ายในอัมสเตอร์ดัมพาผู้โดยสารคนเดิมข้ามแม่น้ำ แต่เขาไม่เคยลงจากเรือเลย",
@@ -14612,7 +14613,7 @@ novel: [
 });
 
 /* Dutch content, part 21: stories (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n21", genre:"mystery", lvl:"C1", title:["De handtekening","The signature","ลายเซ็น"], blurb:"ผู้เชี่ยวชาญลายมือได้รับจดหมายรักเก่าที่อ้างว่าเขียนโดยกวีชื่อดัง ลายมือเป็นของจริงทุกอย่าง ยกเว้นสิ่งเดียวที่ทำให้เธอสงสัย",
@@ -14698,7 +14699,7 @@ novel: [
 });
 
 /* Dutch content, part 22: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f101", cat:"food", lvl:"A1", user:"Sanne de Wit", handle:"sanne_poffertjes", time:"1 ชม.", likes:90,
@@ -14807,7 +14808,7 @@ feed: [
 });
 
 /* Dutch content, part 23: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f118", cat:"food", lvl:"A1", user:"Lisa Vos", handle:"lisa_ontbijt", time:"1 ชม.", likes:80,
@@ -14916,7 +14917,7 @@ feed: [
 });
 
 /* Dutch content, part 24: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f135", cat:"food", lvl:"A1", user:"Iris Dijkstra", handle:"iris_stamppot", time:"2 ชม.", likes:110,
@@ -15019,7 +15020,7 @@ feed: [
 });
 
 /* Dutch content, part 25: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r41", cat:"society", lvl:"A1", src:"อาหาร/ชีวิตประจำวัน", title:["Drop","Dutch liquorice","ชะเอมดำ (โดรป)"],
@@ -15110,7 +15111,7 @@ read: [
 });
 
 /* Dutch content, part 26: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r46", cat:"env", lvl:"B1", src:"ภูมิศาสตร์/ประวัติศาสตร์", title:["Flevoland: een provincie uit de zee","Flevoland: a province from the sea","เฟลโวลันด์: จังหวัดที่เกิดจากทะเล"],
@@ -15201,7 +15202,7 @@ read: [
 });
 
 /* Dutch content, part 27: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r51", cat:"history", lvl:"B2", src:"วรรณกรรม/ประวัติศาสตร์", title:["Max Havelaar: van roman tot keurmerk","Max Havelaar: from novel to label","มักซ์ ฮาเฟอลาร์: จากนวนิยายสู่ฉลากสินค้า"],
@@ -15291,7 +15292,7 @@ read: [
 });
 
 /* Dutch content, part 28: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r56", cat:"history", lvl:"C1", src:"ประวัติศาสตร์การเมือง", title:["Thorbecke en de Grondwet van 1848","Thorbecke and the Constitution of 1848","ทอร์เบกเกอกับรัฐธรรมนูญปี 1848"],
@@ -15382,7 +15383,7 @@ read: [
 });
 
 /* Dutch content, part 29: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n25", genre:"comedy", lvl:"A1", title:["De fiets van opa","Grandpa's bike","จักรยานของคุณปู่"], blurb:"คุณปู่มีจักรยานเก่ามากที่ไม่มีเบรก ทั้งหมู่บ้านรู้ดีว่าเมื่อเห็นท่านมาต้องหลบ",
@@ -15465,7 +15466,7 @@ novel: [
 });
 
 /* Dutch content, part 30: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n29", genre:"horror", lvl:"B1", title:["Het hunebed","The dolmen","หินตั้งโบราณ"], blurb:"สามเพื่อนตั้งแคมป์ข้างหินตั้งยุคก่อนประวัติศาสตร์ในเดรนเทอ คนหนึ่งหยิบหินก้อนเล็กกลับบ้านไปเป็นที่ระลึก",
@@ -15548,7 +15549,7 @@ novel: [
 });
 
 /* Dutch content, part 31: stories (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n33", genre:"fantasy", lvl:"B2", title:["De stad onder het water","The city under the water","เมืองใต้น้ำ"], blurb:"ระหว่างดำน้ำในทะเลสาบไอส์เซิลเมียร์ ลีอันพบหอระฆังของเมืองที่จมหายไปเมื่อหลายร้อยปีก่อน และได้ยินเสียงระฆังดังขึ้นมา",
@@ -15628,7 +15629,7 @@ novel: [
 });
 
 /* Dutch content, part 32: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f151", cat:"food", lvl:"A1", user:"Roos Kramer", handle:"roos_appeltaart", time:"1 ชม.", likes:90,
@@ -15737,7 +15738,7 @@ feed: [
 });
 
 /* Dutch content, part 33: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f168", cat:"food", lvl:"A1", user:"Eva Smits", handle:"eva_kaas", time:"1 ชม.", likes:75,
@@ -15846,7 +15847,7 @@ feed: [
 });
 
 /* Dutch content, part 34: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f185", cat:"food", lvl:"A1", user:"Julia Bakker", handle:"julia_oliebol", time:"2 ชม.", likes:110,
@@ -15949,7 +15950,7 @@ feed: [
 });
 
 /* Dutch content, part 35: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r61", cat:"society", lvl:"A1", src:"อาหาร/ประเพณี", title:["De kaasmarkt in Gouda","The cheese market in Gouda","ตลาดชีสที่เกาดา"],
@@ -16040,7 +16041,7 @@ read: [
 });
 
 /* Dutch content, part 36: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r66", cat:"history", lvl:"B1", src:"ศิลปะ/คณิตศาสตร์", title:["M.C. Escher: de kunstenaar van het onmogelijke","M.C. Escher: the artist of the impossible","เอ็ม.ซี. เอเชอร์ ศิลปินแห่งสิ่งที่เป็นไปไม่ได้"],
@@ -16131,7 +16132,7 @@ read: [
 });
 
 /* Dutch content, part 37: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r71", cat:"env", lvl:"B2", src:"สิ่งแวดล้อม/กฎหมาย", title:["De Urgenda-zaak: een rechter over het klimaat","The Urgenda case: a judge on the climate","คดีเออร์เคินดา: ศาลกับภาวะโลกร้อน"],
@@ -16222,7 +16223,7 @@ read: [
 });
 
 /* Dutch content, part 38: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r76", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สงคราม", title:["Srebrenica en de schaduw van Dutchbat","Srebrenica and the shadow of Dutchbat","สเรเบรนิตซากับเงามืดของ Dutchbat"],
@@ -16313,7 +16314,7 @@ read: [
 });
 
 /* Dutch content, part 39: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n37", genre:"comedy", lvl:"A1", title:["De koe op het dak","The cow on the roof","วัวบนหลังคา"], blurb:"เช้าวันหนึ่ง ชาวนายาน พบวัวของเขายืนอยู่บนหลังคาโรงนา ไม่มีใครรู้ว่ามันขึ้นไปได้อย่างไร",
@@ -16391,7 +16392,7 @@ novel: [
 });
 
 /* Dutch content, part 40: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n41", genre:"horror", lvl:"B1", title:["Het spookschip op de Waddenzee","The ghost ship on the Wadden Sea","เรือผีในทะเลวัดเดิน"], blurb:"ระหว่างเดินเลาะพื้นทะเลยามน้ำลดกับกลุ่มทัวร์ ไมเคิลเห็นเรือใบเก่าโผล่ออกมาจากหมอก ทั้งที่ทะเลไม่มีน้ำเลย",
@@ -16469,7 +16470,7 @@ novel: [
 });
 
 /* Dutch content, part 41: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n45", genre:"fantasy", lvl:"B2", title:["De tulp die niet wilde bloeien","The tulip that wouldn't bloom","ทิวลิปที่ไม่ยอมบาน"], blurb:"ในทุ่งทิวลิปนับล้านดอก มีหัวทิวลิปหัวหนึ่งที่ไม่ยอมงอกมาเจ็ดปี ชาวสวนหนุ่มพบว่าข้างในมีบางสิ่งที่รอเวลาอยู่",
@@ -16550,7 +16551,7 @@ novel: [
 });
 
 /* Dutch content, part 42: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f201", cat:"food", lvl:"A1", user:"Lotte de Wit", handle:"lotte_pannenkoek", time:"1 ชม.", likes:85,
@@ -16659,7 +16660,7 @@ feed: [
 });
 
 /* Dutch content, part 43: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f218", cat:"life", lvl:"A1", user:"Julia Bos", handle:"julia_huis", time:"1 ชม.", likes:75,
@@ -16768,7 +16769,7 @@ feed: [
 });
 
 /* Dutch content, part 44: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f235", cat:"food", lvl:"A1", user:"Emma Vries", handle:"emma_appel", time:"1 ชม.", likes:70,
@@ -16877,7 +16878,7 @@ feed: [
 });
 
 /* Dutch content, part 45: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f252", cat:"food", lvl:"A1", user:"Fleur Peeters", handle:"fleur_hagelslag", time:"1 ชม.", likes:85,
@@ -16980,7 +16981,7 @@ feed: [
 });
 
 /* Dutch content, part 46: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f268", cat:"life", lvl:"A1", user:"Sem Dijkman", handle:"sem_woonboot", time:"1 ชม.", likes:75,
@@ -17089,7 +17090,7 @@ feed: [
 });
 
 /* Dutch content, part 47: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f285", cat:"food", lvl:"A1", user:"Zoë Bakker", handle:"zoe_ijsje", time:"1 ชม.", likes:80,
@@ -17192,7 +17193,7 @@ feed: [
 });
 
 /* Dutch content, part 48: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r81", cat:"society", lvl:"A1", src:"อาหาร/วัฒนธรรม", title:["De stroopwafel","The stroopwafel","สโตรปวาฟเฟิล"],
@@ -17283,7 +17284,7 @@ read: [
 });
 
 /* Dutch content, part 49: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r86", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/การจัดการน้ำ", title:["De Hollandse Waterlinie: verdedigen met water","The Dutch Water Line: defending with water","แนวป้องกันน้ำฮอลแลนด์: ป้องกันประเทศด้วยน้ำ"],
@@ -17374,7 +17375,7 @@ read: [
 });
 
 /* Dutch content, part 50: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r91", cat:"history", lvl:"B2", src:"การเมือง/ยุโรป", title:["Het Verdrag van Maastricht: de geboorte van de Europese Unie","The Maastricht Treaty: the birth of the European Union","สนธิสัญญามาสทริชต์: กำเนิดสหภาพยุโรป"],
@@ -17465,7 +17466,7 @@ read: [
 });
 
 /* Dutch content, part 51: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r96", cat:"society", lvl:"C1", src:"กฎหมาย/สิทธิมนุษยชน", title:["Den Haag, stad van vrede en recht","The Hague, city of peace and justice","เดอะเฮก เมืองแห่งสันติภาพและความยุติธรรม"],
@@ -17556,7 +17557,7 @@ read: [
 });
 
 /* Dutch content, part 52: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n49", genre:"comedy", lvl:"A1", title:["De kip van meneer Jansen","Mr Jansen's chicken","แม่ไก่ของคุณยันเซิน"], blurb:"คุณยันเซินเลี้ยงไก่บนระเบียงอพาร์ตเมนต์ในอัมสเตอร์ดัม ทุกเช้ามันปลุกทั้งตึก จนเพื่อนบ้านต้องจัดประชุม",
@@ -17634,7 +17635,7 @@ novel: [
 });
 
 /* Dutch content, part 53: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n53", genre:"horror", lvl:"B1", title:["De laatste bus naar Nieuwlande","The last bus to Nieuwlande","รถเมล์เที่ยวสุดท้ายไปนีวลันเดอ"], blurb:"หญิงสาวขึ้นรถเมล์เที่ยวสุดท้ายไปหมู่บ้านของยายในเดรนเทอ ผู้โดยสารคนอื่นๆ ดูแปลก และไม่มีใครลงจากรถเลย",
@@ -17714,7 +17715,7 @@ novel: [
 });
 
 /* Dutch content, part 54: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n57", genre:"fantasy", lvl:"A2", title:["De bakker en de draak","The baker and the dragon","คนทำขนมปังกับมังกร"], blurb:"มังกรน้อยมาขอไฟจากเตาอบของร้านขนมปังทุกคืน แต่ชาวหมู่บ้านกลับกลัวมันจนตัวสั่น",
@@ -17792,7 +17793,7 @@ novel: [
 });
 
 /* Dutch content, part 55: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f301", cat:"food", lvl:"A1", user:"Sanne de Vries", handle:"sanne_hagelslag", time:"1 ชม.", likes:85,
@@ -17901,7 +17902,7 @@ feed: [
 });
 
 /* Dutch content, part 56: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f318", cat:"food", lvl:"A1", user:"Noor Brouwer", handle:"noor_stroopwafel", time:"1 ชม.", likes:90,
@@ -18010,7 +18011,7 @@ feed: [
 });
 
 /* Dutch content, part 57: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f335", cat:"food", lvl:"A1", user:"Anouk Hermans", handle:"anouk_appeltaart", time:"1 ชม.", likes:85,
@@ -18119,7 +18120,7 @@ feed: [
 });
 
 /* Dutch content, part 58: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f352", cat:"food", lvl:"A1", user:"Lars Gerritsen", handle:"lars_patat", time:"1 ชม.", likes:95,
@@ -18228,7 +18229,7 @@ feed: [
 });
 
 /* Dutch content, part 59: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f369", cat:"food", lvl:"A1", user:"Fenna Postma", handle:"fenna_kaas", time:"1 ชม.", likes:75,
@@ -18331,7 +18332,7 @@ feed: [
 });
 
 /* Dutch content, part 60: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 feed: [
 { id:"nl-f385", cat:"food", lvl:"A1", user:"Lieke Smeets", handle:"lieke_pannenkoek", time:"1 ชม.", likes:100,
@@ -18434,7 +18435,7 @@ feed: [
 });
 
 /* Dutch content, part 61: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r101", cat:"society", lvl:"A1", src:"อาหาร/วัฒนธรรม", title:["Poffertjes","Poffertjes","ปอฟเฟอร์ตเยส"],
@@ -18525,7 +18526,7 @@ read: [
 });
 
 /* Dutch content, part 62: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r106", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/สงคราม", title:["4 en 5 mei","4 and 5 May","วันที่ 4 และ 5 พฤษภาคม"],
@@ -18616,7 +18617,7 @@ read: [
 });
 
 /* Dutch content, part 63: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r111", cat:"society", lvl:"B2", src:"การปกครอง/ราชวงศ์", title:["Afstand doen van de troon","Abdicating the throne","การสละราชบัลลังก์"],
@@ -18707,7 +18708,7 @@ read: [
 });
 
 /* Dutch content, part 64: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r116", cat:"society", lvl:"C1", src:"ประวัติศาสตร์/อาณานิคม", title:["De Gouden Koets","The Golden Coach","รถม้าทองคำ"],
@@ -18798,7 +18799,7 @@ read: [
 });
 
 /* Dutch content, part 65: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n61", genre:"comedy", lvl:"A1", title:["Kees de papegaai","Kees the parrot","คีสนกแก้ว"], blurb:"นกแก้วของคุณตายานพูดภาษาดัตช์ได้ แต่มันชอบพูดประโยคผิดเวลา จนทำให้ทั้งบ้านวุ่นวาย",
@@ -18896,7 +18897,7 @@ novel: [
 });
 
 /* Dutch content, part 66: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n65", genre:"horror", lvl:"B1", title:["De wekker van tante Mien","Aunt Mien's alarm clock","นาฬิกาปลุกของป้ามีน"], blurb:"ลอตเทอได้รับมรดกเป็นบ้านของป้ามีน และทุกคืนเวลาตีสามสิบเจ็ดนาที นาฬิกาปลุกเก่าจะดัง แล้วข้าวของในบ้านก็กลับไปอยู่ที่เดิม",
@@ -18994,7 +18995,7 @@ novel: [
 });
 
 /* Dutch content, part 67: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n69", genre:"fantasy", lvl:"A2", title:["Het wolkje dat wilde zwemmen","The little cloud that wanted to swim","ก้อนเมฆน้อยที่อยากว่ายน้ำ"], blurb:"ก้อนเมฆน้อยชื่อพลุสอยากลงไปว่ายน้ำในทะเลเหมือนเด็กๆ ที่มันเห็นจากฟากฟ้า แต่เมฆจะว่ายน้ำได้อย่างไร",
@@ -19093,7 +19094,7 @@ novel: [
 </script>
 <script>/* English UI strings. Keys are the Thai text (or Thai fragments around interpolated values) used in app.js;
    when the UI language is English, app.js swaps these into the interface after each render. */
-window.TRIADA_I18N = {
+window.LEXIPLUMA_I18N = {
 "ลบ":"Delete","คำ":"words","ใบ":"cards","อีก":"in","คำ:":"hard words:","ข้อ":"Q","ธีม":"Theme","ตลก":"Comedy","ฟีด":"Feed","ชุด":"quizzes","ปิด":"Close","วัน":"days","มืด":"Dark","แปล":"Translate","ลืม":"Forgot","ไทย":"Thai","ออก":"Exit","ยาก":"Hard","ฟัง":"Listen","กีฬา":"Sport","กลับ":"Back","หยุด":"Stop","หรือ":"or","นาที":"min","ข่าว":"News","จาก:":"From:","สเปน":"Spanish","บ้าน":"house","ภาษา":"Language","คำ (":"words (","” แล้ว":"”","เช่น":"e.g.","สลับ":"Mixed","สำนวน":"Idiom","ทบทวน":"Review","บุพบท":"preposition","เสียง":"Voice","ฟังคำ":"Word","สังคม":"Society","เกณฑ์":"Threshold","การ์ด":"Cards","คำยาก":"Hard words","สถานะ":"Status","ดัตช์":"Dutch","นิยาย":"Stories","เดือน":"months","อาหาร":"Food","สว่าง":"Light","คำนาม":"noun","ใบที่":"Card","จำได้":"Good","เรื่อง":"stories","หน้าตา":"Appearance","สีหลัก":"Accent colour","การงาน":"Work","ส่งออก":"Export","ลบแล้ว":"Deleted","ทำใหม่":"Retry","สุขภาพ":"Health","สืบสวน":"Mystery","กระดาษ":"Paper","ตัวเลข":"number","คัดลอก":"Copy","นำเข้า":"Import","อ่านต่อ":"Keep reading","ดูคำตอบ":"Show answer","ยอดนิยม":"Most read","ความรู้":"Articles","ผลคะแนน":"Score","คำอุทาน":"interjection","คำกริยา":"verb","แฟนตาซี":"Fantasy","ออนไลน์":"Online","เนื้อหา":"Content","ตามภาษา":"By language","คำศัพท์":"Word","ลบการ์ด":"Delete card","ค้นหาคำ":"Search","ต้นฉบับ":"Original","ง่ายมาก":"Easy","ตั้งค่า":"Settings","ออฟไลน์":"Offline","ทุกหมวด":"All topics","ถูกต้อง":"Correct","ไม่พบ “":"No exact match for “","สรรพนาม":"pronoun","ทบทวน ·":"Review ·","ตามระบบ":"System","อ่านถึง":"Read to","บันเทิง":"Entertainment","ทบทวนครบ":"Reviewed","อ่านข่าว":"Read the news","คุณศัพท์":"adjective","หมวดหมู่":"Topics","กำลังแปล":"Translating","ฝรั่งเศส":"French","ความเร็ว":"Speed","ทุกระดับ":"All levels","เมนูหลัก":"Main menu","จบเรื่อง":"The end","ออฟไลน์)":"offline)","ว่าอะไร?":"— which word?","ปรับแต่ง":"Customise","เศรษฐกิจ":"Economy","คำนำหน้า":"determiner","คำเชื่อม":"conjunction","โพสต์ของ":"Post by","ฟังเสียง":"Listen","ความหมาย":"Meaning","บันทึก “":"Saved “","ถึงกำหนด":"Due","สยองขวัญ":"Horror","โรแมนติก":"Romance","โหลดใหม่":"Reload","ธรรมชาติ":"Nature","อ่านแล้ว":"Read","ฟังประโยค":"Sentence","บันทึกไว้":"Saved","กำลังแปล…":"Translating…","อัตโนมัติ":"Auto","เสียงอ่าน":"Read-aloud voice","คำทั้งหมด":"total words","พลิกการ์ด":"Flip card","แฟลชการ์ด":"Flashcards","ไม่มีเชิง":"Sans-serif","การอนุมาน":"Inference","พจนานุกรม":"Dictionary","เทคโนโลยี":"Technology","ค้นทุกภาษา":"All languages","ทดสอบเสียง":"Test voice","ฟังเสียงคำ":"Hear the word","เรื่องสั้น":"Short stories","ไม่พบคำนี้":"Word not found","ระดับ CEFR":"CEFR level","เนื้อหาจาก":"Content from","กำลังโหลด…":"Loading…","ล้างข้อมูล":"Reset data","จบรอบทบทวน":"Review session done","ค้นออนไลน์":"Search online","ชื่อเรื่อง":"Title","แปลออนไลน์":"Translate online","ข่าวล่าสุด":"Latest news","คัดลอกแล้ว":"Copied","รายละเอียด":"Detail","บันทึกแล้ว":"Saved","ความหมายคำ":"Word meaning","ท่องเที่ยว":"Travel","อ่านจบแล้ว":"Finished","บันทึกคำยาก":"Saved","สิ่งแวดล้อม":"Environment","ฟอนต์บทความ":"Reading font","บันทึกสำนวน":"Save idiom","รูปพื้นฐาน:":"Base form:","ชั้นหนังสือ":"Bookshelf","โหมดนิยาย ·":"Story mode ·","บันทึกไว้ (":"Saved (","ในประโยค: “":"in the sentence: “","ค้นหาล่าสุด":"Recent searches","วิทยาศาสตร์":"Science","ลบการ์ดแล้ว":"Card deleted","บทความถัดไป":"Next article","พิมพ์คำภาษา":"Type a word in ","ฟังตัวอย่าง":"Play sample","ความคืบหน้า":"Progress","ข้อมูล JSON":"JSON data","ใจความสำคัญ":"Main idea","ภาษาที่เรียน":"Language I'm learning","ข้อมูลของฉัน":"My data","สร้างบทเรียน":"Create lesson","ทบทวนคำศัพท์":"Review vocabulary","ตั้งค่าการ์ด":"Card settings","แปลทุกประโยค":"Translate all","ศัพท์ในบริบท":"Vocabulary in context","แตะเพื่อพลิก":"Tap to flip","ครั้งที่อ่าน":"views","แปลไม่สำเร็จ":"Couldn't translate","วางบทความเอง":"Paste your own","กริยาวิเศษณ์":"adverb","ภาษาคำแปลหลัก":"Translation language","ประวัติศาสตร์":"History","ดาวน์โหลดไฟล์":"Download file","ด้านหน้าการ์ด":"Card front","ถึงกำหนดทบทวน":"due for review","ฟังทั้งเรื่อง":"Listen","บันทึกสำนวน “":"Saved idiom “","บทความความรู้":"Articles","บทความทั้งหมด":"All articles","กลับหน้าการ์ด":"Back to cards","ชีวิตประจำวัน":"Daily life","ข้อความของฉัน":"My text","กำลังเป็นกระแส":"Trending","ค้นหาคำในการ์ด":"Search your cards","การ์ด · อ่านจบ":"cards · finished","ระยะห่างบรรทัด":"Line spacing","ไปทบทวนคำศัพท์":"Review vocabulary","ล้างข้อมูลแล้ว":"Data cleared","ฝึกเพิ่ม (สุ่ม)":"Extra practice (random)","เปิดในพจนานุกรม":"Open in dictionary","โหมดอ่านเพลิน ·":"Casual reading ·","ไม่พบคำที่ค้นหา":"No matching words","หรือแตะคำแล้วกด":"or tap a word and press","อยู่ในการ์ดแล้ว":"In your cards","เลือกเรื่องอื่น":"Pick another story","บันทึกเป็นการ์ด":"Save as card","ขีดเส้นใต้คำยาก":"Underline hard words","กำลังโหลดบทความ…":"Loading article…","ข้อใดไม่สอดคล้อง":"Which is NOT consistent","นำเข้าข้อมูลแล้ว":"Data imported","พจนานุกรมในตัว ·":"Built-in dictionary ·","จำนวนการ์ดต่อรอบ":"Cards per session","น้ำเสียง/ทัศนคติ":"Tone / attitude","กำลังค้นออนไลน์…":"Searching online…","ล้างข้อมูลทั้งหมด":"Reset all data","นำออกจากการ์ดแล้ว":"Removed from cards","แบบทดสอบอัตโนมัติ":"Auto-generated quiz","แปลออนไลน์ (ไทย →":"Online translation (Thai →","มีเชิง (Literata)":"Serif (Literata)","จุดประสงค์ผู้เขียน":"Author's purpose","ขนาดตัวอักษรบทความ":"Reading text size","ตัวเลือกอื่นแปลว่า":"the other options mean","แบบทดสอบความเข้าใจ":"Comprehension quiz","บันทึกเป็นแฟลชการ์ด":"Save as flashcard","โหมดอ่านจับใจความ ·":"Close reading ·","บันทึกว่าอ่านจบแล้ว":"Marked as finished","คำศัพท์และแฟลชการ์ด":"Vocabulary & flashcards","ไม่พบเสียงในเครื่อง":"No voice installed","นำเข้าจากข้อความนี้":"Import this text","ค้นออนไลน์ไม่สำเร็จ":"Online search failed","ข่าวและบทความจริง ·":"Real news & articles ·","เรื่อง · ทำแบบทดสอบ":"stories · completed","ยังไม่ถูก — คำตอบคือ":"Not quite — the answer is","ชื่อเรื่องที่เหมาะสม":"Best title","ข่าวและบทความออนไลน์":"Online news & articles","จากเว็บใดก็ได้ (เช่น":" from any website (e.g.","จำได้ทุกใบ ยอดเยี่ยม":"You remembered every card. Excellent!","จำได้ดี (≥ 3 สัปดาห์)":"well known (≥ 3 weeks)","แปลทั้งประโยคในบทความ":"Show translation in text","วางเนื้อหาข่าวที่นี่…":"Paste the article here…","อ่านข่าวและบทความจริง":"Read real news & articles","โหลดบทความนี้ไม่สำเร็จ":"Couldn't load this article","ชื่อเรื่อง (ไม่บังคับ)":"Title (optional)","แตะอีกครั้งเพื่อยืนยัน":"Tap again to confirm","เปิดแอปเวอร์ชันเต็มที่":"Open the full app at","ออนไลน์ + บันทึกออฟไลน์":"Online + saved offline","ไม่มีบทความในตัวกรองนี้":"No articles match this filter","พิมพ์คำที่อยากรู้ได้เลย":"Type any word you want to look up","แตะถังขยะอีกครั้งเพื่อลบ":"Tap the bin again to delete","คัดลอกข่าวหรือบทความภาษา":"Copy a news story or article in ","อ่านจบแล้ว · บันทึกคำยาก":"Finished · save hard words","ข้อ · ตอบแล้วดูเฉลยทันที":"questions · see the answer right away","คำนี้ในบทความหมายถึงอะไร":"What does this word mean here?","บันทึกคำยากลงแฟลชการ์ดแล้ว":"Added to flashcards:","ยังไม่มีบทความที่บันทึกไว้":"No saved articles yet","ไฮไลต์คำที่อยู่ในการ์ดแล้ว":"Highlight words already in cards","อ่านฝรั่งเศส · สเปน · ดัตช์":"Read French · Spanish · Dutch","สร้างบทเรียนจากข้อความของคุณ":"Make a lesson from your own text","อุปกรณ์นี้ไม่รองรับเสียงอ่าน":"This device doesn't support read-aloud","ใช้ทั้งคำแปลคำศัพท์และประโยค":"Used for word meanings and sentence translations","เยี่ยมมาก เข้าใจบทความครบถ้วน":"Excellent, you understood the whole article.","แสดงคำแปลทุกประโยคตั้งแต่เปิด":"Show all translations by default","ลบการ์ด ประวัติ และการตั้งค่า":"Deletes cards, history and settings","ประโยคใดไม่ได้อยู่ในบทความนี้":"Which sentence is NOT in this text?","บันทึกคำยากอัตโนมัติหลังอ่านจบ":"Auto-save hard words after reading","เลือกข้อความแล้ว กดคัดลอกได้เลย":"Text selected — copy it now","ยังไม่มีคำนี้ในพจนานุกรมออฟไลน์":"Not in the offline dictionary yet","วางเนื้อหาอย่างน้อยหนึ่งย่อหน้า":"Paste at least one paragraph","ดูสำนวน/คำแปลทั้งประโยคด้านล่าง":"see the idiom / sentence translation below","เลือกคำที่เหมาะสมเติมในช่องว่าง":"Choose the word that fits the gap","หรือใช้แท็บ “วางบทความเอง” ได้เลย":"or use the “Paste your own” tab","วางข้อมูล JSON ที่ส่งออกไว้ตรงนี้":"Paste your exported JSON here","แปลไม่สำเร็จ (ต้องใช้อินเทอร์เน็ต)":"Translation failed (internet needed)","ดีมาก ลองย้อนอ่านข้อที่พลาดอีกครั้ง":"Very good. Reread the parts you missed.","คำยากในบทความนี้อยู่ในแฟลชการ์ดแล้ว":"The hard words from this article are already in your cards","ฝรั่งเศสน้ำเงิน · สเปนแดง · ดัตช์ส้ม":"French blue · Spanish red · Dutch orange","ใช้พจนานุกรม/คำแปลออนไลน์เมื่อมีเน็ต":"Use the online dictionary/translation when connected","ผลจากออนไลน์ (Wiktionary · MyMemory)":"Online results (Wiktionary · MyMemory)","ลองเปิดคำแปลทุกประโยคแล้วอ่านทวนอีกรอบ":"Try turning on all translations and reading it again.","นิยายสั้นหลายแนว เขียนด้วยสำนวนวรรณกรรม":"Short fiction in many genres, written in a literary style","อ่านบทความจริงจัง แล้วตอบคำถามแบบข้อสอบ":"Read substantial articles, then answer exam-style questions","หน้าตัวอย่างบน claude.ai แปลออนไลน์ไม่ได้":"The claude.ai preview can't translate online","อ่านครบทุกโพสต์ในตัวกรองนี้แล้ว · วนรอบที่":"You've read every post in this filter · round","ใบ — ระบบจะเอามาให้ทบทวนอีกครั้งใน 10 นาที":"cards — they'll come back for review in 10 minutes","ประโยค (บริการแปลฟรีอาจถึงโควตาวันนี้แล้ว)":"sentences (the free translation service may have hit today's limit)","คำยากจากเรื่องนี้อยู่ในแฟลชการ์ดของคุณแล้ว":"The hard words from this story are already in your flashcards","โหลดไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วกดโหลดใหม่":"Couldn't load. Check your connection and reload.","ยังไม่มีโพสต์ในหมวด/ระดับที่เลือก ลองเลือกเพิ่ม":"No posts for the selected topics/levels. Try selecting more.","และ MyMemory · เนื้อหาหลักทั้งหมดใช้งานออฟไลน์ได้":"and MyMemory · all built-in content works offline","ต้องใช้อินเทอร์เน็ตเพื่อแปลประโยคที่ยังไม่มีคำแปล":"You need internet to translate sentences that have no translation yet","ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้":"Invalid data — it must be JSON exported from this app","อัตโนมัติ = สูงกว่าระดับบทความ 1 ขั้น (อย่างน้อย B1)":"Auto = one level above the text (at least B1)","ค้นออนไลน์ไม่สำเร็จ (ไม่มีอินเทอร์เน็ต หรือไม่พบคำนี้)":"Online search failed (no internet, or word not found)","บทความนี้มีศัพท์ในคลังน้อยเกินไป จึงสร้างแบบทดสอบไม่ได้":"Too few known words in this text to build a quiz","หน้าตัวอย่างบน claude.ai ไม่อนุญาตให้ดึงข้อมูลจากเว็บอื่น":"The claude.ai preview can't fetch data from other websites","ยังไม่มีรายการใหม่จากแหล่งนี้ ลองแท็บอื่นหรือวางบทความเอง":"Nothing new from this source. Try another tab or paste your own text.","ตอนนี้ออฟไลน์อยู่ ดูบทความที่บันทึกไว้ หรือวางบทความเองได้":"You're offline. Open your saved articles or paste your own text.","ตอนนี้ออฟไลน์อยู่ ต้องเชื่อมต่ออินเทอร์เน็ตเพื่อค้นออนไลน์":"You're offline. Connect to the internet to search online.","คำยากจากเรื่องนี้จะถูกบันทึกลงแฟลชการ์ดเมื่ออ่านมาถึงตรงนี้":"Hard words from this story are saved to your flashcards when you reach this point","ตรงตัวในพจนานุกรมออฟไลน์ — เชื่อมต่ออินเทอร์เน็ตเพื่อค้นออนไลน์":"in the offline dictionary — connect to the internet to search online","โพสต์สั้นพร้อมคอมเมนต์ เลื่อนอ่านต่อได้เรื่อยๆ แตะคำเพื่อดูความหมาย":"Short posts with comments. Keep scrolling, tap any word for its meaning.","ยังไม่มีการ์ด — อ่านโพสต์หรือบทความให้จบ ระบบจะเก็บคำยากให้อัตโนมัติ":"No cards yet. Finish a post or article and hard words are saved automatically","หรือพิมพ์ไทย/อังกฤษเพื่อหาคำแปลย้อนกลับ ถ้าไม่มีในเครื่องจะค้นออนไลน์ให้":"or type Thai/English for a reverse lookup. Words not on the device are searched online.","คำยากถูกบันทึกอัตโนมัติหลังอ่านจบ และทบทวนตามระยะห่าง (Spaced Repetition)":"Hard words are saved after each text and reviewed with spaced repetition","เปิดข่าวจากแท็บอื่น หรือวางบทความเอง แล้วจะเก็บไว้ที่นี่ อ่านได้แม้ออฟไลน์":"Open a story from another tab or paste your own; it's kept here for offline reading","เนื้อหาบทความและเรื่องสั้นแต่งขึ้นเพื่อการเรียน เก็บข้อมูลไว้ในเครื่องนี้เท่านั้น":"Articles and stories were written for learning. Your data stays on this device.","ข่าวใน Wikinews อาจไม่ได้อัปเดตทุกวัน ถ้าอยากอ่านข่าววันนี้ ให้ใช้แท็บ “วางบทความเอง”":"Wikinews isn't updated every day. For today's news, use the “Paste your own” tab","เปิดแล้วเก็บไว้อ่านออฟไลน์ให้อัตโนมัติ พร้อมประเมินระดับ ศัพท์ยาก และแบบทดสอบที่สร้างให้":"Anything you open is saved for offline reading, with an estimated level, hard words and a generated quiz","ประโยคนี้มาจากบทความอื่นในแอป ส่วนอีกสามข้อปรากฏในบทความนี้ ลองย้อนกลับไปหาดูว่าอยู่ย่อหน้าไหน":"This sentence comes from another text in the app; the other three appear in this one. Try finding which paragraph they're in.","มาวางที่นี่ แอปจะแบ่งประโยค ทำให้แตะคำได้ ประเมินระดับ และสร้างแบบทดสอบให้ ทำงานได้แม้ไม่มีอินเทอร์เน็ต":"and paste it here. The app splits it into sentences, makes every word tappable, estimates the level and builds a quiz — even offline.","ระดับประเมินอัตโนมัติจากความยาวประโยคและคำศัพท์ · กด “แปลทุกประโยค” เพื่อแปลออนไลน์ แล้วคำแปลจะเก็บไว้อ่านออฟไลน์":"Level estimated from sentence length and vocabulary · press “Translate all” to translate online; translations are kept for offline reading","ข่าวจาก Wikinews · เรื่องที่กำลังเป็นกระแสใน Wikipedia · หรือวางข่าวจากเว็บใดก็ได้ ได้ระดับ คำยาก และแบบทดสอบอัตโนมัติ":"Wikinews · what's trending on Wikipedia · or paste news from any site. You get a level, hard words and an automatic quiz",
 "ภาษาของหน้าแอป":"App interface language","ข้อความเมนู ปุ่ม และคำแนะนำ":"Menus, buttons and help text","คำอธิบายเฉลยเป็นภาษาไทย":"Answer explanation in Thai","แปลไม่สำเร็จ ":"Couldn't translate ","บันทึกคำยาก ":"Saved ",
 "ดาราศาสตร์":"Astronomy","ศิลปะ":"Art","การเมือง":"Politics","ชม.":"h","สัปดาห์":"wk","เมื่อวาน":"yesterday",
@@ -19137,7 +19138,7 @@ window.TRIADA_I18N = {
    From Firebase console → Project settings → Your apps → Web app (Config).
    These values identify the project; they are not secrets. Access is protected by the Firestore rules in README.md.
    Set it to null to run the app without login. */
-window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || {
+window.LEXIPLUMA_FIREBASE = window.LEXIPLUMA_FIREBASE || {
   apiKey: "AIzaSyCuEMl2bFdq0hkXB5yu9F_K5MRa-VOqUTc",
   authDomain: "triada---reader.firebaseapp.com",
   projectId: "triada---reader",
@@ -19146,7 +19147,7 @@ window.TRIADA_FIREBASE = window.TRIADA_FIREBASE || {
   appId: "1:366857452199:web:17008ea94740268baf3982"
 };
 </script>
-<script>/* Tríada Reader — อ่านภาษาฝรั่งเศส สเปน ดัตช์ (ทำงานออฟไลน์ได้ทั้งหมด ยกเว้นฟีเจอร์ที่ระบุว่า "ออนไลน์") */
+<script>/* LexiPluma — อ่านภาษาฝรั่งเศส สเปน ดัตช์ (ทำงานออฟไลน์ได้ทั้งหมด ยกเว้นฟีเจอร์ที่ระบุว่า "ออนไลน์") */
 (function () {
 'use strict';
 
@@ -19192,7 +19193,8 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
 /* ================= storage ================= */
-const KEY = 'triada.v1';
+const KEY = 'lexipluma.v1';
+try { if (!localStorage.getItem(KEY) && localStorage.getItem('triada.v1')) { localStorage.setItem(KEY, localStorage.getItem('triada.v1')); localStorage.removeItem('triada.v1'); } } catch (e) { } /* carry data over from the old name */
 const DEFAULTS = {
   uiLang: 'th', lang: 'fr', trLang: 'th', theme: 'auto', accent: 'lang', fontSize: 19, lineHeight: 1.75, readFont: 'serif',
   markHard: true, markSaved: true, showTrDefault: false, autoSave: true, saveLevel: 'auto',
@@ -19235,7 +19237,7 @@ function allSentences(item) {
   return out;
 }
 function ingest() {
-  (window.TRIADA_DATA || []).forEach(d => {
+  (window.LEXIPLUMA_DATA || []).forEach(d => {
     const L = DB[d.lang]; if (!L) return;
     Object.assign(L.base, d.base || {});
     ['feed', 'read', 'novel'].forEach(k => (d[k] || []).forEach(it => { if (it.vv) { it.v = Object.assign(it.v || {}, it.vv); delete it.vv; } it.lang = d.lang; it.kind = k; L[k].push(it); BYID[it.id] = it; }));
@@ -19543,8 +19545,8 @@ function addHistory(lang, w) { S.history = [{ lang, w, t: Date.now() }, ...S.his
 let toastT;
 /* ---------- interface language ----------
    Templates are written in Thai. With the English UI, every Thai fragment outside reading content is swapped
-   for its English counterpart (window.TRIADA_I18N) as soon as it enters the page. */
-const I18N = window.TRIADA_I18N || {};
+   for its English counterpart (window.LEXIPLUMA_I18N) as soon as it enters the page. */
+const I18N = window.LEXIPLUMA_I18N || {};
 const I18N_RE = new RegExp(Object.keys(I18N).sort((a, b) => b.length - a.length).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
 const CONTENT = '.rt,.c,.sh-mean,.sh-mean2:not(.ui),.sh-sent .o,.sh-sent .t,.sh-phrase div,.entry .m,.exs,.wd>div,.fc .mean,.fc .ex,.qth,.xq,.cover p,textarea,input';
 const isEN = () => S.settings.uiLang === 'en';
@@ -20237,15 +20239,15 @@ function vPrefs(m) {
       <div class="tools"><button class="tbtn" data-act="copyio">คัดลอก</button><button class="tbtn primary" data-act="doimport">นำเข้าจากข้อความนี้</button><a class="tbtn" id="dlLink" hidden>ดาวน์โหลดไฟล์</a></div></div>
     <div class="row"><label>ล้างข้อมูลทั้งหมด<small>ลบการ์ด ประวัติ และการตั้งค่า</small></label><button class="tbtn" data-act="reset" style="color:var(--bad)">${ic('trash')}ล้างข้อมูล</button></div>
   </section>
-  <p class="muted" style="font-size:12.5px">Tríada Reader · เนื้อหาบทความและเรื่องสั้นแต่งขึ้นเพื่อการเรียน เก็บข้อมูลไว้ในเครื่องนี้เท่านั้น</p>`;
+  <p class="muted" style="font-size:12.5px">LexiPluma · เนื้อหาบทความและเรื่องสั้นแต่งขึ้นเพื่อการเรียน เก็บข้อมูลไว้ในเครื่องนี้เท่านั้น</p>`;
 }
 
 /* ---------- account & cross-device sync (Firebase Auth + Firestore) ----------
    Spliced into app.js at build time (shares its scope). Login is optional: without it the app stays fully local.
    One Firestore document per user (users/{uid}) holds the whole progress as JSON; devices merge field by field. */
-const FB_CFG = window.TRIADA_FIREBASE && window.TRIADA_FIREBASE.apiKey ? window.TRIADA_FIREBASE : null;
+const FB_CFG = window.LEXIPLUMA_FIREBASE && window.LEXIPLUMA_FIREBASE.apiKey ? window.LEXIPLUMA_FIREBASE : null;
 const FB_VER = '10.12.2';
-const CLIENT_ID = (() => { try { let c = localStorage.getItem('triada.client'); if (!c) { c = Math.random().toString(36).slice(2, 10); localStorage.setItem('triada.client', c); } return c; } catch (e) { return 'x' + Math.random().toString(36).slice(2, 8); } })();
+const CLIENT_ID = (() => { try { let c = localStorage.getItem('lexipluma.client') || localStorage.getItem('triada.client'); if (c) localStorage.setItem('lexipluma.client', c); if (!c) { c = Math.random().toString(36).slice(2, 10); localStorage.setItem('lexipluma.client', c); } return c; } catch (e) { return 'x' + Math.random().toString(36).slice(2, 8); } })();
 const SYNC_KEYS = ['cards', 'read', 'quiz', 'likes', 'history', 'novelPos', 'web', 'deleted', 'settings', 'settingsAt'];
 const sync = { fb: null, user: null, unsub: null, status: 'off', last: 0, err: '', pushT: null, applying: false, loading: null };
 
@@ -20425,10 +20427,10 @@ function onClick(e) {
     case 'dictsaveonline': if (dictOnline) { const { q, r } = dictOnline; sheetState = { onlineRes: r }; addCard(s.lang, null, q, null, null, false); sheetState = null; toast('บันทึก “' + q + '” แล้ว'); updateBadge(); } break;
     case 'set': { const k = b.dataset.k; let v = b.dataset.v; if (k === 'sessionSize') v = +v; s[k] = v; save(); if (k === 'uiLang') { shell(); startI18n(); } applyLook(); render(); break; }
     case 'testvoice': speak({ fr: 'Bonjour ! Bienvenue dans votre bibliothèque.', es: '¡Hola! Bienvenido a tu biblioteca.', nl: 'Hallo! Welkom in je bibliotheek.' }[s.lang], s.lang); break;
-    case 'export': { const row = $('#ioRow'); row.hidden = false; const json = JSON.stringify({ app: 'triada', v: 1, ...S }, null, 1); $('#ioText').value = json; try { const url = URL.createObjectURL(new Blob([json], { type: 'application/json' })); const dl = $('#dlLink'); dl.href = url; dl.download = 'triada-backup.json'; dl.hidden = window.self !== window.top; } catch (er) { } break; }
+    case 'export': { const row = $('#ioRow'); row.hidden = false; const json = JSON.stringify({ app: 'lexipluma', v: 1, ...S }, null, 1); $('#ioText').value = json; try { const url = URL.createObjectURL(new Blob([json], { type: 'application/json' })); const dl = $('#dlLink'); dl.href = url; dl.download = 'lexipluma-backup.json'; dl.hidden = window.self !== window.top; } catch (er) { } break; }
     case 'import': $('#ioRow').hidden = false; $('#ioText').value = ''; $('#ioText').placeholder = 'วางข้อมูล JSON ที่ส่งออกไว้ตรงนี้'; $('#ioText').focus(); break;
     case 'copyio': { const t = $('#ioText'); navigator.clipboard ? navigator.clipboard.writeText(t.value).then(() => toast('คัดลอกแล้ว'), () => { t.select(); toast('เลือกข้อความแล้ว กดคัดลอกได้เลย'); }) : t.select(); break; }
-    case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); shell(); startI18n(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
+    case 'doimport': try { const d = JSON.parse($('#ioText').value); if (d.app !== 'lexipluma' && d.app !== 'triada') throw 0; delete d.app; delete d.v; S = { ...S, ...d, settings: { ...DEFAULTS, ...(d.settings || {}) } }; save(); shell(); startI18n(); applyLook(); toast('นำเข้าข้อมูลแล้ว'); render(); } catch (er) { toast('ข้อมูลไม่ถูกต้อง ต้องเป็น JSON ที่ส่งออกจากแอปนี้'); } break;
     case 'reset': if (b.dataset.sure) { try { localStorage.removeItem(KEY); } catch (er) { } S = { settings: { ...DEFAULTS }, cards: {}, read: {}, quiz: {}, likes: {}, history: [], novelPos: {}, web: {}, tab: 'feed' }; shell(); startI18n(); applyLook(); toast('ล้างข้อมูลแล้ว'); render(); } else { b.dataset.sure = 1; b.innerHTML = 'แตะอีกครั้งเพื่อยืนยัน'; setTimeout(() => { if (b.isConnected) { delete b.dataset.sure; b.innerHTML = ic('trash') + 'ล้างข้อมูล'; } }, 4000); } break;
   }
 }
@@ -20453,7 +20455,7 @@ function onChange(e) {
 function shell() {
   document.getElementById('app').innerHTML = `
   <header class="top"><div class="top-in">
-    <div class="brand">Tríada<small>อ่านฝรั่งเศส · สเปน · ดัตช์</small></div>
+    <div class="brand"><svg class="logo" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="lpg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF7C60"/><stop offset="1" stop-color="#FFB25F"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="#18202D"/><g transform="translate(18 6)"><path d="M118 418c70-12 118-12 168 6" stroke="#8197FF" stroke-width="20" stroke-linecap="round" fill="none"/><path d="M170 356C168 250 250 140 404 92C380 214 300 318 196 362Z" fill="url(#lpg)"/><path d="M196 362C232 300 300 214 404 92" stroke="#18202D" stroke-width="9" stroke-linecap="round" fill="none" opacity=".55"/><path d="M232 300l-34-6M262 260l-40-10M292 222l-42-14M322 184l-40-16M352 148l-34-14M248 282l30 12M278 242l34 10M310 202l32 8" stroke="#18202D" stroke-width="6" stroke-linecap="round" opacity=".35"/><path d="M196 362L150 420" stroke="#F3F5F8" stroke-width="16" stroke-linecap="round"/><path d="M150 420l-12 18" stroke="#F3F5F8" stroke-width="7" stroke-linecap="round"/></g></svg>LexiPluma<small>อ่านฝรั่งเศส · สเปน · ดัตช์</small></div>
     <div class="langs" role="group" aria-label="ภาษาที่เรียน">${Object.keys(LANGS).map(l => `<button data-act="lang" data-lang="${l}" title="${LANGS[l].name}">${l.toUpperCase()}</button>`).join('')}</div>
     <button class="iconbtn" data-act="prefs" aria-label="ตั้งค่า">${ic('gear')}</button>
   </div></header>
@@ -20482,7 +20484,7 @@ function boot() {
   view = { name: S.tab || 'feed' };
   render();
 }
-window.TriadaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, voiceScore, state: () => S };
+window.LexiPlumaApp = { DB, DICT, lookup, estimateLevel, buildWebItem, splitSentences, voiceScore, state: () => S };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>

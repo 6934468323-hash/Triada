@@ -1,5 +1,5 @@
 /* French content, part 5: more articles and stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r8", cat:"science", lvl:"A2", src:"วิทยาศาสตร์", title:["Pourquoi le ciel est-il bleu ?","Why is the sky blue?","ทำไมท้องฟ้าจึงเป็นสีฟ้า?"],

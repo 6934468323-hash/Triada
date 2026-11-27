@@ -1,5 +1,5 @@
 /* Spanish content, part 43: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f218", cat:"life", lvl:"A1", user:"Carla Rubio", handle:"carla_piso", time:"1 ชม.", likes:75,

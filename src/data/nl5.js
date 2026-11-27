@@ -1,5 +1,5 @@
 /* Dutch content, part 5: more articles and stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r8", cat:"history", lvl:"A2", src:"ประวัติศาสตร์/วิศวกรรม", title:["De Afsluitdijk: een weg door de zee","The Afsluitdijk: a road through the sea","อัฟสลาวต์ไดก์: ถนนที่ตัดผ่านทะเล"],

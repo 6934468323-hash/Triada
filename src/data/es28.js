@@ -1,5 +1,5 @@
 /* Spanish content, part 28: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r55", cat:"society", lvl:"C1", src:"สังคม/ประชากร", title:["La España vaciada","'Emptied' Spain","สเปนที่ถูกทิ้งร้าง"],

@@ -1,5 +1,5 @@
 /* French content, part 4: more feed posts */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f16", cat:"life", lvl:"A1", user:"Jade Morel", handle:"jade_famille", time:"1 ชม.", likes:74,

@@ -1,5 +1,5 @@
 /* French content, part 66: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n65", genre:"horror", lvl:"B1", title:["La dernière séance","The last showing","รอบฉายสุดท้าย"], blurb:"ชายคนหนึ่งเข้าโรงหนังเก่ารอบดึกคนเดียว หนังที่ฉายกลับเป็นภาพชีวิตของเขาเอง และกำลังฉายไปถึงคืนนี้",

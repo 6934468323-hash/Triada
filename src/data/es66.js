@@ -1,5 +1,5 @@
 /* Spanish content, part 66: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n65", genre:"horror", lvl:"B1", title:["La radio del abuelo","Grandpa's radio","วิทยุของคุณปู่"], blurb:"หลังคุณปู่เสียชีวิต ดานิเอลได้รับวิทยุเก่าที่ยังเปิดได้ และทุกคืนเวลาตีสาม มันกระซิบข่าวของวันพรุ่งนี้",

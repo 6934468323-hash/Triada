@@ -1,5 +1,5 @@
 /* Spanish content, part 15: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r21", cat:"society", lvl:"A1", src:"ประเพณี", title:["Las doce uvas de Nochevieja","The twelve grapes of New Year's Eve","องุ่นสิบสองลูกคืนส่งท้ายปีเก่า"],

@@ -1,5 +1,5 @@
 /* Dutch content, part 39: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n37", genre:"comedy", lvl:"A1", title:["De koe op het dak","The cow on the roof","วัวบนหลังคา"], blurb:"เช้าวันหนึ่ง ชาวนายาน พบวัวของเขายืนอยู่บนหลังคาโรงนา ไม่มีใครรู้ว่ามันขึ้นไปได้อย่างไร",

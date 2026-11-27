@@ -1,4 +1,6 @@
-# Tríada Reader: project notes for Claude
+# LexiPluma: project notes for Claude
+
+The app was renamed from "Tríada Reader" to **LexiPluma** (quill-pen logo on the dark `#18202D` tile). The GitHub repo name, the Pages URL `/Triada/` and the Firebase project id `triada---reader` still carry the old name: the Firebase id can't be changed, and renaming the repo would move the Pages URL and break installed apps. On first load the app copies `triada.v1` → `lexipluma.v1` and `triada.client` → `lexipluma.client`; imports accept backups with `app: 'triada'` too.
 
 Context carried over from the session that built this app. Read it before changing anything.
 
@@ -34,9 +36,9 @@ Links:
 - `src/fonts/` holds self-hosted woff2 files (Fontsource: IBM Plex Sans Thai, Literata, Bricolage Grotesque).
 - `python3 build.py` writes:
   - `docs/index.html`, `sw.js`, `manifest.webmanifest`, icons and `fonts/`: the PWA. The cache version is a hash of the sources, so installed apps update.
-  - `docs/triada-offline.html`: a single file with the fonts embedded.
+  - `docs/lexipluma-offline.html`: a single file with the fonts embedded.
   - `artifact/index.html`: the body-only build for claude.ai, using Google Fonts.
-- PNG icons are rendered with Playwright (Node). The Python build skips them, but the PNGs are already committed in `docs/`.
+- PNG icons are rendered with Playwright (Node). The Python build skips them, so after changing `ICON` in build.py re-render `docs/icon-192.png` and `docs/icon-512.png` from `docs/icon.svg` with a short Node Playwright script. Globals are `window.LEXIPLUMA_DATA`, `LEXIPLUMA_I18N`, `LEXIPLUMA_FIREBASE` and `window.LexiPlumaApp` (tests use it).
 
 ## Content format
 - A sentence is `[original, English, Thai]`. Vocab entries are `"LEVEL|pos|English|Thai|lemma"` (lemma optional). Multi-word keys such as `"peu à peu"` are idioms, and the word sheet shows them.
@@ -57,7 +59,7 @@ Links:
 - **i18n:** templates are written in Thai. In English mode a MutationObserver replaces Thai fragments with `I18N` values (longest match first), skipping reading content (the `CONTENT` selector, plus the `.c` and `.xq` classes). When adding Thai interface text, add its English to `src/i18n.js` and run `tests/i18n-english-ui.test.js`, which must print `NO THAI LEFT IN UI`. Built-in quiz explanations (`x`) are Thai only; they're labelled as such in English mode. Translating them is an open offer.
 - **Voices:** Web Speech API. `voiceScore` ranks voices (Natural, Neural, Enhanced, Premium, Google and Siri up; eSpeak and compact down). Settings show quality labels and platform-specific install help.
 - **Sync (`src/sync.js`):** Firebase Auth (Google popup, with redirect as fallback) and Firestore doc `users/{uid}` = `{data: stableJSON(progress), client, updatedAt}`. The merge is deterministic: the newest card edit wins, deletions are tombstoned in `S.deleted` (pruned after 120 days), quiz scores keep the max, settings follow `settingsAt`, and stories and history are unions. Nothing is pushed when the content equals what the cloud holds, so devices don't loop. Required Firestore rule: `match /users/{uid} { allow read, write: if request.auth != null && request.auth.uid == uid; }`. The authorised domain must include `6934468323-hash.github.io`.
-- **Storage:** localStorage key `triada.v1`. Online articles are capped at 40.
+- **Storage:** localStorage key `lexipluma.v1` (migrated from `triada.v1`). Online articles are capped at 40.
 
 ## Testing
 Serve `docs/` and run the Playwright scripts. Playwright and Chromium come pre-installed in cloud sessions.

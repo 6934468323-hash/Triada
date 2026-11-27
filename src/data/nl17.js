@@ -1,5 +1,5 @@
 /* Dutch content, part 17: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r31", cat:"society", lvl:"A1", src:"วัฒนธรรม", title:["Koffie met één koekje","Coffee with one biscuit","กาแฟกับคุกกี้หนึ่งชิ้น"],

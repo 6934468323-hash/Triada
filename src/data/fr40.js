@@ -1,5 +1,5 @@
 /* French content, part 40: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n41", genre:"horror", lvl:"B1", title:["Le répondeur","The answering machine","เครื่องตอบรับโทรศัพท์"], blurb:"ปอลซื้อเครื่องตอบรับโทรศัพท์เก่าจากตลาดนัด ในเครื่องมีข้อความจากหญิงคนหนึ่งที่ดูเหมือนรู้ว่าเขาอยู่ที่ไหน",

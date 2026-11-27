@@ -1,5 +1,5 @@
 /* Dutch content, part 11: stories (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n10", genre:"comedy", lvl:"B2", title:["De verjaardagskring","The birthday circle","วงนั่งวันเกิด"], blurb:"หนุ่มอังกฤษไปงานวันเกิดแบบดัตช์ครั้งแรก และพบว่าการนั่งเป็นวงกลมมีกฎที่ไม่มีใครบอก",

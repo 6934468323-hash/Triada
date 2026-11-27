@@ -1,5 +1,5 @@
 /* French content, part 46: feed posts (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f268", cat:"life", lvl:"A1", user:"Nathan Giraud", handle:"nathan_maison", time:"1 ชม.", likes:70,

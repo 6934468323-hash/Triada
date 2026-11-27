@@ -1,5 +1,5 @@
 /* Spanish content, part 39: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n37", genre:"comedy", lvl:"A1", title:["El abuelo y el móvil","Grandpa and the mobile phone","คุณตากับมือถือ"], blurb:"คุณตาได้มือถือเครื่องใหม่ แต่ทุกครั้งที่ท่านอยากโทรหาหลาน ท่านกลับโทรไปหาร้านพิซซ่าแทน",

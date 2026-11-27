@@ -1,5 +1,5 @@
 /* Dutch content, part 16: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r26", cat:"env", lvl:"B1", src:"ธรรมชาติ/มรดกโลก", title:["De Waddenzee: twee keer per dag een ander landschap","The Wadden Sea: a different landscape twice a day","ทะเลวัดเดิน: ภูมิทัศน์ที่เปลี่ยนวันละสองครั้ง"],

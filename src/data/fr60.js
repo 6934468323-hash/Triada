@@ -1,5 +1,5 @@
 /* French content, part 60: feed posts (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f385", cat:"food", lvl:"A1", user:"Rose Lemoine", handle:"rose_fromage", time:"1 ชม.", likes:70,

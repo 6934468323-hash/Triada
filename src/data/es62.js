@@ -1,5 +1,5 @@
 /* Spanish content, part 62: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r106", cat:"society", lvl:"B1", src:"กีฬา/ชีวประวัติ", title:["Rafael Nadal y la tierra batida","Rafael Nadal and clay","ราฟาเอล นาดาล กับคอร์ตดิน"],

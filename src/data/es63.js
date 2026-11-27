@@ -1,5 +1,5 @@
 /* Spanish content, part 63: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 read: [
 { id:"es-r111", cat:"history", lvl:"B2", src:"ชีวประวัติ/การเมือง", title:["Eva Perón, «Evita»","Eva Perón, 'Evita'","เอวา เปรอน ‘เอวิตา’"],

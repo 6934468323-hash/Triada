@@ -1,5 +1,5 @@
 /* Spanish content, part 53: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n53", genre:"horror", lvl:"B1", title:["El último autobús a Valdemora","The last bus to Valdemora","รถเมล์เที่ยวสุดท้ายไปบัลเดโมรา"], blurb:"หญิงสาวขึ้นรถเมล์เที่ยวสุดท้ายไปหมู่บ้านของยาย ผู้โดยสารคนอื่นๆ ดูแปลกไป และไม่มีใครลงจากรถเลย",

@@ -1,5 +1,5 @@
 /* Spanish content, part 41: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n45", genre:"fantasy", lvl:"B2", title:["La ciudad de las sombras perdidas","The city of lost shadows","เมืองแห่งเงาที่หายไป"], blurb:"วันหนึ่งไอตอร์ตื่นขึ้นมาพบว่าเงาของเขาหายไป และเงาได้หนีไปใช้ชีวิตในเมืองที่มีแต่เงา",

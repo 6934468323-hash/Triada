@@ -1,5 +1,5 @@
 /* Dutch content, part 38: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r76", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/สงคราม", title:["Srebrenica en de schaduw van Dutchbat","Srebrenica and the shadow of Dutchbat","สเรเบรนิตซากับเงามืดของ Dutchbat"],

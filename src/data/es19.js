@@ -1,5 +1,5 @@
 /* Spanish content, part 19: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n13", genre:"comedy", lvl:"A1", title:["El perro que no quería pasear","The dog who didn't want to go for a walk","สุนัขที่ไม่อยากไปเดินเล่น"], blurb:"หมาทุกตัวชอบเดินเล่น ยกเว้นโตโต้ ที่ยอมทำทุกอย่างเพื่ออยู่บนโซฟา",

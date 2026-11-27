@@ -1,5 +1,5 @@
 /* French content, part 36: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r66", cat:"history", lvl:"B1", src:"ประวัติศาสตร์/สถาปัตยกรรม", title:["Les châteaux de la Loire","The châteaux of the Loire","ปราสาทลุ่มแม่น้ำลัวร์"],

@@ -1,5 +1,5 @@
 /* Dutch content, part 67: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n69", genre:"fantasy", lvl:"A2", title:["Het wolkje dat wilde zwemmen","The little cloud that wanted to swim","ก้อนเมฆน้อยที่อยากว่ายน้ำ"], blurb:"ก้อนเมฆน้อยชื่อพลุสอยากลงไปว่ายน้ำในทะเลเหมือนเด็กๆ ที่มันเห็นจากฟากฟ้า แต่เมฆจะว่ายน้ำได้อย่างไร",

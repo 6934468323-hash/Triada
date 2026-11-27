@@ -1,5 +1,5 @@
 /* Spanish content, part 24: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f135", cat:"food", lvl:"A1", user:"Leo Martín", handle:"leo_tortilla", time:"2 ชม.", likes:120,

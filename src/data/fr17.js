@@ -1,5 +1,5 @@
 /* French content, part 17: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r31", cat:"society", lvl:"A1", src:"ชีวิตประจำวัน", title:["Les repas d'une journée en France","The meals of a day in France","มื้ออาหารในหนึ่งวันของคนฝรั่งเศส"],

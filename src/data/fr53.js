@@ -1,5 +1,5 @@
 /* French content, part 53: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n53", genre:"horror", lvl:"B1", title:["La chambre d'hôte du col","The guesthouse on the pass","บ้านพักบนช่องเขา"], blurb:"นักปั่นจักรยานติดพายุบนช่องเขา และได้พักในบ้านพักเงียบๆ ที่เจ้าของดูเหมือนจะรอเขามานานแล้ว",

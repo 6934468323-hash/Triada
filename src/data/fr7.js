@@ -1,5 +1,5 @@
 /* French content, part 7: feed posts (B2–C1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f43", cat:"work", lvl:"B2", user:"Nathalie Girard", handle:"nathalie_prof", time:"3 ชม.", likes:1320,

@@ -1,5 +1,5 @@
 /* French content, part 21: stories (third batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n21", genre:"mystery", lvl:"B2", title:["L'homme du banc numéro sept","The man on bench number seven","ชายบนม้านั่งหมายเลขเจ็ด"], blurb:"ชายชรานั่งที่ม้านั่งตัวเดิมในสวนลุกซ็องบูร์ทุกวันพร้อมหนังสือพิมพ์ฉบับเก่า วันหนึ่งเขาหายไป ทิ้งไว้เพียงกุญแจดอกหนึ่ง",

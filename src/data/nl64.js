@@ -1,5 +1,5 @@
 /* Dutch content, part 64: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r116", cat:"society", lvl:"C1", src:"ประวัติศาสตร์/อาณานิคม", title:["De Gouden Koets","The Golden Coach","รถม้าทองคำ"],

@@ -1,5 +1,5 @@
 /* French content, part 49: articles (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r86", cat:"science", lvl:"B1", src:"ชีวประวัติ/ทะเล", title:["Jacques-Yves Cousteau, l'homme qui montra la mer","Jacques-Yves Cousteau, the man who showed the sea","ฌัก-อีฟ กุสโต ชายผู้เปิดโลกใต้ทะเล"],

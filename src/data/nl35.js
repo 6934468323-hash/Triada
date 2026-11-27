@@ -1,5 +1,5 @@
 /* Dutch content, part 35: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 read: [
 { id:"nl-r61", cat:"society", lvl:"A1", src:"อาหาร/ประเพณี", title:["De kaasmarkt in Gouda","The cheese market in Gouda","ตลาดชีสที่เกาดา"],

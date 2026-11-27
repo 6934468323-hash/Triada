@@ -1,5 +1,5 @@
 /* Spanish content, part 22: feed posts (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f101", cat:"food", lvl:"A1", user:"Nuria Campos", handle:"nuria_gazpacho", time:"1 ชม.", likes:95,

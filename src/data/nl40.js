@@ -1,5 +1,5 @@
 /* Dutch content, part 40: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n41", genre:"horror", lvl:"B1", title:["Het spookschip op de Waddenzee","The ghost ship on the Wadden Sea","เรือผีในทะเลวัดเดิน"], blurb:"ระหว่างเดินเลาะพื้นทะเลยามน้ำลดกับกลุ่มทัวร์ ไมเคิลเห็นเรือใบเก่าโผล่ออกมาจากหมอก ทั้งที่ทะเลไม่มีน้ำเลย",

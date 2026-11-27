@@ -1,5 +1,5 @@
 /* French content, part 67: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n69", genre:"fantasy", lvl:"A2", title:["Le chat qui collectionnait les étoiles","The cat who collected stars","แมวนักสะสมดวงดาว"], blurb:"แมวดำตัวหนึ่งปีนขึ้นหลังคาทุกคืนเพื่อเก็บดาวที่ตกลงมา วันหนึ่งท้องฟ้าเหนือหมู่บ้านไม่มีดาวเหลือเลย",

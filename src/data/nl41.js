@@ -1,5 +1,5 @@
 /* Dutch content, part 41: stories (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n45", genre:"fantasy", lvl:"B2", title:["De tulp die niet wilde bloeien","The tulip that wouldn't bloom","ทิวลิปที่ไม่ยอมบาน"], blurb:"ในทุ่งทิวลิปนับล้านดอก มีหัวทิวลิปหัวหนึ่งที่ไม่ยอมงอกมาเจ็ดปี ชาวสวนหนุ่มพบว่าข้างในมีบางสิ่งที่รอเวลาอยู่",

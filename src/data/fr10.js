@@ -1,5 +1,5 @@
 /* French content, part 10: stories (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n7", genre:"romance", lvl:"A1", title:["Le café du coin","The corner café","ร้านกาแฟหัวมุม"], blurb:"ทุกเช้าเขาสั่งกาแฟแก้วเดิม และทุกเช้าเธอเขียนข้อความเล็กๆ ไว้บนแก้ว",

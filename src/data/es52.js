@@ -1,5 +1,5 @@
 /* Spanish content, part 52: stories (sixth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n49", genre:"comedy", lvl:"A1", title:["La gallina del quinto piso","The hen on the fifth floor","แม่ไก่ชั้นห้า"], blurb:"คุณตาอันเซลโมเลี้ยงไก่ในอพาร์ตเมนต์กลางเมืองมาดริด และทุกเช้ามันปลุกทั้งตึกตอนหกโมง",

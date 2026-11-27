@@ -1,5 +1,5 @@
 /* French content, part 31: stories (fourth batch, end) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n33", genre:"fantasy", lvl:"B2", title:["La ville qui oubliait","The town that forgot","เมืองที่ลืม"], blurb:"ทุกเช้า ชาวเมืองแห่งหนึ่งตื่นมาโดยจำเรื่องเมื่อวานไม่ได้ ยกเว้นบรรณารักษ์สาวคนเดียว",

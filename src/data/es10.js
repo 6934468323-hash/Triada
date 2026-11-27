@@ -1,5 +1,5 @@
 /* Spanish content, part 10: stories (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 novel: [
 { id:"es-n7", genre:"romance", lvl:"A1", title:["La chica de la biblioteca","The girl from the library","สาวน้อยในห้องสมุด"], blurb:"ทุกวันเสาร์ เขาไปห้องสมุดเพื่ออ่านหนังสือ แต่จริงๆ แล้วไปเพื่อเจอเธอ",

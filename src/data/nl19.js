@@ -1,5 +1,5 @@
 /* Dutch content, part 19: stories (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "nl",
 novel: [
 { id:"nl-n13", genre:"romance", lvl:"A1", title:["De bakker en de bloemist","The baker and the florist","คนทำขนมปังกับคนขายดอกไม้"], blurb:"ร้านขนมปังกับร้านดอกไม้อยู่ตรงข้ามกัน ทุกเช้าทั้งสองแลกของขวัญเล็กๆ โดยไม่พูดอะไรเลย",

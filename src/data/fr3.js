@@ -1,5 +1,5 @@
 /* French content, part 3: stories */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n3", genre:"comedy", lvl:"B1", title:["Le GPS de tonton Gérard","Uncle Gérard's GPS","จีพีเอสของลุงเฌราร์"], blurb:"ลุงเชื่อเครื่องนำทางมากกว่าเชื่อเมีย ทริปไปงานแต่งเลยกลายเป็นการผจญภัย",

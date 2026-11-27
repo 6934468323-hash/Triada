@@ -1,5 +1,5 @@
 /* French content, part 6: feed posts (A1–B1) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 feed: [
 { id:"fr-f26", cat:"life", lvl:"A1", user:"Alice Bonnet", handle:"alice_matin", time:"25 นาที", likes:52,

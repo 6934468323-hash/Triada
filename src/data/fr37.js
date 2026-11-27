@@ -1,5 +1,5 @@
 /* French content, part 37: articles (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r71", cat:"science", lvl:"B2", src:"วิทยาศาสตร์/ประวัติศาสตร์", title:["Le mètre, une mesure pour tous les peuples","The metre, a measure for all peoples","เมตร หน่วยวัดเพื่อมวลมนุษย์"],

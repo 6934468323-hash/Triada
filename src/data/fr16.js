@@ -1,5 +1,5 @@
 /* French content, part 16: articles (third batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r26", cat:"env", lvl:"B1", src:"ธรรมชาติ/ภูมิศาสตร์", title:["La Camargue, le pays des flamants roses","The Camargue, land of pink flamingos","กามาร์ก ดินแดนแห่งนกฟลามิงโก"],

@@ -1,5 +1,5 @@
 /* French content, part 64: articles (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r116", cat:"history", lvl:"C1", src:"ประวัติศาสตร์/อาณานิคม", title:["Diên Biên Phu, la fin de l'Indochine française","Dien Bien Phu, the end of French Indochina","เดียนเบียนฟู จุดจบของอินโดจีนฝรั่งเศส"],

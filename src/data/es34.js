@@ -1,5 +1,5 @@
 /* Spanish content, part 34: feed posts (fifth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "es",
 feed: [
 { id:"es-f185", cat:"food", lvl:"A1", user:"Óscar Pérez", handle:"oscar_paella", time:"2 ชม.", likes:100,

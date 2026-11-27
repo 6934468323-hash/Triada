@@ -1,5 +1,5 @@
 /* French content, part 27: articles (fourth batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 read: [
 { id:"fr-r51", cat:"history", lvl:"B2", src:"วรรณกรรม/ประวัติศาสตร์", title:["Victor Hugo, l'exilé devenu monument","Victor Hugo, the exile who became a monument","วิกตอร์ อูโก ผู้ถูกเนรเทศที่กลายเป็นอนุสรณ์"],

@@ -1,5 +1,5 @@
 /* French content, part 65: stories (seventh batch) */
-(window.TRIADA_DATA = window.TRIADA_DATA || []).push({
+(window.LEXIPLUMA_DATA = window.LEXIPLUMA_DATA || []).push({
 lang: "fr",
 novel: [
 { id:"fr-n61", genre:"comedy", lvl:"A1", title:["Le chien qui prenait le bus","The dog who took the bus","หมาที่นั่งรถเมล์"], blurb:"ทุกเช้าหมาตัวหนึ่งขึ้นรถเมล์สาย 12 คนเดียว คนขับอยากรู้ว่ามันไปไหน",
