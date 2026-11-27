@@ -37,5 +37,9 @@ window.LEXIPLUMA_I18N = {
   "ภูมิภาค": "Regions",
   "แฟชั่น": "Fashion",
   "ราชวงศ์": "Monarchy",
-  "ภัยพิบัติ": "Disasters"
+  "ภัยพิบัติ": "Disasters",
+  "การย้ายถิ่น": "Migration",
+  "การทำงาน": "Work",
+  "อวกาศ": "Space",
+  "อื้อฉาว": "Scandal"
 };
